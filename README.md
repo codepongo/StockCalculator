@@ -14,7 +14,7 @@ StockCalculator is an iOS App that calculates the breakeven price of the purchas
 可自由定制税费比率。支持计算结果的保存，方便以后进行查看。
 
 
-<a href="https://itunes.apple.com/cn/app/gu-jia-ji-suan-qi/id1065778046"><img width=107 height=51 src="material/appstore.png" /></a>
+<a href="https://itunes.apple.com/cn/app/gu-jia-ji-suan-qi/id1065778046"><img width=170 height=51 src="material/appstore.png" /></a>
 
 
 <img width=30% height=30% src="screenshot/5.5calculate.png" />
