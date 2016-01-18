@@ -1,0 +1,21 @@
+
+/* Class = "UILabel"; text = "Loaded by FirstViewController"; ObjectID = "A5M-7J-77L"; */
+"A5M-7J-77L.text" = "Loaded by FirstViewController";
+
+/* Class = "UITabBarItem"; title = "Settings"; ObjectID = "Ecw-Rm-bc0"; */
+"Ecw-Rm-bc0.title" = "Settings";
+
+/* Class = "UILabel"; text = "First View"; ObjectID = "KQZ-1w-vlD"; */
+"KQZ-1w-vlD.text" = "First View";
+
+/* Class = "UITabBarItem"; title = "First"; ObjectID = "acW-dT-cKf"; */
+"acW-dT-cKf.title" = "First";
+
+/* Class = "UISegmentedControl"; bon-TR-Apk.segmentTitles[0] = "First"; ObjectID = "bon-TR-Apk"; */
+"bon-TR-Apk.segmentTitles[0]" = "First";
+
+/* Class = "UISegmentedControl"; bon-TR-Apk.segmentTitles[1] = "Second"; ObjectID = "bon-TR-Apk"; */
+"bon-TR-Apk.segmentTitles[1]" = "Second";
+
+/* Class = "UITabBarItem"; title = "Calculator"; ObjectID = "cPa-gy-q4n"; */
+"cPa-gy-q4n.title" = "Calculator";

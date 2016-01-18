@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="33" id="YIe-he-n4a" customClass="OutputCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="33"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="YIe-he-n4a" id="ZAZ-Lb-YSg">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="32"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RN7-HM-SHl">
+                        <rect key="frame" x="8" y="0.0" width="90" height="32"/>
+                        <animations/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="90" id="xZ6-qA-h9h"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r86-m8-hhn">
+                        <rect key="frame" x="118" y="0.0" width="162" height="32"/>
+                        <animations/>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <animations/>
+                <constraints>
+                    <constraint firstAttribute="bottomMargin" secondItem="RN7-HM-SHl" secondAttribute="bottom" constant="-8" id="6Ce-Gj-53c"/>
+                    <constraint firstItem="r86-m8-hhn" firstAttribute="top" secondItem="ZAZ-Lb-YSg" secondAttribute="topMargin" constant="-8" id="DQq-fc-o2K" userLabel="Label.top = top"/>
+                    <constraint firstAttribute="leadingMargin" secondItem="RN7-HM-SHl" secondAttribute="leading" id="Kxe-ew-NuK"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="r86-m8-hhn" secondAttribute="trailing" constant="32" id="Ndg-0h-5xx"/>
+                    <constraint firstItem="RN7-HM-SHl" firstAttribute="top" secondItem="ZAZ-Lb-YSg" secondAttribute="topMargin" constant="-8" id="UxD-Fb-y6m"/>
+                    <constraint firstItem="r86-m8-hhn" firstAttribute="leading" secondItem="RN7-HM-SHl" secondAttribute="trailing" constant="20" id="lV5-rg-OQT" userLabel="Label.leading = Title.trailing"/>
+                    <constraint firstItem="RN7-HM-SHl" firstAttribute="top" secondItem="ZAZ-Lb-YSg" secondAttribute="top" id="rHE-rM-MCT"/>
+                    <constraint firstAttribute="bottom" secondItem="RN7-HM-SHl" secondAttribute="bottom" id="y9X-GU-9lj"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="r86-m8-hhn" secondAttribute="bottom" constant="-8" id="zN8-2m-jEs" userLabel="bottom = Label.bottom"/>
+                </constraints>
+            </tableViewCellContentView>
+            <animations/>
+            <connections>
+                <outlet property="result" destination="r86-m8-hhn" id="96A-B6-kMP"/>
+                <outlet property="title" destination="RN7-HM-SHl" id="lzB-fF-92Q"/>
+            </connections>
+            <point key="canvasLocation" x="397" y="240.5"/>
+        </tableViewCell>
+    </objects>
+</document>

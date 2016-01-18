@@ -1,0 +1,619 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		040173051C10617E0082F6D7 /* RecordCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 040173041C10617E0082F6D7 /* RecordCell.xib */; };
+		04E442A01BF3546E00943EA5 /* Record.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E4429F1BF3546E00943EA5 /* Record.m */; };
+		FA0896911C19B4A100C90C60 /* RateDescription.plist in Resources */ = {isa = PBXBuildFile; fileRef = FA0896901C19B4A100C90C60 /* RateDescription.plist */; };
+		FA107FA11C124ECC00482E37 /* SettingController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA107FA01C124ECC00482E37 /* SettingController.m */; };
+		FA107FA41C12C99000482E37 /* SettingDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA107FA31C12C99000482E37 /* SettingDetailController.m */; };
+		FA107FA61C130C7100482E37 /* about.html in Resources */ = {isa = PBXBuildFile; fileRef = FA107FA51C130C7100482E37 /* about.html */; };
+		FA107FA91C130D1500482E37 /* AboutController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA107FA81C130D1500482E37 /* AboutController.m */; };
+		FA107FAE1C13305C00482E37 /* iconv4x512.png in Resources */ = {isa = PBXBuildFile; fileRef = FA107FAD1C13305C00482E37 /* iconv4x512.png */; };
+		FA107FB81C13427700482E37 /* alibaba.png in Resources */ = {isa = PBXBuildFile; fileRef = FA107FB31C13427700482E37 /* alibaba.png */; };
+		FA107FB91C13427700482E37 /* material.png in Resources */ = {isa = PBXBuildFile; fileRef = FA107FB41C13427700482E37 /* material.png */; };
+		FA107FBA1C13427700482E37 /* source.png in Resources */ = {isa = PBXBuildFile; fileRef = FA107FB51C13427700482E37 /* source.png */; };
+		FA107FBB1C13427700482E37 /* paypal.png in Resources */ = {isa = PBXBuildFile; fileRef = FA107FB61C13427700482E37 /* paypal.png */; };
+		FA107FBC1C13427700482E37 /* author.png in Resources */ = {isa = PBXBuildFile; fileRef = FA107FB71C13427700482E37 /* author.png */; };
+		FA2323551BDB3CDC004EE7E8 /* SaveFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = FA2323531BDB3CDC004EE7E8 /* SaveFooter.m */; };
+		FA2323561BDB3CDC004EE7E8 /* SaveFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA2323541BDB3CDC004EE7E8 /* SaveFooter.xib */; };
+		FA23235B1BDB402C004EE7E8 /* SimulateActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = FA2323591BDB402C004EE7E8 /* SimulateActionSheet.m */; };
+		FA2A9A7D1BD15A1F00FCC8A5 /* CalculateFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA2A9A7B1BD15A1F00FCC8A5 /* CalculateFooter.xib */; };
+		FA2A9A831BD3D79F00FCC8A5 /* TabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA2A9A821BD3D79F00FCC8A5 /* TabBarController.m */; };
+		FA2A9A861BD3DE4700FCC8A5 /* CalculateFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = FA2A9A851BD3DE4700FCC8A5 /* CalculateFooter.m */; };
+		FA2A9A8C1BD91B4700FCC8A5 /* OutputCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FA2A9A8A1BD91B4700FCC8A5 /* OutputCell.m */; };
+		FA2A9A8D1BD91B4700FCC8A5 /* OutputCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA2A9A8B1BD91B4700FCC8A5 /* OutputCell.xib */; };
+		FA2A9A961BD9256600FCC8A5 /* ButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FA2A9A941BD9256600FCC8A5 /* ButtonCell.m */; };
+		FA2A9A971BD9256600FCC8A5 /* ButtonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA2A9A951BD9256600FCC8A5 /* ButtonCell.xib */; };
+		FA407CE51C073A8F00FA64B6 /* RecordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FA407CE41C073A8F00FA64B6 /* RecordCell.m */; };
+		FA407CE91C0A6A3300FA64B6 /* RecordDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = FA407CE81C0A6A3300FA64B6 /* RecordDetail.m */; };
+		FA6179EF1BE0E79200E4AFA6 /* InputAccessory.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA6179EE1BE0E79200E4AFA6 /* InputAccessory.xib */; };
+		FA6179F21BE0EABC00E4AFA6 /* InputAccessory.m in Sources */ = {isa = PBXBuildFile; fileRef = FA6179F11BE0EABC00E4AFA6 /* InputAccessory.m */; };
+		FA617A061BE8E9FB00E4AFA6 /* Trade.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA617A051BE8E9FB00E4AFA6 /* Trade.swift */; };
+		FA617A361BEFFBAE00E4AFA6 /* SQLiteManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FA617A351BEFFBAE00E4AFA6 /* SQLiteManager.m */; };
+		FA617A381BEFFC0300E4AFA6 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = FA617A371BEFFC0300E4AFA6 /* libsqlite3.tbd */; };
+		FA8C9E771BFE71520072FE7C /* Rate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8C9E761BFE71520072FE7C /* Rate.swift */; };
+		FA8C9E791C01F8020072FE7C /* CalculateBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8C9E781C01F8020072FE7C /* CalculateBrain.swift */; };
+		FACE72051BCEA7D20086F0EB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FACE71F91BCEA7D20086F0EB /* AppDelegate.m */; };
+		FACE72061BCEA7D20086F0EB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FACE71FA1BCEA7D20086F0EB /* Assets.xcassets */; };
+		FACE72081BCEA7D20086F0EB /* CalculatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FACE71FD1BCEA7D20086F0EB /* CalculatorViewController.m */; };
+		FACE720C1BCEA7D20086F0EB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FACE72021BCEA7D20086F0EB /* main.m */; };
+		FACE720D1BCEA7D20086F0EB /* RecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FACE72041BCEA7D20086F0EB /* RecordViewController.m */; };
+		FACE72121BCEA7F40086F0EB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FACE720E1BCEA7F40086F0EB /* LaunchScreen.storyboard */; };
+		FACE72131BCEA7F40086F0EB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FACE72101BCEA7F40086F0EB /* Main.storyboard */; };
+		FACE721B1BCF31110086F0EB /* InputCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FACE72191BCF31110086F0EB /* InputCell.m */; };
+		FACE721E1BCF33610086F0EB /* InputCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FACE721D1BCF33610086F0EB /* InputCell.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		040173041C10617E0082F6D7 /* RecordCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecordCell.xib; sourceTree = "<group>"; };
+		04E4429E1BF3546E00943EA5 /* Record.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Record.h; sourceTree = "<group>"; };
+		04E4429F1BF3546E00943EA5 /* Record.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Record.m; sourceTree = "<group>"; };
+		FA0896901C19B4A100C90C60 /* RateDescription.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = RateDescription.plist; sourceTree = "<group>"; };
+		FA107F9F1C124ECC00482E37 /* SettingController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingController.h; sourceTree = "<group>"; };
+		FA107FA01C124ECC00482E37 /* SettingController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingController.m; sourceTree = "<group>"; };
+		FA107FA21C12C99000482E37 /* SettingDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingDetailController.h; sourceTree = "<group>"; };
+		FA107FA31C12C99000482E37 /* SettingDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingDetailController.m; sourceTree = "<group>"; };
+		FA107FA51C130C7100482E37 /* about.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = about.html; sourceTree = "<group>"; };
+		FA107FA71C130D1500482E37 /* AboutController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutController.h; sourceTree = "<group>"; };
+		FA107FA81C130D1500482E37 /* AboutController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutController.m; sourceTree = "<group>"; };
+		FA107FAD1C13305C00482E37 /* iconv4x512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iconv4x512.png; sourceTree = "<group>"; };
+		FA107FB31C13427700482E37 /* alibaba.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = alibaba.png; sourceTree = "<group>"; };
+		FA107FB41C13427700482E37 /* material.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = material.png; sourceTree = "<group>"; };
+		FA107FB51C13427700482E37 /* source.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = source.png; sourceTree = "<group>"; };
+		FA107FB61C13427700482E37 /* paypal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = paypal.png; sourceTree = "<group>"; };
+		FA107FB71C13427700482E37 /* author.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = author.png; sourceTree = "<group>"; };
+		FA2323521BDB3CDC004EE7E8 /* SaveFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SaveFooter.h; sourceTree = "<group>"; };
+		FA2323531BDB3CDC004EE7E8 /* SaveFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SaveFooter.m; sourceTree = "<group>"; };
+		FA2323541BDB3CDC004EE7E8 /* SaveFooter.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SaveFooter.xib; sourceTree = "<group>"; };
+		FA2323581BDB402C004EE7E8 /* SimulateActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SimulateActionSheet.h; path = StockCalculator/SimulateActionSheet.h; sourceTree = "<group>"; };
+		FA2323591BDB402C004EE7E8 /* SimulateActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SimulateActionSheet.m; path = StockCalculator/SimulateActionSheet.m; sourceTree = "<group>"; };
+		FA23235A1BDB402C004EE7E8 /* SimulateActionSheetDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SimulateActionSheetDelegate.h; path = StockCalculator/SimulateActionSheetDelegate.h; sourceTree = "<group>"; };
+		FA2A9A7B1BD15A1F00FCC8A5 /* CalculateFooter.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CalculateFooter.xib; sourceTree = "<group>"; };
+		FA2A9A811BD3D79F00FCC8A5 /* TabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBarController.h; sourceTree = "<group>"; };
+		FA2A9A821BD3D79F00FCC8A5 /* TabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBarController.m; sourceTree = "<group>"; };
+		FA2A9A841BD3DE4700FCC8A5 /* CalculateFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalculateFooter.h; sourceTree = "<group>"; };
+		FA2A9A851BD3DE4700FCC8A5 /* CalculateFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalculateFooter.m; sourceTree = "<group>"; };
+		FA2A9A891BD91B4700FCC8A5 /* OutputCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OutputCell.h; sourceTree = "<group>"; };
+		FA2A9A8A1BD91B4700FCC8A5 /* OutputCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OutputCell.m; sourceTree = "<group>"; };
+		FA2A9A8B1BD91B4700FCC8A5 /* OutputCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OutputCell.xib; sourceTree = "<group>"; };
+		FA2A9A931BD9256600FCC8A5 /* ButtonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ButtonCell.h; sourceTree = "<group>"; };
+		FA2A9A941BD9256600FCC8A5 /* ButtonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ButtonCell.m; sourceTree = "<group>"; };
+		FA2A9A951BD9256600FCC8A5 /* ButtonCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ButtonCell.xib; sourceTree = "<group>"; };
+		FA407CE31C073A8F00FA64B6 /* RecordCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordCell.h; sourceTree = "<group>"; };
+		FA407CE41C073A8F00FA64B6 /* RecordCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordCell.m; sourceTree = "<group>"; };
+		FA407CE61C09213A00FA64B6 /* public.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = public.h; sourceTree = "<group>"; };
+		FA407CE71C0A6A3300FA64B6 /* RecordDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordDetail.h; sourceTree = "<group>"; };
+		FA407CE81C0A6A3300FA64B6 /* RecordDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordDetail.m; sourceTree = "<group>"; };
+		FA4C85401C17075D00B875C6 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
+		FA4C85411C17075D00B875C6 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		FA6179EE1BE0E79200E4AFA6 /* InputAccessory.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InputAccessory.xib; sourceTree = "<group>"; };
+		FA6179F01BE0EABC00E4AFA6 /* InputAccessory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputAccessory.h; sourceTree = "<group>"; };
+		FA6179F11BE0EABC00E4AFA6 /* InputAccessory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InputAccessory.m; sourceTree = "<group>"; };
+		FA617A041BE8E9FA00E4AFA6 /* StockCalculator-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "StockCalculator-Bridging-Header.h"; sourceTree = "<group>"; };
+		FA617A051BE8E9FB00E4AFA6 /* Trade.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trade.swift; sourceTree = "<group>"; };
+		FA617A341BEFFBAE00E4AFA6 /* SQLiteManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SQLiteManager.h; sourceTree = "<group>"; };
+		FA617A351BEFFBAE00E4AFA6 /* SQLiteManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SQLiteManager.m; sourceTree = "<group>"; };
+		FA617A371BEFFC0300E4AFA6 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		FA8C9E761BFE71520072FE7C /* Rate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rate.swift; sourceTree = "<group>"; };
+		FA8C9E781C01F8020072FE7C /* CalculateBrain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculateBrain.swift; sourceTree = "<group>"; };
+		FACE71DB1BCEA75C0086F0EB /* StockCalculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StockCalculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FACE71F81BCEA7D20086F0EB /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		FACE71F91BCEA7D20086F0EB /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		FACE71FA1BCEA7D20086F0EB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		FACE71FC1BCEA7D20086F0EB /* CalculatorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalculatorViewController.h; sourceTree = "<group>"; };
+		FACE71FD1BCEA7D20086F0EB /* CalculatorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalculatorViewController.m; sourceTree = "<group>"; };
+		FACE71FE1BCEA7D20086F0EB /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FACE72021BCEA7D20086F0EB /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		FACE72031BCEA7D20086F0EB /* RecordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordViewController.h; sourceTree = "<group>"; };
+		FACE72041BCEA7D20086F0EB /* RecordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordViewController.m; sourceTree = "<group>"; };
+		FACE720F1BCEA7F40086F0EB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		FACE72111BCEA7F40086F0EB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		FACE72181BCF31110086F0EB /* InputCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputCell.h; sourceTree = "<group>"; };
+		FACE72191BCF31110086F0EB /* InputCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InputCell.m; sourceTree = "<group>"; };
+		FACE721D1BCF33610086F0EB /* InputCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InputCell.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FACE71D81BCEA75C0086F0EB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA617A381BEFFC0300E4AFA6 /* libsqlite3.tbd in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0401730C1C114A7B0082F6D7 /* RecordCell */ = {
+			isa = PBXGroup;
+			children = (
+				040173041C10617E0082F6D7 /* RecordCell.xib */,
+				FA407CE31C073A8F00FA64B6 /* RecordCell.h */,
+				FA407CE41C073A8F00FA64B6 /* RecordCell.m */,
+			);
+			name = RecordCell;
+			sourceTree = "<group>";
+		};
+		FA107F9D1C124CF300482E37 /* record */ = {
+			isa = PBXGroup;
+			children = (
+				04E4429E1BF3546E00943EA5 /* Record.h */,
+				04E4429F1BF3546E00943EA5 /* Record.m */,
+				FACE72031BCEA7D20086F0EB /* RecordViewController.h */,
+				FACE72041BCEA7D20086F0EB /* RecordViewController.m */,
+				FA407CE71C0A6A3300FA64B6 /* RecordDetail.h */,
+				FA407CE81C0A6A3300FA64B6 /* RecordDetail.m */,
+				0401730C1C114A7B0082F6D7 /* RecordCell */,
+			);
+			name = record;
+			sourceTree = "<group>";
+		};
+		FA107F9E1C124D3000482E37 /* calculator */ = {
+			isa = PBXGroup;
+			children = (
+				FA2323661BDD1D19004EE7E8 /* InputCell */,
+				FA2A9A981BD9898D00FCC8A5 /* ButtonCell */,
+				FA2323501BDB3C7C004EE7E8 /* OutputCell */,
+				FA2323571BDB3CE3004EE7E8 /* SaveFooter */,
+				FA617A071BE8F61100E4AFA6 /* CalculateFooter */,
+				FA23235C1BDB4031004EE7E8 /* SimulateActionSheet */,
+				FACE71FC1BCEA7D20086F0EB /* CalculatorViewController.h */,
+				FACE71FD1BCEA7D20086F0EB /* CalculatorViewController.m */,
+				FA6179F31BE1060100E4AFA6 /* InputAccessory */,
+				FA2323651BDCB24F004EE7E8 /* CalculateBrain */,
+			);
+			name = calculator;
+			sourceTree = "<group>";
+		};
+		FA107FBD1C13468900482E37 /* about */ = {
+			isa = PBXGroup;
+			children = (
+				FA107FA71C130D1500482E37 /* AboutController.h */,
+				FA107FA81C130D1500482E37 /* AboutController.m */,
+				FA107FA51C130C7100482E37 /* about.html */,
+				FA107FB31C13427700482E37 /* alibaba.png */,
+				FA107FAD1C13305C00482E37 /* iconv4x512.png */,
+				FA107FB41C13427700482E37 /* material.png */,
+				FA107FB51C13427700482E37 /* source.png */,
+				FA107FB61C13427700482E37 /* paypal.png */,
+				FA107FB71C13427700482E37 /* author.png */,
+			);
+			name = about;
+			sourceTree = "<group>";
+		};
+		FA107FBE1C15BD7C00482E37 /* setting */ = {
+			isa = PBXGroup;
+			children = (
+				FA107FA21C12C99000482E37 /* SettingDetailController.h */,
+				FA107FA31C12C99000482E37 /* SettingDetailController.m */,
+				FA107F9F1C124ECC00482E37 /* SettingController.h */,
+				FA107FA01C124ECC00482E37 /* SettingController.m */,
+				FA0896901C19B4A100C90C60 /* RateDescription.plist */,
+			);
+			name = setting;
+			sourceTree = "<group>";
+		};
+		FA2323501BDB3C7C004EE7E8 /* OutputCell */ = {
+			isa = PBXGroup;
+			children = (
+				FA2A9A891BD91B4700FCC8A5 /* OutputCell.h */,
+				FA2A9A8A1BD91B4700FCC8A5 /* OutputCell.m */,
+				FA2A9A8B1BD91B4700FCC8A5 /* OutputCell.xib */,
+			);
+			name = OutputCell;
+			sourceTree = "<group>";
+		};
+		FA2323571BDB3CE3004EE7E8 /* SaveFooter */ = {
+			isa = PBXGroup;
+			children = (
+				FA2323521BDB3CDC004EE7E8 /* SaveFooter.h */,
+				FA2323531BDB3CDC004EE7E8 /* SaveFooter.m */,
+				FA2323541BDB3CDC004EE7E8 /* SaveFooter.xib */,
+			);
+			name = SaveFooter;
+			sourceTree = "<group>";
+		};
+		FA23235C1BDB4031004EE7E8 /* SimulateActionSheet */ = {
+			isa = PBXGroup;
+			children = (
+				FA2323581BDB402C004EE7E8 /* SimulateActionSheet.h */,
+				FA2323591BDB402C004EE7E8 /* SimulateActionSheet.m */,
+				FA23235A1BDB402C004EE7E8 /* SimulateActionSheetDelegate.h */,
+			);
+			name = SimulateActionSheet;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		FA2323651BDCB24F004EE7E8 /* CalculateBrain */ = {
+			isa = PBXGroup;
+			children = (
+				FA8C9E781C01F8020072FE7C /* CalculateBrain.swift */,
+				FA617A051BE8E9FB00E4AFA6 /* Trade.swift */,
+				FA8C9E761BFE71520072FE7C /* Rate.swift */,
+			);
+			name = CalculateBrain;
+			sourceTree = "<group>";
+		};
+		FA2323661BDD1D19004EE7E8 /* InputCell */ = {
+			isa = PBXGroup;
+			children = (
+				FACE721D1BCF33610086F0EB /* InputCell.xib */,
+				FACE72181BCF31110086F0EB /* InputCell.h */,
+				FACE72191BCF31110086F0EB /* InputCell.m */,
+			);
+			name = InputCell;
+			sourceTree = "<group>";
+		};
+		FA2A9A981BD9898D00FCC8A5 /* ButtonCell */ = {
+			isa = PBXGroup;
+			children = (
+				FA2A9A931BD9256600FCC8A5 /* ButtonCell.h */,
+				FA2A9A941BD9256600FCC8A5 /* ButtonCell.m */,
+				FA2A9A951BD9256600FCC8A5 /* ButtonCell.xib */,
+			);
+			name = ButtonCell;
+			sourceTree = "<group>";
+		};
+		FA6179F31BE1060100E4AFA6 /* InputAccessory */ = {
+			isa = PBXGroup;
+			children = (
+				FA6179EE1BE0E79200E4AFA6 /* InputAccessory.xib */,
+				FA6179F01BE0EABC00E4AFA6 /* InputAccessory.h */,
+				FA6179F11BE0EABC00E4AFA6 /* InputAccessory.m */,
+			);
+			name = InputAccessory;
+			sourceTree = "<group>";
+		};
+		FA617A071BE8F61100E4AFA6 /* CalculateFooter */ = {
+			isa = PBXGroup;
+			children = (
+				FA2A9A841BD3DE4700FCC8A5 /* CalculateFooter.h */,
+				FA2A9A851BD3DE4700FCC8A5 /* CalculateFooter.m */,
+				FA2A9A7B1BD15A1F00FCC8A5 /* CalculateFooter.xib */,
+			);
+			name = CalculateFooter;
+			sourceTree = "<group>";
+		};
+		FA617A331BEFFB9700E4AFA6 /* SQLiteManger */ = {
+			isa = PBXGroup;
+			children = (
+				FA617A371BEFFC0300E4AFA6 /* libsqlite3.tbd */,
+				FA617A341BEFFBAE00E4AFA6 /* SQLiteManager.h */,
+				FA617A351BEFFBAE00E4AFA6 /* SQLiteManager.m */,
+			);
+			name = SQLiteManger;
+			sourceTree = "<group>";
+		};
+		FACE71D21BCEA75B0086F0EB = {
+			isa = PBXGroup;
+			children = (
+				FACE71DD1BCEA75C0086F0EB /* StockCalculator */,
+				FACE71DC1BCEA75C0086F0EB /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		FACE71DC1BCEA75C0086F0EB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FACE71DB1BCEA75C0086F0EB /* StockCalculator.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FACE71DD1BCEA75C0086F0EB /* StockCalculator */ = {
+			isa = PBXGroup;
+			children = (
+				FACE72101BCEA7F40086F0EB /* Main.storyboard */,
+				FA107FBD1C13468900482E37 /* about */,
+				FA107F9E1C124D3000482E37 /* calculator */,
+				FA107FBE1C15BD7C00482E37 /* setting */,
+				FA107F9D1C124CF300482E37 /* record */,
+				FACE71F81BCEA7D20086F0EB /* AppDelegate.h */,
+				FACE71F91BCEA7D20086F0EB /* AppDelegate.m */,
+				FACE71FA1BCEA7D20086F0EB /* Assets.xcassets */,
+				FACE71FE1BCEA7D20086F0EB /* Info.plist */,
+				FACE72021BCEA7D20086F0EB /* main.m */,
+				FA2A9A811BD3D79F00FCC8A5 /* TabBarController.h */,
+				FA2A9A821BD3D79F00FCC8A5 /* TabBarController.m */,
+				FA407CE61C09213A00FA64B6 /* public.h */,
+				FA617A041BE8E9FA00E4AFA6 /* StockCalculator-Bridging-Header.h */,
+				FACE720E1BCEA7F40086F0EB /* LaunchScreen.storyboard */,
+				FA617A331BEFFB9700E4AFA6 /* SQLiteManger */,
+			);
+			path = StockCalculator;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		FACE71DA1BCEA75C0086F0EB /* StockCalculator */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FACE71F51BCEA75C0086F0EB /* Build configuration list for PBXNativeTarget "StockCalculator" */;
+			buildPhases = (
+				FACE71D71BCEA75C0086F0EB /* Sources */,
+				FACE71D81BCEA75C0086F0EB /* Frameworks */,
+				FACE71D91BCEA75C0086F0EB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = StockCalculator;
+			productName = StockCalculator;
+			productReference = FACE71DB1BCEA75C0086F0EB /* StockCalculator.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FACE71D31BCEA75B0086F0EB /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0710;
+				LastUpgradeCheck = 0700;
+				ORGANIZATIONNAME = zuohaitao;
+				TargetAttributes = {
+					FACE71DA1BCEA75C0086F0EB = {
+						CreatedOnToolsVersion = 7.0.1;
+						DevelopmentTeam = R3CACB4GB3;
+						SystemCapabilities = {
+							com.apple.WAC = {
+								enabled = 0;
+							};
+						};
+					};
+				};
+			};
+			buildConfigurationList = FACE71D61BCEA75B0086F0EB /* Build configuration list for PBXProject "StockCalculator" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = FACE71D21BCEA75B0086F0EB;
+			productRefGroup = FACE71DC1BCEA75C0086F0EB /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FACE71DA1BCEA75C0086F0EB /* StockCalculator */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		FACE71D91BCEA75C0086F0EB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA107FB91C13427700482E37 /* material.png in Resources */,
+				FA0896911C19B4A100C90C60 /* RateDescription.plist in Resources */,
+				FA107FBC1C13427700482E37 /* author.png in Resources */,
+				FACE72061BCEA7D20086F0EB /* Assets.xcassets in Resources */,
+				FA2323561BDB3CDC004EE7E8 /* SaveFooter.xib in Resources */,
+				FACE72131BCEA7F40086F0EB /* Main.storyboard in Resources */,
+				FA2A9A971BD9256600FCC8A5 /* ButtonCell.xib in Resources */,
+				FA107FAE1C13305C00482E37 /* iconv4x512.png in Resources */,
+				FA6179EF1BE0E79200E4AFA6 /* InputAccessory.xib in Resources */,
+				FACE721E1BCF33610086F0EB /* InputCell.xib in Resources */,
+				FA107FBB1C13427700482E37 /* paypal.png in Resources */,
+				FA2A9A7D1BD15A1F00FCC8A5 /* CalculateFooter.xib in Resources */,
+				040173051C10617E0082F6D7 /* RecordCell.xib in Resources */,
+				FA107FBA1C13427700482E37 /* source.png in Resources */,
+				FA107FA61C130C7100482E37 /* about.html in Resources */,
+				FA107FB81C13427700482E37 /* alibaba.png in Resources */,
+				FA2A9A8D1BD91B4700FCC8A5 /* OutputCell.xib in Resources */,
+				FACE72121BCEA7F40086F0EB /* LaunchScreen.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FACE71D71BCEA75C0086F0EB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA8C9E771BFE71520072FE7C /* Rate.swift in Sources */,
+				FA617A361BEFFBAE00E4AFA6 /* SQLiteManager.m in Sources */,
+				FA2A9A8C1BD91B4700FCC8A5 /* OutputCell.m in Sources */,
+				FA407CE91C0A6A3300FA64B6 /* RecordDetail.m in Sources */,
+				FA2A9A831BD3D79F00FCC8A5 /* TabBarController.m in Sources */,
+				FACE72081BCEA7D20086F0EB /* CalculatorViewController.m in Sources */,
+				FA107FA41C12C99000482E37 /* SettingDetailController.m in Sources */,
+				FA23235B1BDB402C004EE7E8 /* SimulateActionSheet.m in Sources */,
+				FACE720C1BCEA7D20086F0EB /* main.m in Sources */,
+				FA617A061BE8E9FB00E4AFA6 /* Trade.swift in Sources */,
+				FA2A9A861BD3DE4700FCC8A5 /* CalculateFooter.m in Sources */,
+				FA2A9A961BD9256600FCC8A5 /* ButtonCell.m in Sources */,
+				04E442A01BF3546E00943EA5 /* Record.m in Sources */,
+				FA107FA11C124ECC00482E37 /* SettingController.m in Sources */,
+				FA407CE51C073A8F00FA64B6 /* RecordCell.m in Sources */,
+				FA2323551BDB3CDC004EE7E8 /* SaveFooter.m in Sources */,
+				FACE721B1BCF31110086F0EB /* InputCell.m in Sources */,
+				FA107FA91C130D1500482E37 /* AboutController.m in Sources */,
+				FACE72051BCEA7D20086F0EB /* AppDelegate.m in Sources */,
+				FA6179F21BE0EABC00E4AFA6 /* InputAccessory.m in Sources */,
+				FA8C9E791C01F8020072FE7C /* CalculateBrain.swift in Sources */,
+				FACE720D1BCEA7D20086F0EB /* RecordViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		FACE720E1BCEA7F40086F0EB /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FACE720F1BCEA7F40086F0EB /* Base */,
+				FA4C85411C17075D00B875C6 /* zh-Hans */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		FACE72101BCEA7F40086F0EB /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FACE72111BCEA7F40086F0EB /* Base */,
+				FA4C85401C17075D00B875C6 /* zh-Hans */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		FACE71F31BCEA75C0086F0EB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		FACE71F41BCEA75C0086F0EB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		FACE71F61BCEA75C0086F0EB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEFINES_MODULE = YES;
+				INFOPLIST_FILE = StockCalculator/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.codepongo.iOS.StockCalculator;
+				PRODUCT_MODULE_NAME = "$(PROJECT_NAME)";
+				PRODUCT_NAME = "$(PROJECT_NAME)";
+				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "StockCalculator/StockCalculator-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		FACE71F71BCEA75C0086F0EB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEFINES_MODULE = YES;
+				INFOPLIST_FILE = StockCalculator/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.codepongo.iOS.StockCalculator;
+				PRODUCT_MODULE_NAME = "$(PROJECT_NAME)";
+				PRODUCT_NAME = "$(PROJECT_NAME)";
+				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "StockCalculator/StockCalculator-Bridging-Header.h";
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		FACE71D61BCEA75B0086F0EB /* Build configuration list for PBXProject "StockCalculator" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FACE71F31BCEA75C0086F0EB /* Debug */,
+				FACE71F41BCEA75C0086F0EB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		FACE71F51BCEA75C0086F0EB /* Build configuration list for PBXNativeTarget "StockCalculator" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FACE71F61BCEA75C0086F0EB /* Debug */,
+				FACE71F71BCEA75C0086F0EB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = FACE71D31BCEA75B0086F0EB /* Project object */;
+}

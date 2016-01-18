@@ -1,0 +1,105 @@
+
+/* Class = "UILabel"; text = "Detail"; ObjectID = "2f9-l4-92F"; */
+"2f9-l4-92F.text" = "Detail";
+
+/* Class = "UILabel"; text = "卖出数量"; ObjectID = "7kH-Vr-3xG"; */
+"7kH-Vr-3xG.text" = "卖出数量";
+
+/* Class = "UILabel"; text = "券商佣金"; ObjectID = "9rB-YP-lho"; */
+"9rB-YP-lho.text" = "券商佣金";
+
+/* Class = "UISearchBar"; APO-36-6Pm.scopeButtonTitles[0] = "代码"; ObjectID = "APO-36-6Pm"; */
+"APO-36-6Pm.scopeButtonTitles[0]" = "代码";
+
+/* Class = "UISearchBar"; APO-36-6Pm.scopeButtonTitles[1] = "时间"; ObjectID = "APO-36-6Pm"; */
+"APO-36-6Pm.scopeButtonTitles[1]" = "时间";
+
+/* Class = "UISearchBar"; APO-36-6Pm.scopeButtonTitles[2] = "买入"; ObjectID = "APO-36-6Pm"; */
+"APO-36-6Pm.scopeButtonTitles[2]" = "买入";
+
+/* Class = "UILabel"; text = "买入价格"; ObjectID = "Abr-vN-Aw8"; */
+"Abr-vN-Aw8.text" = "买入价格";
+
+/* Class = "UILabel"; text = "印花税率"; ObjectID = "FVp-vX-LIX"; */
+"FVp-vX-LIX.text" = "印花税率";
+
+/* Class = "UILabel"; text = "关于"; ObjectID = "FW3-Ct-dyI"; */
+"FW3-Ct-dyI.text" = "关于";
+
+/* Class = "UITabBarItem"; title = "设置"; ObjectID = "JOG-cd-QF6"; */
+"JOG-cd-QF6.title" = "设置";
+
+/* Class = "UINavigationItem"; title = "纪录"; ObjectID = "KWf-vW-fjV"; */
+"KWf-vW-fjV.title" = "纪录";
+
+/* Class = "UILabel"; text = "%.2f 股"; ObjectID = "OG1-z3-em1"; */
+"OG1-z3-em1.text" = "%.2f 股";
+
+/* Class = "UILabel"; text = "%.2f 元／股"; ObjectID = "S4g-PO-ODt"; */
+"S4g-PO-ODt.text" = "%.2f 元／股";
+
+/* Class = "UILabel"; text = "佣金比率"; ObjectID = "Vby-Lk-Qgb"; */
+"Vby-Lk-Qgb.text" = "佣金比率";
+
+/* Class = "UILabel"; text = "%.2f 元"; ObjectID = "aFS-49-YU0"; */
+"aFS-49-YU0.text" = "%.2f 元";
+
+/* Class = "UITabBarItem"; title = "记录"; ObjectID = "acW-dT-cKf"; */
+"acW-dT-cKf.title" = "记录";
+
+/* Class = "UILabel"; text = "卖出价格"; ObjectID = "bTH-Jq-0l6"; */
+"bTH-Jq-0l6.text" = "卖出价格";
+
+/* Class = "UISegmentedControl"; bon-TR-Apk.segmentTitles[0] = "损益计算"; ObjectID = "bon-TR-Apk"; */
+"bon-TR-Apk.segmentTitles[0]" = "损益计算";
+
+/* Class = "UISegmentedControl"; bon-TR-Apk.segmentTitles[1] = "保本价格"; ObjectID = "bon-TR-Apk"; */
+"bon-TR-Apk.segmentTitles[1]" = "保本价格";
+
+/* Class = "UILabel"; text = "%.2f 元"; ObjectID = "bye-NM-oSP"; */
+"bye-NM-oSP.text" = "%.2f 元";
+
+/* Class = "UITabBarItem"; title = "计算"; ObjectID = "cPa-gy-q4n"; */
+"cPa-gy-q4n.title" = "计算";
+
+/* Class = "UILabel"; text = "买入数量"; ObjectID = "f56-4j-Ui1"; */
+"f56-4j-Ui1.text" = "买入数量";
+
+/* Class = "UILabel"; text = "过户费率"; ObjectID = "iBZ-J7-Nlb"; */
+"iBZ-J7-Nlb.text" = "过户费率";
+
+/* Class = "UILabel"; text = "%.2f 元"; ObjectID = "iUT-C2-Y8S"; */
+"iUT-C2-Y8S.text" = "%.2f 元";
+
+/* Class = "UILabel"; text = "过户费"; ObjectID = "jjP-SW-ThQ"; */
+"jjP-SW-ThQ.text" = "过户费";
+
+/* Class = "UILabel"; text = "Detail"; ObjectID = "k4d-xO-QlN"; */
+"k4d-xO-QlN.text" = "Detail";
+
+/* Class = "UILabel"; text = "%.2f 元／股"; ObjectID = "mms-gA-VxA"; */
+"mms-gA-VxA.text" = "%.2f 元／股";
+
+/* Class = "UINavigationItem"; title = "设置"; ObjectID = "n2R-dw-USL"; */
+"n2R-dw-USL.title" = "设置";
+
+/* Class = "UILabel"; text = "交易损益"; ObjectID = "nDh-A6-edd"; */
+"nDh-A6-edd.text" = "交易损益";
+
+/* Class = "UILabel"; text = "Detail"; ObjectID = "nvB-Yl-i12"; */
+"nvB-Yl-i12.text" = "Detail";
+
+/* Class = "UILabel"; text = "%.2f 元"; ObjectID = "qUv-Or-bn3"; */
+"qUv-Or-bn3.text" = "%.2f 元";
+
+/* Class = "UILabel"; text = "%.2f 股"; ObjectID = "rVa-Dc-oL8"; */
+"rVa-Dc-oL8.text" = "%.2f 股";
+
+/* Class = "UILabel"; text = "印花税"; ObjectID = "s8B-GM-nxN"; */
+"s8B-GM-nxN.text" = "印花税";
+
+/* Class = "UILabel"; text = "版本"; ObjectID = "v4K-lN-9Au"; */
+"v4K-lN-9Au.text" = "版本";
+
+/* Class = "UIBarButtonItem"; title = "编辑"; ObjectID = "zfI-hk-QeH"; */
+"zfI-hk-QeH.title" = "编辑";

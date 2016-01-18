@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Cell" rowHeight="75" id="kvv-np-dqd" customClass="RecordCell">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="75"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kvv-np-dqd" id="vXj-ba-u8U">
+                <rect key="frame" x="0.0" y="0.0" width="567" height="74"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="leh-In-XAm">
+                        <rect key="frame" x="8" y="8" width="551" height="54"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="HDa-Dp-hZH">
+                                <rect key="frame" x="0.0" y="0.0" width="70" height="32"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Z8m-3m-K3w">
+                                        <rect key="frame" x="0.0" y="0.0" width="32" height="32"/>
+                                        <animations/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="32" id="8fu-FL-ZER"/>
+                                            <constraint firstAttribute="width" constant="32" id="eJh-28-lxE"/>
+                                        </constraints>
+                                    </imageView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="Fmm-rH-ztJ">
+                                        <rect key="frame" x="40" y="0.0" width="30" height="32"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zqw-bl-jsV">
+                                                <rect key="frame" x="0.0" y="0.0" width="30" height="19"/>
+                                                <animations/>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="11"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a1h-zd-86E">
+                                                <rect key="frame" x="0.0" y="21" width="24" height="11"/>
+                                                <animations/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="9"/>
+                                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <animations/>
+                                    </stackView>
+                                </subviews>
+                                <animations/>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" lineBreakMode="characterWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EIt-un-uW7">
+                                <rect key="frame" x="0.0" y="40" width="29" height="14"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <animations/>
+                    </stackView>
+                </subviews>
+                <animations/>
+                <constraints>
+                    <constraint firstItem="leh-In-XAm" firstAttribute="leading" secondItem="vXj-ba-u8U" secondAttribute="leadingMargin" id="BKa-dY-Pz4"/>
+                    <constraint firstItem="leh-In-XAm" firstAttribute="top" secondItem="vXj-ba-u8U" secondAttribute="topMargin" id="KVt-ML-DgC"/>
+                    <constraint firstItem="leh-In-XAm" firstAttribute="trailing" secondItem="vXj-ba-u8U" secondAttribute="trailingMargin" id="yGA-yy-xYi"/>
+                </constraints>
+            </tableViewCellContentView>
+            <animations/>
+            <connections>
+                <outlet property="datetime" destination="a1h-zd-86E" id="vC3-da-Ikh"/>
+                <outlet property="image" destination="Z8m-3m-K3w" id="HLB-hH-Lg8"/>
+                <outlet property="result" destination="Zqw-bl-jsV" id="8YJ-d5-ATz"/>
+                <outlet property="trade" destination="EIt-un-uW7" id="Y6D-hU-Bp2"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+</document>

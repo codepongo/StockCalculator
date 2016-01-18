@@ -1,0 +1,32 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "352C58E845344A2513CF68F8BB963438C3487FD7",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+    "575ff6b6-1f5b-11de-a108-cd2f117ce590++505" : {
+
+    }
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "352C58E845344A2513CF68F8BB963438C3487FD7" : 0,
+    "575ff6b6-1f5b-11de-a108-cd2f117ce590++505" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "990DD07C-0F7D-43CD-9054-642D696877DE",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "352C58E845344A2513CF68F8BB963438C3487FD7" : "cnstockcalculator\/",
+    "575ff6b6-1f5b-11de-a108-cd2f117ce590++505" : ".."
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "StockCalculator",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "source\/StockCalculator\/StockCalculator.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:codepongo\/cnstockcalculator",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "352C58E845344A2513CF68F8BB963438C3487FD7"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "http:\/\/fog.googlecode.com\/svn",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Subversion",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "575ff6b6-1f5b-11de-a108-cd2f117ce590++505"
+    }
+  ]
+}
