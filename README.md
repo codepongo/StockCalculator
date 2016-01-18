@@ -1,7 +1,7 @@
 StockCalculator 
 =======================
 
-![icon](screenshot/ico1024.png)
+![icon](screenshot/icon1024.png)
 
 
 StockCalculator is an iOS App that calculates the breakeven price of the purchase and the profit or loss of the trade for China stock market participators.
