@@ -9,13 +9,17 @@ StockCalculator is an iOS App that calculates the breakeven price of the purchas
 ### Progress 进度 ###
   0%[                  ]
 ### Task 任务 ###
+* [ ] source code url address:改为StockCalculator
+ + [o] 托管至stockcalculator
+ + [o] 更改App链接
+* [ ] order source code
+ + [o] 整理issue.txt -> stockcalculator-project.md
+ + [ ] 调整代码结构
 * [ ] 根据交易记录测试并完善brain计算准确性
 * [ ] 基金类型计算
 * [ ] 国债逆回购
-* [ ] source code url address:改为StockCalculator
 * [ ] 优化记录展示页面
 * [ ] 朋友圈分享
-* [ ] order source code
 * [ ] 大数 准确以及显示
 * [ ]record search by price and quantity
 * [ ] 多语言:develop language 改为英文
