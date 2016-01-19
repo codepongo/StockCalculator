@@ -81,12 +81,11 @@ class CalculateBrain:NSObject {
         }
         return amount * (self.rate.stamp / 1000)
     }
-    func transfer(quantity:Float) -> Float {
+    func transfer(acount:Float) -> Float {
         if self.inSZ {
             return 0.000
         }
-        var transfer:Float = (quantity % 1000 == 0) ? 0: 1
-        transfer += (quantity / 1000) * self.rate.transfer
+        let transfer:Float = acount * (self.rate.transfer / 1000)
         return transfer
     }
     
@@ -127,7 +126,7 @@ class CalculateBrain:NSObject {
         let stamp = self.stamp(s!.amount())
         var transfer:Float = 0.000
         if !self.inSZ {
-            transfer = self.transfer(Float(self.buy.quantity)) + self.transfer(Float(s!.quantity))
+            transfer = self.transfer(self.buy.amount()) + self.transfer(s!.amount())
         }
 
         let fee:Float = commission + stamp + transfer
