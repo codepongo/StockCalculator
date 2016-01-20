@@ -63,30 +63,33 @@ class CalculateBrain:NSObject {
     }
     func commission(amount:Float) -> Float {
         if amount == 0 {
-            return 0.000
-        }
-        if amount < 10000.00 {
-            return 5.000
+            return 0.00
         }
         
-        return (amount * (self.rate.commission / 1000))
+        let c = (amount * (self.rate.commission / 1000))
         
+        if c < 5.000 {
+            return 5.00
+        }
+        return round(c * 100) / 100.00
     }
     func stamp(amount:Float) -> Float{
         if amount == 0 {
-            return 0.000
+            return 0.00
         }
-        if amount < 1000.00 {
-            return 1.000
+        let s = round((amount * (self.rate.stamp / 1000)) * 100.00) / 100.00
+
+        if s < 1.00 {
+            return 1.00
         }
-        return amount * (self.rate.stamp / 1000)
+        return s
     }
+
     func transfer(acount:Float) -> Float {
         if self.inSZ {
             return 0.000
         }
-        let transfer:Float = acount * (self.rate.transfer / 1000)
-        return transfer
+        return round((acount * (self.rate.transfer / 1000)) * 100.00) / 100.00
     }
     
     func calculate() {
@@ -122,12 +125,15 @@ class CalculateBrain:NSObject {
         if s == nil {
             s = self.sell
         }
-        let commission = self.commission(self.buy.amount()) + self.commission(s!.amount())
+        let commission_of_purchase = self.commission(self.buy.amount())
+        let commission_of_sale = self.commission(self.buy.amount())
+        let commission =  commission_of_purchase + commission_of_sale
+        
         let stamp = self.stamp(s!.amount())
-        var transfer:Float = 0.000
-        if !self.inSZ {
-            transfer = self.transfer(self.buy.amount()) + self.transfer(s!.amount())
-        }
+        
+        let transfer_of_purchase = self.transfer(self.buy.amount())
+        let transfer_of_sale = self.transfer(s!.amount())
+        let transfer:Float = transfer_of_purchase + transfer_of_sale
 
         let fee:Float = commission + stamp + transfer
         let cost:Float = self.buy.amount() + fee
