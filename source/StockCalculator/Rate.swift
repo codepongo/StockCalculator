@@ -11,26 +11,26 @@ import Foundation
 @objc(Rate)
 class Rate:NSObject {
     override func valueForKey(key: String) -> AnyObject? {
-        return NSUserDefaults.standardUserDefaults().floatForKey(key);
+        return NSUserDefaults.standardUserDefaults().doubleForKey(key);
     }
     override func setValue(value: AnyObject?, forKey key: String) {
-        NSUserDefaults.standardUserDefaults().setFloat((value as! Float), forKey: key)
+        NSUserDefaults.standardUserDefaults().setDouble((value as! Double), forKey: key)
     }
-    var stamp:Float {
+    var stamp:Double {
         get {
-            return (self.valueForKey(__FUNCTION__) as! Float)
+            return (self.valueForKey(__FUNCTION__) as! Double)
         }
 
     }
-    var transfer:Float {
+    var transfer:Double {
         get {
-            return (self.valueForKey(__FUNCTION__) as! Float)
+            return (self.valueForKey(__FUNCTION__) as! Double)
         }
 
     }
-    var commission:Float {
+    var commission:Double {
         get {
-            return (self.valueForKey(__FUNCTION__) as! Float)
+            return (self.valueForKey(__FUNCTION__) as! Double)
         }
     }
 }

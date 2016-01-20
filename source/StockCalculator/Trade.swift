@@ -9,22 +9,22 @@
 import Foundation
 @objc(Trade)
 class Trade:NSObject {
-    func amount() -> Float {
+    func amount() -> Double {
         if needCalculate {
-            self._amount =  self.price * Float(self.quantity);
+            self._amount =  self.price * Double(self.quantity);
             self.needCalculate = false
         }
         return self._amount
     }
     var needCalculate:Bool = false
-    var _amount:Float = 0.000
+    var _amount:Double = 0.000
     var quantity:Int  = 0 {
         didSet {
             self.needCalculate = true
         }
     }
     
-    var price:Float = 0.000{
+    var price:Double = 0.000{
         didSet {
             self.needCalculate = true
         }

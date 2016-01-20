@@ -14,11 +14,11 @@ class CalculateBrain:NSObject {
     var buy:Trade = Trade()
     var sell:Trade? = nil
     var rate:Rate = Rate()
-    var commission:Float = 0.000
-    var stamp:Float = 0.000
-    var transfer:Float? = nil
-    var fee:Float = 0.000
-    var result:Float = 0.000
+    var commission:Double = 0.000
+    var stamp:Double = 0.00
+    var transfer:Double? = nil
+    var fee:Double = 0.00
+    var result:Double = 0.00
     var inSZ:Bool {
         get {
             return self.transfer == nil
@@ -61,7 +61,7 @@ class CalculateBrain:NSObject {
         self.fee = 0.000
         self.result = 0.000
     }
-    func commission(amount:Float) -> Float {
+    func commission(amount:Double) -> Double {
         if amount == 0 {
             return 0.00
         }
@@ -73,7 +73,7 @@ class CalculateBrain:NSObject {
         }
         return round(c * 100) / 100.00
     }
-    func stamp(amount:Float) -> Float{
+    func stamp(amount:Double) -> Double{
         if amount == 0 {
             return 0.00
         }
@@ -85,7 +85,7 @@ class CalculateBrain:NSObject {
         return s
     }
 
-    func transfer(acount:Float) -> Float {
+    func transfer(acount:Double) -> Double {
         if self.inSZ {
             return 0.000
         }
@@ -93,7 +93,7 @@ class CalculateBrain:NSObject {
     }
     
     func calculate() {
-        let r : (Float, Float, Float?, Float, Float)
+        let r : (Double, Double, Double?, Double, Double)
         if self.sell == nil {
             r = self.calculateForBreakevenPrice()
             
@@ -108,7 +108,7 @@ class CalculateBrain:NSObject {
         self.result = r.4
     }
     
-    func calculateForBreakevenPrice() -> (Float, Float, Float?, Float, Float) {
+    func calculateForBreakevenPrice() -> (Double, Double, Double?, Double, Double) {
         let sell:Trade = Trade()
         sell.quantity = self.buy.quantity
         sell.price = self.buy.price
@@ -121,7 +121,7 @@ class CalculateBrain:NSObject {
         }while true
     }
     
-    func calculateForGainOrLoss(var s:Trade? = nil) -> (Float, Float, Float?, Float, Float) {
+    func calculateForGainOrLoss(var s:Trade? = nil) -> (Double, Double, Double?, Double, Double) {
         if s == nil {
             s = self.sell
         }
@@ -133,16 +133,16 @@ class CalculateBrain:NSObject {
         
         let transfer_of_purchase = self.transfer(self.buy.amount())
         let transfer_of_sale = self.transfer(s!.amount())
-        let transfer:Float = transfer_of_purchase + transfer_of_sale
+        let transfer:Double = transfer_of_purchase + transfer_of_sale
 
-        let fee:Float = commission + stamp + transfer
-        let cost:Float = self.buy.amount() + fee
+        let fee:Double = commission + stamp + transfer
+        let cost:Double = self.buy.amount() + fee
         let income = s!.amount()
         let result = income - cost
 
         return (commission, stamp, transfer, fee, result)
     }
-    func transferAsFloat() -> Float {
+    func transferAsFloat() -> Double {
         if self.transfer == nil {
             return 0.000
         }

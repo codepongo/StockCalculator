@@ -167,6 +167,10 @@
     self.cur = [NSMutableArray array];
     [self.cur addObject:[NSMutableArray arrayWithArray:[self.all objectAtIndex:0]]];
     [self.cur[0] removeLastObject];
+    //[self selectCalculateType:nil];
+    self.selectedIndexInSheet = 0;
+    [self actionDone ];
+
 }
 
 
@@ -467,16 +471,16 @@
 
 -(void) calculate:(id)sender{
     [self hideKeyBoard];
-    if ([self.brain.code isEqualToString: @""]) {
-        UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"股票代码不能为空" message:@"" preferredStyle:UIAlertControllerStyleAlert];
-        
-        UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {}];
-        
-        [alert addAction:defaultAction];
-        [self presentViewController:alert animated:YES completion:nil];
-        return;
-        
-    }
+//    if ([self.brain.code isEqualToString: @""]) {
+//        UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"股票代码不能为空" message:@"" preferredStyle:UIAlertControllerStyleAlert];
+//        
+//        UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {}];
+//        
+//        [alert addAction:defaultAction];
+//        [self presentViewController:alert animated:YES completion:nil];
+//        return;
+//        
+//    }
     
     if (self.brain.buy.price == 0) {
         UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"买入价格不能为0元／股" message:@"" preferredStyle:UIAlertControllerStyleAlert];
