@@ -53,14 +53,6 @@
     
 }
 
-- (void)webView:(UIWebView * _Nonnull)webView
-didFailLoadWithError:(NSError * _Nullable)error {
-    return;
-    //self.indicator.hidden = YES;
-    //self.indicator.hidden = NO;
-    //[self openLocalURL];
-    
-}
 
 -(BOOL) webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
     NSURL *url = request.URL;

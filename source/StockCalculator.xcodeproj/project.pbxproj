@@ -14,9 +14,7 @@
 		FA107FA41C12C99000482E37 /* SettingDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA107FA31C12C99000482E37 /* SettingDetailController.m */; };
 		FA107FA61C130C7100482E37 /* about.html in Resources */ = {isa = PBXBuildFile; fileRef = FA107FA51C130C7100482E37 /* about.html */; };
 		FA107FA91C130D1500482E37 /* AboutController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA107FA81C130D1500482E37 /* AboutController.m */; };
-		FA107FAE1C13305C00482E37 /* iconv4x512.png in Resources */ = {isa = PBXBuildFile; fileRef = FA107FAD1C13305C00482E37 /* iconv4x512.png */; };
 		FA107FB81C13427700482E37 /* alibaba.png in Resources */ = {isa = PBXBuildFile; fileRef = FA107FB31C13427700482E37 /* alibaba.png */; };
-		FA107FB91C13427700482E37 /* material.png in Resources */ = {isa = PBXBuildFile; fileRef = FA107FB41C13427700482E37 /* material.png */; };
 		FA107FBA1C13427700482E37 /* source.png in Resources */ = {isa = PBXBuildFile; fileRef = FA107FB51C13427700482E37 /* source.png */; };
 		FA107FBB1C13427700482E37 /* paypal.png in Resources */ = {isa = PBXBuildFile; fileRef = FA107FB61C13427700482E37 /* paypal.png */; };
 		FA107FBC1C13427700482E37 /* author.png in Resources */ = {isa = PBXBuildFile; fileRef = FA107FB71C13427700482E37 /* author.png */; };
@@ -32,6 +30,7 @@
 		FA2A9A971BD9256600FCC8A5 /* ButtonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA2A9A951BD9256600FCC8A5 /* ButtonCell.xib */; };
 		FA407CE51C073A8F00FA64B6 /* RecordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FA407CE41C073A8F00FA64B6 /* RecordCell.m */; };
 		FA407CE91C0A6A3300FA64B6 /* RecordDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = FA407CE81C0A6A3300FA64B6 /* RecordDetail.m */; };
+		FA43E9951C5039AA002CCA8F /* iconv4x58.png in Resources */ = {isa = PBXBuildFile; fileRef = FA43E9941C5039AA002CCA8F /* iconv4x58.png */; };
 		FA6179EF1BE0E79200E4AFA6 /* InputAccessory.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA6179EE1BE0E79200E4AFA6 /* InputAccessory.xib */; };
 		FA6179F21BE0EABC00E4AFA6 /* InputAccessory.m in Sources */ = {isa = PBXBuildFile; fileRef = FA6179F11BE0EABC00E4AFA6 /* InputAccessory.m */; };
 		FA617A061BE8E9FB00E4AFA6 /* Trade.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA617A051BE8E9FB00E4AFA6 /* Trade.swift */; };
@@ -62,9 +61,7 @@
 		FA107FA51C130C7100482E37 /* about.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = about.html; sourceTree = "<group>"; };
 		FA107FA71C130D1500482E37 /* AboutController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutController.h; sourceTree = "<group>"; };
 		FA107FA81C130D1500482E37 /* AboutController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutController.m; sourceTree = "<group>"; };
-		FA107FAD1C13305C00482E37 /* iconv4x512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iconv4x512.png; sourceTree = "<group>"; };
 		FA107FB31C13427700482E37 /* alibaba.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = alibaba.png; sourceTree = "<group>"; };
-		FA107FB41C13427700482E37 /* material.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = material.png; sourceTree = "<group>"; };
 		FA107FB51C13427700482E37 /* source.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = source.png; sourceTree = "<group>"; };
 		FA107FB61C13427700482E37 /* paypal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = paypal.png; sourceTree = "<group>"; };
 		FA107FB71C13427700482E37 /* author.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = author.png; sourceTree = "<group>"; };
@@ -90,6 +87,7 @@
 		FA407CE61C09213A00FA64B6 /* public.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = public.h; sourceTree = "<group>"; };
 		FA407CE71C0A6A3300FA64B6 /* RecordDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordDetail.h; sourceTree = "<group>"; };
 		FA407CE81C0A6A3300FA64B6 /* RecordDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordDetail.m; sourceTree = "<group>"; };
+		FA43E9941C5039AA002CCA8F /* iconv4x58.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iconv4x58.png; sourceTree = "<group>"; };
 		FA4C85401C17075D00B875C6 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		FA4C85411C17075D00B875C6 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		FA6179EE1BE0E79200E4AFA6 /* InputAccessory.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InputAccessory.xib; sourceTree = "<group>"; };
@@ -179,8 +177,7 @@
 				FA107FA81C130D1500482E37 /* AboutController.m */,
 				FA107FA51C130C7100482E37 /* about.html */,
 				FA107FB31C13427700482E37 /* alibaba.png */,
-				FA107FAD1C13305C00482E37 /* iconv4x512.png */,
-				FA107FB41C13427700482E37 /* material.png */,
+				FA43E9941C5039AA002CCA8F /* iconv4x58.png */,
 				FA107FB51C13427700482E37 /* source.png */,
 				FA107FB61C13427700482E37 /* paypal.png */,
 				FA107FB71C13427700482E37 /* author.png */,
@@ -394,16 +391,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FA107FB91C13427700482E37 /* material.png in Resources */,
 				FA0896911C19B4A100C90C60 /* RateDescription.plist in Resources */,
 				FA107FBC1C13427700482E37 /* author.png in Resources */,
 				FACE72061BCEA7D20086F0EB /* Assets.xcassets in Resources */,
 				FA2323561BDB3CDC004EE7E8 /* SaveFooter.xib in Resources */,
 				FACE72131BCEA7F40086F0EB /* Main.storyboard in Resources */,
 				FA2A9A971BD9256600FCC8A5 /* ButtonCell.xib in Resources */,
-				FA107FAE1C13305C00482E37 /* iconv4x512.png in Resources */,
 				FA6179EF1BE0E79200E4AFA6 /* InputAccessory.xib in Resources */,
 				FACE721E1BCF33610086F0EB /* InputCell.xib in Resources */,
+				FA43E9951C5039AA002CCA8F /* iconv4x58.png in Resources */,
 				FA107FBB1C13427700482E37 /* paypal.png in Resources */,
 				FA2A9A7D1BD15A1F00FCC8A5 /* CalculateFooter.xib in Resources */,
 				040173051C10617E0082F6D7 /* RecordCell.xib in Resources */,
