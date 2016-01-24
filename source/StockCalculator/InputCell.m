@@ -9,11 +9,7 @@
 #import "InputCell.h"
 
 @implementation InputCell
-//@synthesize title;
-//@synthesize inputxxx;
-- (IBAction)edit:(id)sender {
-    //[UIKeyboard ]
-}
+
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
     [textField resignFirstResponder];

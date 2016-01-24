@@ -8,9 +8,6 @@
 
 #import "SaveFooter.h"
 
-@interface SaveFooter ()
-
-@end
 
 @implementation SaveFooter
 

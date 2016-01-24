@@ -13,8 +13,6 @@
 @implementation SimulateActionSheet
 +(instancetype)styleDefault{
         SimulateActionSheet* sheet = [[SimulateActionSheet alloc]initWithFrame:CGRectMake(0,0,UIScreen.mainScreen.bounds.size.width,UIScreen.mainScreen.bounds.size.height)];
-    //SimulateActionSheet* sheet = [[[NSBundle mainBundle]loadNibNamed:@"PickerSheet" owner:nil options:nil] objectAtIndex:0];
-    
     
     [sheet setBackgroundColor:[UIColor clearColor]];
     sheet.toolBar = (UIToolbar*)[sheet actionToolBar];

@@ -45,10 +45,6 @@
     self.brain = [[CalculateBrain alloc] init];
     [self.brain setCalculateForGainOrLoss:YES];
     // Do any additional setup after loading the view, typically from a nib.
-    self.keyBoardBackground = [[UIButton alloc]initWithFrame:self.layout.frame];
-    self.keyBoardBackground.backgroundColor = [UIColor clearColor];
-    [self.keyBoardBackground addTarget:self action:@selector(hideKeyBoard) forControlEvents:UIControlEventTouchDown];
-    self.keyBoardBackground.hidden = YES;
     [self.layout registerNib:[UINib nibWithNibName:@"InputCell" bundle:nil]forCellReuseIdentifier:@"InputCell"];
     [self.layout registerNib:[UINib nibWithNibName:@"InputCellWithUnit" bundle:nil] forCellReuseIdentifier:@"InputCellWithUnit"];
     [self.layout registerNib:[UINib nibWithNibName:@"OutputCell" bundle:nil] forCellReuseIdentifier:@"OutputCell"];
@@ -196,11 +192,6 @@
 
 -(void) keyboardWillShow:(NSNotification *)note
 {
-    //    if (self.keyBoardBackground.hidden == NO) {
-    //        return;
-    //    }
-    //    [self.view addSubview:self.keyBoardBackground];
-    //    self.keyBoardBackground.hidden = NO;
 #define _UIKeyboardFrameEndUserInfoKey (&UIKeyboardFrameEndUserInfoKey != NULL ? UIKeyboardFrameEndUserInfoKey : @"UIKeyboardBoundsUserInfoKey")
     CGRect keyboardRect = [self.view convertRect:[[[note userInfo] objectForKey:_UIKeyboardFrameEndUserInfoKey] CGRectValue] fromView:nil];
     if (CGRectIsEmpty(keyboardRect)) {
@@ -209,42 +200,15 @@
     
     self.layout.contentInset = UIEdgeInsetsMake(self.layout.contentInset.top, 0, keyboardRect.size.height, 0);
     
-    //    self.layoutOriginContentOffset = self.layout.contentOffset;
-    //    CGRect frame = self.layout.frame;
-    //    frame.size.height = keyboardRect.origin.y - self.layout.frame.origin.y - 10;
-//    NSValue* duration = [[note userInfo] objectForKey:UIKeyboardAnimationDurationUserInfoKey];
-//    NSTimeInterval interval;
-//    [duration getValue:&interval];
-//    [UIView beginAnimations:nil context:NULL];
-//    [UIView setAnimationDuration:interval];
-    //    self.layout.frame = frame;
 }
 
 - (void)keyboardWillHide:(NSNotification*)note {
-    //    if (self.keyBoardBackground.hidden == YES) {
-    //        return;
-    //    }
-    //    self.keyBoardBackground.hidden = YES;
-    //    [self.keyBoardBackground removeFromSuperview];
-    //
-    
-//    NSValue* duration = [[note userInfo] objectForKey:UIKeyboardAnimationDurationUserInfoKey];
-//    NSTimeInterval interval;
-//    [duration getValue:&interval];
-//    [UIView beginAnimations:nil context:NULL];
-//    [UIView setAnimationDuration:interval];
-    self.layout.contentOffset = self.layoutOriginContentOffset;
     
     CGRect keyboardRect = [self.view convertRect:[[[note userInfo] objectForKey:_UIKeyboardFrameEndUserInfoKey] CGRectValue] fromView:nil];
     if (CGRectIsEmpty(keyboardRect)) {
         return;
     }
-    self.layout.contentInset = UIEdgeInsetsMake(self.layout.contentInset.top, 0, 0, 0);
-    //    CGRect frame = self.layout.frame;
-    //
-    //    frame.size.height = keyboardRect.origin.y + self.layout.frame.origin.y + 10;
-    //    self.layout.frame = frame;
-    
+    self.layout.contentInset = UIEdgeInsetsMake(self.layout.contentInset.top, 0, 0, 0);    
     
 }
 

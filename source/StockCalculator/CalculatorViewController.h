@@ -10,7 +10,5 @@
 #import "SimulateActionSheetDelegate.h"
 @interface CalculatorViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, UIPickerViewDataSource, SimulateActionSheetDelegate>
 @property(nonatomic, weak) IBOutlet UITableView* layout;
-@property(nonatomic, strong) UIButton* keyBoardBackground;
-@property(nonatomic, assign) CGPoint layoutOriginContentOffset;
 - (IBAction)selectCalculateType:(id)sender;
 @end

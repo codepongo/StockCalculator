@@ -13,5 +13,4 @@
 
 @property(nonatomic, weak) IBOutlet UITextField* input;
 @property (weak, nonatomic) IBOutlet UILabel *title;
-- (IBAction)edit:(id)sender;
 @end

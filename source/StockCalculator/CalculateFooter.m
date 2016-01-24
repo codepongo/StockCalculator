@@ -8,9 +8,6 @@
 
 #import "CalculateFooter.h"
 
-@interface CalculateFooter ()
-
-@end
 
 @implementation CalculateFooter
 @synthesize calculate;
