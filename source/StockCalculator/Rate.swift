@@ -18,30 +18,27 @@ class Rate:NSObject {
     }
     var stamp:Double {
         get {
-            let v : Double! = self.valueForKey(__FUNCTION__) as? Double
-            if v == nil {
-                return 0.00
+            if let v = self.valueForKey(__FUNCTION__) as? Double {
+                return v
             }
-            return v
+            return 0.000
         }
 
     }
     var transfer:Double {
         get {
-            let v : Double! = self.valueForKey(__FUNCTION__) as? Double
-            if v == nil {
-                return 0.00
+            if let v = self.valueForKey(__FUNCTION__) as? Double {
+                return v
             }
-            return v
+            return 0.000
         }
     }
     var commission:Double {
         get {
-            let v : Double! = self.valueForKey(__FUNCTION__) as? Double
-            if v == nil {
-                return 0.00
+            if let v  = self.valueForKey(__FUNCTION__) as? Double {
+                return v
             }
-            return v
+            return 0.000
         }
     }
 }

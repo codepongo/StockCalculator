@@ -14,7 +14,7 @@ class CalculateBrain:NSObject {
     var buy:Trade = Trade()
     var sell:Trade? = nil
     var rate:Rate = Rate()
-    var commission:Double = 0.000
+    var commission:Double = 0.00
     var stamp:Double = 0.00
     var transfer:Double? = nil
     var fee:Double = 0.00
@@ -49,10 +49,11 @@ class CalculateBrain:NSObject {
         self.code = ""
         self.buy.price = 0.000
         self.buy.quantity = 0
-        if self.sell != nil {
-            self.sell?.price = 0.000
-            self.sell?.quantity = 0
+        if let sell = self.sell {
+            sell.price = 0.000
+            sell.quantity = 0
         }
+
         self.commission = 0.000
         self.stamp = 0.000
         if self.transfer != nil {
@@ -66,18 +67,27 @@ class CalculateBrain:NSObject {
             return 0.00
         }
         
-        let c = (amount * (self.rate.commission / 1000))
+        let banker:NSDecimalNumberHandler =
+        NSDecimalNumberHandler.init(roundingMode:NSRoundingMode.RoundBankers, scale: 2, raiseOnExactness: true, raiseOnOverflow: true, raiseOnUnderflow: true, raiseOnDivideByZero: true)
+
         
-        if c < 5.000 {
+        let c = NSDecimalNumber.init(double: amount).decimalNumberByMultiplyingBy(NSDecimalNumber.init(double: self.rate.commission).decimalNumberByDividingBy(NSDecimalNumber.init(integer: 1000)), withBehavior: banker).doubleValue
+       
+        if c < 5.00 {
             return 5.00
         }
-        return round(c * 100) / 100.00
+        return c
     }
     func stamp(amount:Double) -> Double{
         if amount == 0 {
             return 0.00
         }
-        let s = round((amount * (self.rate.stamp / 1000)) * 100.00) / 100.00
+        
+        let banker:NSDecimalNumberHandler =
+        NSDecimalNumberHandler.init(roundingMode:NSRoundingMode.RoundBankers, scale: 2, raiseOnExactness: true, raiseOnOverflow: true, raiseOnUnderflow: true, raiseOnDivideByZero: true)
+        
+        
+        let s = NSDecimalNumber.init(double: amount).decimalNumberByMultiplyingBy(NSDecimalNumber.init(double: self.rate.stamp).decimalNumberByDividingBy(NSDecimalNumber.init(integer: 1000)), withBehavior: banker).doubleValue
 
         if s < 1.00 {
             return 1.00
@@ -85,11 +95,16 @@ class CalculateBrain:NSObject {
         return s
     }
 
-    func transfer(acount:Double) -> Double {
+    func transfer(account:Double) -> Double {
         if self.inSZ {
             return 0.000
         }
-        return round((acount * (self.rate.transfer / 1000)) * 100.00) / 100.00
+        let banker:NSDecimalNumberHandler =
+        NSDecimalNumberHandler.init(roundingMode:NSRoundingMode.RoundBankers, scale: 2, raiseOnExactness: true, raiseOnOverflow: true, raiseOnUnderflow: true, raiseOnDivideByZero: true)
+        
+        
+        return NSDecimalNumber.init(double: account).decimalNumberByMultiplyingBy(NSDecimalNumber.init(double: self.rate.transfer).decimalNumberByDividingBy(NSDecimalNumber.init(integer: 1000)), withBehavior: banker).doubleValue
+
     }
     
     func calculate() {
