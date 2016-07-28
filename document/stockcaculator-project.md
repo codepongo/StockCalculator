@@ -12,11 +12,12 @@ StockCalculator is an iOS App that calculates the breakeven price of the purchas
 * [o] source code url address:改为StockCalculator
  + [o] 托管至stockcalculator
  + [o] 更改App链接
-* [ ] order source code
+* [o] order source code
  + [o] 整理issue.txt -> stockcalculator-project.md
- + [ ] 调整代码结构
-  * [ ]
+ + [x] 调整代码结构 - 此版本不做代码重构，放入需求栈中
 * [ ] 根据交易记录测试并完善brain计算准确性
+ + [ ] 整理交易记录文件
+ + [ ] 测试
 * [ ] 基金类型计算
 * [ ] 国债逆回购
 * [ ] 优化记录展示页面
@@ -27,7 +28,7 @@ StockCalculator is an iOS App that calculates the breakeven price of the purchas
 * [x] 兼容iOS 8 - UIStackView before iOS 9.0
 * [ ] 帮助
 * [ ] 增加捐赠
-* [ ] 当app启动第一次进入关于页面时，在加载过程中，切换tab，则回出现关于界面加载完成后indicator没有被隐藏的结果
+* [o] 当app启动第一次进入关于页面时，在加载过程中，切换tab，则回出现关于界面加载完成后indicator没有被隐藏的结果
 
 ## Goal 目标1.0.3 ##
 ### Progress 进度 ###
@@ -212,6 +213,7 @@ self.tableView.tableHeaderView = tableTitle;
 * [ ] 投资损益应该算你卖出多少股的损益
 * [ ] 建议佣金买入和卖出分开，你买的不是一次就卖出了
 * [ ] 输入代码显示名称 效果参考招商证券买入模块
+* [ ] 重构代码
 
 
 

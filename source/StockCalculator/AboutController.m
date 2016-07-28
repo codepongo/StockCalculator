@@ -35,10 +35,14 @@
     [self.webView loadRequest:request];
     
 }
+-(void)viewDidAppear:(BOOL)animated {
+    self.indicator.hidden = YES;
+}
+
 #pragma - UIWebViewDelegate
 
 - (void)webViewDidStartLoad:(UIWebView * _Nonnull)webView {
-    self.indicator.hidden = NO;
+         self.indicator.hidden = NO;	
 }
 
 - (void)webViewDidFinishLoad:(UIWebView * _Nonnull)webView {
