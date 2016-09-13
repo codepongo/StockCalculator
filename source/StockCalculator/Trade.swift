@@ -11,11 +11,11 @@ import Foundation
 class Trade:NSObject {
     func amount() -> Double {
         if needCalculate {
-            let amount:NSDecimalNumber = NSDecimalNumber.init(double: self._amount)
-            let price:NSDecimalNumber = NSDecimalNumber.init(integer: self.quantity)
+            let price:NSDecimalNumber = NSDecimalNumber.init(double: self.price)
+            let quantity:NSDecimalNumber = NSDecimalNumber.init(integer: self.quantity)
             let banker:NSDecimalNumberHandler =
-            NSDecimalNumberHandler.init(roundingMode:NSRoundingMode.RoundBankers, scale: 3, raiseOnExactness: true, raiseOnOverflow: true, raiseOnUnderflow: true, raiseOnDivideByZero: true)
-            self._amount = amount.decimalNumberByAdding(price, withBehavior: banker).doubleValue
+            NSDecimalNumberHandler.init(roundingMode:NSRoundingMode.RoundPlain, scale: 3, raiseOnExactness: true, raiseOnOverflow: true, raiseOnUnderflow: true, raiseOnDivideByZero: true)
+            self._amount = quantity.decimalNumberByMultiplyingBy(price, withBehavior: banker).doubleValue
             self.needCalculate = false
         }
         return self._amount

@@ -28,7 +28,7 @@ class CalculateBrain:NSObject {
                 self.transfer = nil
             }
             else {
-                self.transfer = 0.000
+                self.transfer = 0.00
             }
         }
     }
@@ -47,20 +47,20 @@ class CalculateBrain:NSObject {
     }
     func reset() {
         self.code = ""
-        self.buy.price = 0.000
+        self.buy.price = 0.00
         self.buy.quantity = 0
         if let sell = self.sell {
             sell.price = 0.000
             sell.quantity = 0
         }
 
-        self.commission = 0.000
-        self.stamp = 0.000
+        self.commission = 0.00
+        self.stamp = 0.00
         if self.transfer != nil {
-            self.transfer = 0.000
+            self.transfer = 0.00
         }
-        self.fee = 0.000
-        self.result = 0.000
+        self.fee = 0.00
+        self.result = 0.00
     }
     func commission(amount:Double) -> Double {
         if amount == 0 {
@@ -68,9 +68,8 @@ class CalculateBrain:NSObject {
         }
         
         let banker:NSDecimalNumberHandler =
-        NSDecimalNumberHandler.init(roundingMode:NSRoundingMode.RoundBankers, scale: 2, raiseOnExactness: true, raiseOnOverflow: true, raiseOnUnderflow: true, raiseOnDivideByZero: true)
+        NSDecimalNumberHandler.init(roundingMode:NSRoundingMode.RoundPlain, scale: 2, raiseOnExactness: true, raiseOnOverflow: true, raiseOnUnderflow: true, raiseOnDivideByZero: true)
 
-        
         let c = NSDecimalNumber.init(double: amount).decimalNumberByMultiplyingBy(NSDecimalNumber.init(double: self.rate.commission).decimalNumberByDividingBy(NSDecimalNumber.init(integer: 1000)), withBehavior: banker).doubleValue
        
         if c < 5.00 {
@@ -84,27 +83,27 @@ class CalculateBrain:NSObject {
         }
         
         let banker:NSDecimalNumberHandler =
-        NSDecimalNumberHandler.init(roundingMode:NSRoundingMode.RoundBankers, scale: 2, raiseOnExactness: true, raiseOnOverflow: true, raiseOnUnderflow: true, raiseOnDivideByZero: true)
+        NSDecimalNumberHandler.init(roundingMode:NSRoundingMode.RoundPlain, scale: 2, raiseOnExactness: true, raiseOnOverflow: true, raiseOnUnderflow: true, raiseOnDivideByZero: true)
         
         
-        let s = NSDecimalNumber.init(double: amount).decimalNumberByMultiplyingBy(NSDecimalNumber.init(double: self.rate.stamp).decimalNumberByDividingBy(NSDecimalNumber.init(integer: 1000)), withBehavior: banker).doubleValue
-
-        if s < 1.00 {
+        let stamp = NSDecimalNumber.init(double: amount).decimalNumberByMultiplyingBy(NSDecimalNumber.init(double: self.rate.stamp).decimalNumberByDividingBy(NSDecimalNumber.init(integer: 1000)), withBehavior: banker).doubleValue
+        if stamp < 1.00 {
             return 1.00
         }
-        return s
+        return stamp
+
     }
+
 
     func transfer(account:Double) -> Double {
         if self.inSZ {
-            return 0.000
+            return 0.00
         }
         let banker:NSDecimalNumberHandler =
-        NSDecimalNumberHandler.init(roundingMode:NSRoundingMode.RoundBankers, scale: 2, raiseOnExactness: true, raiseOnOverflow: true, raiseOnUnderflow: true, raiseOnDivideByZero: true)
+        NSDecimalNumberHandler.init(roundingMode:NSRoundingMode.RoundPlain, scale: 2, raiseOnExactness: true, raiseOnOverflow: true, raiseOnUnderflow: true, raiseOnDivideByZero: true)
         
         
         return NSDecimalNumber.init(double: account).decimalNumberByMultiplyingBy(NSDecimalNumber.init(double: self.rate.transfer).decimalNumberByDividingBy(NSDecimalNumber.init(integer: 1000)), withBehavior: banker).doubleValue
-
     }
     
     func calculate() {
@@ -141,25 +140,31 @@ class CalculateBrain:NSObject {
             s = self.sell
         }
         let commission_of_purchase = self.commission(self.buy.amount())
-        let commission_of_sale = self.commission(self.buy.amount())
+        let commission_of_sale = self.commission(s!.amount())
         let commission =  commission_of_purchase + commission_of_sale
-        
-        let stamp = self.stamp(s!.amount())
+
         
         let transfer_of_purchase = self.transfer(self.buy.amount())
         let transfer_of_sale = self.transfer(s!.amount())
-        let transfer:Double = transfer_of_purchase + transfer_of_sale
+        let transfer = transfer_of_purchase + transfer_of_sale
 
-        let fee:Double = commission + stamp + transfer
-        let cost:Double = self.buy.amount() + fee
-        let income = s!.amount()
+        
+        let stamp = self.stamp(s!.amount())
+
+        let fee = commission + stamp + transfer
+        
+
+        let cost =  self.buy.amount() + commission_of_purchase + transfer_of_purchase
+        
+        let income = s!.amount() - stamp - commission_of_sale - transfer_of_sale
+        
         let result = income - cost
 
         return (commission, stamp, transfer, fee, result)
     }
     func transferAsFloat() -> Double {
         if self.transfer == nil {
-            return 0.000
+            return 0.00
         }
         else {
             return self.transfer!
