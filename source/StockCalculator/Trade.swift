@@ -14,7 +14,7 @@ class Trade:NSObject {
             let price:NSDecimalNumber = NSDecimalNumber.init(double: self.price)
             let quantity:NSDecimalNumber = NSDecimalNumber.init(integer: self.quantity)
             let banker:NSDecimalNumberHandler =
-            NSDecimalNumberHandler.init(roundingMode:NSRoundingMode.RoundPlain, scale: 3, raiseOnExactness: true, raiseOnOverflow: true, raiseOnUnderflow: true, raiseOnDivideByZero: true)
+            NSDecimalNumberHandler.init(roundingMode:NSRoundingMode.RoundPlain, scale: 2, raiseOnExactness: true, raiseOnOverflow: true, raiseOnUnderflow: true, raiseOnDivideByZero: true)
             self._amount = quantity.decimalNumberByMultiplyingBy(price, withBehavior: banker).doubleValue
             self.needCalculate = false
         }

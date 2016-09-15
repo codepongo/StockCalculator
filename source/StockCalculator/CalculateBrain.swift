@@ -160,6 +160,9 @@ class CalculateBrain:NSObject {
         
         let result = income - cost
 
+        print("purchase:\(cost), commission:\(commission_of_purchase), transfer:\(transfer_of_purchase)")
+        print("sale:\(income), commission:\(commission_of_sale), transfer:\(transfer_of_sale), stamp:\(stamp)")
+        
         return (commission, stamp, transfer, fee, result)
     }
     func transferAsFloat() -> Double {

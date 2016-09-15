@@ -445,7 +445,6 @@
 //        return;
 //        
 //    }
-    
     if (self.brain.buy.price == 0) {
         UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"买入价格不能为0元／股" message:@"" preferredStyle:UIAlertControllerStyleAlert];
         
