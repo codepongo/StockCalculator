@@ -11,7 +11,7 @@ import Foundation
 @objc(CalculateBrain)
 class CalculateBrain:NSObject {
     var code:String = ""
-    var buy:Trade = Trade()
+    var buy:Trade? = nil
     var sell:Trade? = nil
     var rate:Rate = Rate()
     var commission:Double = 0.00
@@ -32,33 +32,17 @@ class CalculateBrain:NSObject {
             }
         }
     }
-    var calculateForGainOrLoss:Bool {
-        set {
-            if newValue {
-                self.sell = Trade()
-            }
-            else {
-                self.sell = nil;
-            }
-        }
-        get {
-            return (self.sell != nil)
-        }
-    }
+
     func reset() {
         self.code = ""
-        self.buy.price = 0.00
-        self.buy.quantity = 0
-        if let sell = self.sell {
-            sell.price = 0.000
-            sell.quantity = 0
-        }
+        self.buy?.price = 0.00
+        self.buy?.quantity = 0
+        self.sell?.price = 0.00
+        self.sell?.quantity = 0
 
         self.commission = 0.00
         self.stamp = 0.00
-        if self.transfer != nil {
-            self.transfer = 0.00
-        }
+        self.transfer? = 0.00
         self.fee = 0.00
         self.result = 0.00
     }
@@ -106,63 +90,83 @@ class CalculateBrain:NSObject {
         return NSDecimalNumber.init(double: account).decimalNumberByMultiplyingBy(NSDecimalNumber.init(double: self.rate.transfer).decimalNumberByDividingBy(NSDecimalNumber.init(integer: 1000)), withBehavior: banker).doubleValue
     }
     
-    func calculate() {
-        let r : (Double, Double, Double?, Double, Double)
-        if self.sell == nil {
-            r = self.calculateForBreakevenPrice()
-            
+//    func calculate() {
+//        let r : (Double, Double, Double?, Double, Double)
+//        if self.sell == nil {
+//            r = self.calculateForBreakevenPrice()
+//            
+//        }
+//        else {
+//            r = self.calculateForGainOrLoss()
+//        }
+//        self.commission = r.0
+//        self.stamp = r.1
+//        if self.transfer != nil {self.transfer = r.2}
+//        self.fee = r.3
+//        self.result = r.4
+//    }
+    
+//    func calculateForBreakevenPrice() -> (Double, Double, Double?, Double, Double) {
+//        self.sell = Trade()
+//        let sell:Trade = Trade()
+//        self.sell?.quantity = self.buy?.quantity
+//        self.sell?.price = self.buy?.price
+//        repeat {
+//            let result = calculateForGainOrLoss(sell)
+//            if result.4 >= 0 {
+//                return (result.0, result.1, result.2, result.3, sell.price)
+//            }
+//            sell.price += 0.01
+//        }while true
+//    }
+    func calculate() -> (Double, Double, Double, Double, Double, Double, Double) {
+        let commission_of_purchase:Double
+        let transfer_of_purchase:Double
+        let cost:Double
+        if let purchase:Double = self.buy?.amount() {
+            commission_of_purchase = self.commission(purchase)
+            transfer_of_purchase = self.transfer(purchase)
+            cost = purchase + commission_of_purchase + transfer_of_purchase
         }
         else {
-            r = self.calculateForGainOrLoss()
+            commission_of_purchase = 0
+            transfer_of_purchase = 0
+            cost = 0
         }
-        self.commission = r.0
-        self.stamp = r.1
-        if self.transfer != nil {self.transfer = r.2}
-        self.fee = r.3
-        self.result = r.4
+
+        let commission_of_sale:Double
+        let transfer_of_sale:Double
+        let stamp:Double
+        let income:Double
+        if let sale:Double = self.sell?.amount() {
+            commission_of_sale = self.commission(sale)
+            transfer_of_sale = self.transfer(sale)
+            stamp = self.stamp(sale)
+            income = sale - stamp - commission_of_sale - transfer_of_sale
+        }
+        else {
+            commission_of_sale = 0
+            transfer_of_sale = 0
+            income = 0
+            stamp = 0
+        }
+        //print("purchase:\(cost), commission:\(commission_of_purchase), transfer:\(transfer_of_purchase)")
+        //print("sale:\(income), commission:\(commission_of_sale), stamp:\(stamp), transfer:\(transfer_of_sale)")
+        
+        return (cost, commission_of_purchase, transfer_of_purchase, income, commission_of_sale, stamp,transfer_of_sale)
     }
     
-    func calculateForBreakevenPrice() -> (Double, Double, Double?, Double, Double) {
-        let sell:Trade = Trade()
-        sell.quantity = self.buy.quantity
-        sell.price = self.buy.price
-        repeat {
-            let result = calculateForGainOrLoss(sell)
-            if result.4 >= 0 {
-                return (result.0, result.1, result.2, result.3, sell.price)
-            }
-            sell.price += 0.01
-        }while true
-    }
-    
-    func calculateForGainOrLoss(var s:Trade? = nil) -> (Double, Double, Double?, Double, Double) {
-        if s == nil {
-            s = self.sell
-        }
-        let commission_of_purchase = self.commission(self.buy.amount())
-        let commission_of_sale = self.commission(s!.amount())
+    func calculateForGainOrLoss() -> (Double, Double, Double?, Double, Double) {
+        let (cost, commission_of_purchase, transfer_of_purchase, income, commission_of_sale, stamp,transfer_of_sale) = calculate()
+        
         let commission =  commission_of_purchase + commission_of_sale
 
-        
-        let transfer_of_purchase = self.transfer(self.buy.amount())
-        let transfer_of_sale = self.transfer(s!.amount())
         let transfer = transfer_of_purchase + transfer_of_sale
-
-        
-        let stamp = self.stamp(s!.amount())
 
         let fee = commission + stamp + transfer
         
-
-        let cost =  self.buy.amount() + commission_of_purchase + transfer_of_purchase
-        
-        let income = s!.amount() - stamp - commission_of_sale - transfer_of_sale
-        
         let result = income - cost
 
-        print("purchase:\(cost), commission:\(commission_of_purchase), transfer:\(transfer_of_purchase)")
-        print("sale:\(income), commission:\(commission_of_sale), transfer:\(transfer_of_sale), stamp:\(stamp)")
-        
         return (commission, stamp, transfer, fee, result)
     }
     func transferAsFloat() -> Double {

@@ -43,7 +43,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self.layout selector:@selector(reloadData) name:@"rateChanged" object:nil];
     self.selectedIndexInSheet = 1;
     self.brain = [[CalculateBrain alloc] init];
-    [self.brain setCalculateForGainOrLoss:YES];
+    //[self.brain setCalculateForGainOrLoss:YES];
     // Do any additional setup after loading the view, typically from a nib.
     [self.layout registerNib:[UINib nibWithNibName:@"InputCell" bundle:nil]forCellReuseIdentifier:@"InputCell"];
     [self.layout registerNib:[UINib nibWithNibName:@"InputCellWithUnit" bundle:nil] forCellReuseIdentifier:@"InputCellWithUnit"];
@@ -318,12 +318,12 @@
             }
         }
         else {
-            if ([self.brain calculateForGainOrLoss]) {
+            //if ([self.brain calculateForGainOrLoss]) {
                 c.title.text = self.cur[indexPath.section][indexPath.row][@"titleForGainOrLoss"];
-            }
-            else {
+            //}
+            //else {
                 c.title.text = self.cur[indexPath.section][indexPath.row][@"titleForBreakevenPrice"];
-            }
+            //}
             
             float r = self.brain.result;//[self.brain resultOfTrade];
             if (r < 0) {
@@ -464,7 +464,8 @@
         [self presentViewController:alert animated:YES completion:nil];
         return;
     }
-    if (self.brain.calculateForGainOrLoss) {
+    //if (self.brain.calculateForGainOrLoss) {
+    {
         if (self.brain.sell.price == 0) {
             
             UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"卖出价格不能为0元／股" message:@"" preferredStyle:UIAlertControllerStyleAlert];
@@ -519,7 +520,7 @@
         return;
     }
 
-    [self.brain calculate];
+    //[self.brain calculate];
     //brain calculates.
     float transfer = [self.brain transferAsFloat];//[self.brain transferOfTrade];
 
@@ -533,10 +534,10 @@
     else {
         OutputCell* c = [self.layout cellForRowAtIndexPath:[NSIndexPath indexPathForRow:4 inSection:1]];
         
-        if (self.brain.calculateForGainOrLoss && result < 0) {
+        if (1) {//(self.brain.calculateForGainOrLoss && result < 0) {
             c.result.textColor = [UIColor greenColor];
         }
-        if (self.brain.calculateForGainOrLoss && result > 0) {
+        if (1) {//(self.brain.calculateForGainOrLoss && result > 0) {
             c.result.textColor = [UIColor redColor];
         }
     }
@@ -577,7 +578,7 @@
         r[@"rate.transfer"] = [NSNumber numberWithFloat:self.brain.rate.transfer];
     }
 
-    if ([self.brain calculateForGainOrLoss]) {
+    if (1) {//([self.brain calculateForGainOrLoss]) {
         r[@"sell.price"] = [NSNumber numberWithFloat:self.brain.sell.price];
         r[@"sell.quantity"] = [NSNumber numberWithInteger:self.brain.sell.quantity];
     }
@@ -619,8 +620,8 @@
 
 - (IBAction)selectCalculateType:(id)sender {
     [self hideKeyBoard];
-    [self.brain setCalculateForGainOrLoss: ![self.brain calculateForGainOrLoss]];
-    if (!self.brain.calculateForGainOrLoss) {
+    //[self.brain setCalculateForGainOrLoss: ![self.brain calculateForGainOrLoss]];
+    if (1) { //(!self.brain.calculateForGainOrLoss) {
         [self.cur[0] removeObjectsAtIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(4,2)]];
     }
     else {
