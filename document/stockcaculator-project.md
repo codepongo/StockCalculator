@@ -4,140 +4,139 @@ StockCalculator is an iOS App that calculates the breakeven price of the purchas
 针对中国A股市场的股票交易，进行交易成本和税费计算。 提供计算买卖损益和成本价格两种计算方式。 可自由定制税费比率。支持计算结果的保存，方便以后进行查看。
 
 
-
-## Goal 目标:1.0.4 ##
+## Goal 目标:1.1.0.1 ##
 ### Progress 进度 ###
-  8%[==                      ]
+  0%[                      ]
 ### Task 任务 ###
-* [o] source code url address:改为StockCalculator
- + [o] 托管至stockcalculator
- + [o] 更改App链接
-* [o] order source code
- + [o] 整理issue.txt -> stockcalculator-project.md
- + [x] 调整代码结构 - 此版本不做代码重构，放入需求栈中
-* [ ] 根据交易记录测试并完善brain计算准确性
- + [ ] 整理交易记录文件
- + [ ] 测试
-* [ ] 基金类型计算
-* [ ] 国债逆回购
+* [x] 修正保存时股票代码不正确的问题
+* [ ] 增加买入计算和卖出计算
 * [ ] 优化记录展示页面
 * [ ] 朋友圈分享
-* [ ] 大数 准确以及显示
-* [ ] record search by price and quantity
-* [ ] 多语言:develop language 改为英文
-* [x] 兼容iOS 8 - UIStackView before iOS 9.0
-* [ ] 帮助
-* [ ] 增加捐赠
-* [o] 当app启动第一次进入关于页面时，在加载过程中，切换tab，则回出现关于界面加载完成后indicator没有被隐藏的结果
 
-## Goal 目标1.0.3 ##
+## Goal 目标:1.0.1.1 ##
+### Progress 进度 ###
+100%[==========]
+### Task 任务 ###
+* [x] source code url address:改为StockCalculator
+ + [x] 托管至stockcalculator
+ + [x] 更改App链接
+* [x] order source code
+ + [x] 整理issue.txt -> stockcalculator-project.md
+ + [x] 调整代码结构 - 此版本不做代码重构，放入需求栈中
+* [x] 根据交易记录测试并完善brain计算准确性
+ + [x] 整理交易记录文件
+ + [x] 测试
+* [x] 兼容iOS 8 - UIStackView before iOS 9.0
+* [x] 当app启动第一次进入关于页面时，在加载过程中，切换tab，则回出现关于界面加载完成后indicator没有被隐藏的结果
+
+## Goal 目标1.0.0.3 ##
 ### Progress 进度 ###
 100%[===================]
 ### Task 任务 ###
-* [o] appstor审核被reject
- + [o] Version 移植about中
- + [o] about中信息改版，去掉，捐赠和资源引用url，避免被再次reject
-* [o] 搜索点击列表 导航栏按钮消失
-* [o] visible effect in iPhone 4s
-* [o]setting detail instruction
+* [x] appstore审核被reject
+ + [x] Version 移植about中
+ + [x] about中信息改版，去掉，捐赠和资源引用url，避免被再次reject
+* [x] 搜索点击列表 导航栏按钮消失
+* [x] visible effect in iPhone 4s
+* [x]setting detail instruction
 
 
-## Goal 目标1.0.2 ##
+## Goal 目标1.0.0.2 ##
 ### Progress 进度 ###
 100%[===================]
-* [o] sell改为损益计算
-* [o] buy改为保本价格
-* [o] segment 切换 界面随之改变
-* [o] 股票代码名称 改为 股票代码
-* [o] placeholder为 名称/代码
-* [o] 市场 改为 股票类型 
-* [o] textfield 改为 readonly
-* [o] 加入"计算"按钮
-* [o] viewForFooterInSection
-* [o] 点击两次计算 程序崩溃
-* [o] 横屏 计算 重置 位置不正确
+* [x] sell改为损益计算
+* [x] buy改为保本价格
+* [x] segment 切换 界面随之改变
+* [x] 股票代码名称 改为 股票代码
+* [x] placeholder为 名称/代码
+* [x] 市场 改为 股票类型 
+* [x] textfield 改为 readonly
+* [x] 加入"计算"按钮
+* [x] viewForFooterInSection
+* [x] 点击两次计算 程序崩溃
+* [x] 横屏 计算 重置 位置不正确
  + [x] 用模拟器测试SectionFooterView 在iPhone6下的表现 footer布局依然有问题
- + [o] xib中用collectionReusableView替换tableviewCell 解决问题
+ + [x] xib中用collectionReusableView替换tableviewCell 解决问题
 
 
-## Goal 目标1.0.1 ##
+## Goal 目标1.0.0.0 ##
 ### Progress 进度 ###
 100%[===================]
-* [o] 点击结果列崩溃
+* [x] 点击结果列崩溃
 * [x] 尝试修改标准样式达到效果
-* [o] * 使用自定义模板
-* [o] 股票代码输入框键盘类型.keyboardType = UIKeyboardTypeDefault
-* [o] 股票类型默认值
-* [o] * 点击股票类型呼出picker
- + [o] 增加ButtonCell模板
- + [o] 修改股票类型textfield为button
+* [x] * 使用自定义模板
+* [x] 股票代码输入框键盘类型.keyboardType = UIKeyboardTypeDefault
+* [x] 股票类型默认值
+* [x] * 点击股票类型呼出picker
+ + [x] 增加ButtonCell模板
+ + [x] 修改股票类型textfield为button
  + [x] 修改button样式 - interfacebuilder 修改
- + [o] addTarget:action:forControlEvents:
- + [o] 实现带"确定", "取消"的picker
-* [o] 输入项 加入单位
- + [o] 买卖价格数量 加入单位 元 股
- + [o] 比率 加入单位 百分之
-* [o] 计算
- + [o] 数据保存CalculateBrain
- + [o] 计算
- + [o] 结果展示
-* [o] 计算类型选择失效
-* [o] tableview datasource 和 delegate分开
-* [o] 整理 pragrma mark
-* [o] OutputCell模板加入单位
-* [o] 股票类型 V
-* [o] 根据计算类型更改计算结果
-* [o] 显示detail
-* [o] 保存rate
-* [o] 初始化数据
-* [o] 深圳A股 隐藏结果中的过户费
-* [o] input数据不足则弹出消息框提示
-* [o] 光标在佣金比率，不输入内容，光标换到税，佣金比率百分号嗷嗷增加
+ + [x] addTarget:action:forControlEvents:
+ + [x] 实现带"确定", "取消"的picker
+* [x] 输入项 加入单位
+ + [x] 买卖价格数量 加入单位 元 股
+ + [x] 比率 加入单位 百分之
+* [x] 计算
+ + [x] 数据保存CalculateBrain
+ + [x] 计算
+ + [x] 结果展示
+* [x] 计算类型选择失效
+* [x] tableview datasource 和 delegate分开
+* [x] 整理 pragrma mark
+* [x] OutputCell模板加入单位
+* [x] 股票类型 V
+* [x] 根据计算类型更改计算结果
+* [x] 显示detail
+* [x] 保存rate
+* [x] 初始化数据
+* [x] 深圳A股 隐藏结果中的过户费
+* [x] input数据不足则弹出消息框提示
+* [x] 光标在佣金比率，不输入内容，光标换到税，佣金比率百分号嗷嗷增加
 * [x] 重置时，佣金比率和税率不晴空
-* [o] 测试instruction在真机上的表现
-* [o] 设计记录数据库 表结构
-* [o] implementation insert record function of Record class
-* [o] 实现保存按钮
-* [o] 实现record页中的tableview
-* [o] 实现数据在record页中展示
-* [o] test the sqlite in iPhone
-* [o] implementation other methods of record
-* [o] 调整instruction的位置和大小，便于操作
-* [o] 美化record tabpage
-* [o] 加入navigation controller 至 record tabpage
-* [o] 增加点击显示record 详细信息页
-* [o] new brain
-* [o] database
-* [o] 调整cell高度
-* [o] record cell
-* [o] record cell image
-* [o] record删除
-* [o] record查找
-* [o] record detail layout
+* [x] 测试instruction在真机上的表现
+* [x] 设计记录数据库 表结构
+* [x] implementation insert record function of Record class
+* [x] 实现保存按钮
+* [x] 实现record页中的tableview
+* [x] 实现数据在record页中展示
+* [x] test the sqlite in iPhone
+* [x] implementation other methods of record
+* [x] 调整instruction的位置和大小，便于操作
+* [x] 美化record tabpage
+* [x] 加入navigation controller 至 record tabpage
+* [x] 增加点击显示record 详细信息页
+* [x] new brain
+* [x] database
+* [x] 调整cell高度
+* [x] record cell
+* [x] record cell image
+* [x] record删除
+* [x] record查找
+* [x] record detail layout
 * [x] record detail line chart animation
-* [o] setting image
-* [o] setting value
-* [o] setting detail save and cancel
-* [o] about
-* [o] launch image font style
-* [o] 图标 保本 损益 app icon
-* [o] settings 印花税率 佣金比率 过户费率 版本 关于
-* [o] arrange material
-* [o] after configing the rate in settings, the rate doesn't change in the calculator
-* [o] stock mark is ShangHai, the app crashes when saving.
-* [o] in record detail, the record to save breakeven price hidden the sell.
-* [o] screen shot
-* [o] icon 1024
-* [o] setting image in iPhone 6plus
-* [o] quantity textfield keyboard type
-* [o] calculate the breakeven price is error
-* [o] xib中使用collectionReusableView
-* [o] Setting the background color on UITableViewHeaderFooterView has been deprecated. Please use contentView.backgroundColor instead.
+* [x] setting image
+* [x] setting value
+* [x] setting detail save and cancel
+* [x] about
+* [x] launch image font style
+* [x] 图标 保本 损益 app icon
+* [x] settings 印花税率 佣金比率 过户费率 版本 关于
+* [x] arrange material
+* [x] after configing the rate in settings, the rate doesn't change in the calculator
+* [x] stock mark is ShangHai, the app crashes when saving.
+* [x] in record detail, the record to save breakeven price hidden the sell.
+* [x] screen shot
+* [x] icon 1024
+* [x] setting image in iPhone 6plus
+* [x] quantity textfield keyboard type
+* [x] calculate the breakeven price is error
+* [x] xib中使用collectionReusableView
+* [x] Setting the background color on UITableViewHeaderFooterView has been deprecated. Please use contentView.backgroundColor instead.
 * [x] * UISegment 移动至TableViewHeaderView
 * [x]  + 试验table header view
-* [o] 加入disclosure indicator 
-* [o] 求证费用
-* [o] 选中更新股票类型button文字
+* [x] 加入disclosure indicator 
+* [x] 求证费用
+* [x] 选中更新股票类型button文字
 * [x] keyboard 完善相关
 
 
@@ -214,6 +213,13 @@ self.tableView.tableHeaderView = tableTitle;
 * [ ] 建议佣金买入和卖出分开，你买的不是一次就卖出了
 * [ ] 输入代码显示名称 效果参考招商证券买入模块
 * [ ] 重构代码
+* [ ] 基金类型计算
+* [ ] 国债逆回购
+* [ ] 大数 准确以及显示
+* [ ] record search by price and quantity
+* [ ] 多语言:develop language 改为英文
+* [ ] 帮助
+* [ ] 增加捐赠
 
 
 

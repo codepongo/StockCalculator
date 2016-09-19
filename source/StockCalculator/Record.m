@@ -61,13 +61,15 @@
     for (NSString* k in [record allKeys]) {
         [keys addObject:[NSString stringWithFormat:@"[%@]", k]];
     }
-    NSArray* values = [NSArray arrayWithArray:[record allValues]];
+    
+    NSMutableArray* values = [NSMutableArray arrayWithCapacity:[[record allValues]count]];
 
-    for (id v in values) {
-        if ([[v class] isEqual:@"NSString"]) {
-            NSString* value = (NSString*)v;
+    for (id v in [record allValues]) {
+        NSString* value = v;
+        if ([v isKindOfClass:[NSString class]]) {
             value = [NSString stringWithFormat:@"'%@'", v];
         }
+        [values addObject:value];
     }
     
     NSString *sqlSentence = [NSString stringWithFormat:@"INSERT INTO record (%@) values (%@);",[keys componentsJoinedByString:@","], [values componentsJoinedByString:@","]];
