@@ -2,7 +2,7 @@
 //  Record.m
 //  StockCalculator
 //
-//  Created by jack on 15/11/11.
+//  Created by zuohaitao on 15/11/11.
 //  Copyright © 2015年 zuohaitao. All rights reserved.
 //
 
