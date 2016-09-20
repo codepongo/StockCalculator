@@ -620,17 +620,30 @@
 
 - (IBAction)selectCalculateType:(id)sender {
     [self hideKeyBoard];
-    //[self.brain setCalculateForGainOrLoss: ![self.brain calculateForGainOrLoss]];
-    if (1) { //(!self.brain.calculateForGainOrLoss) {
-        [self.cur[0] removeObjectsAtIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(4,2)]];
+    [self.cur[0] removeAllObjects];
+    [self.cur[0] addObjectsFromArray:self.all[0]];
+
+    switch ([sender selectedSegmentIndex]) {
+        case 0:
+            break;
+        case 1:
+            [self.cur[0] removeObjectsAtIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(4,2)]];
+            break;
+        case 2:
+            [self.cur[0] removeObjectsAtIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(4,2)]];
+            break;
+        case 3:
+            [self.cur[0] removeObjectsAtIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(2,2)]];
+            break;
+        default:
+            //it never can be executed!
+            break;
     }
-    else {
-        [self.cur[0] insertObject:self.all[0][4] atIndex:4];
-        [self.cur[0] insertObject:self.all[0][5] atIndex:5];
-    }
-    if ([self.cur count] == 2) {
-        [self.cur removeObjectAtIndex:1];
-    }
+    [self.brain setCalculateForGainOrLoss: ![self.brain calculateForGainOrLoss]];
+    
+    //if ([self.cur count] == 2) {
+    //    [self.cur removeObjectAtIndex:1];
+    //}
     [self.layout reloadData];
     
 }

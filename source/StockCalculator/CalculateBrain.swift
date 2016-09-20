@@ -33,6 +33,43 @@ class CalculateBrain:NSObject {
         }
     }
 
+    var calculateForGainOrLoss:Bool {
+        set {
+            if newValue {
+                self.sell = Trade()
+            }
+            else {
+                self.sell = nil;
+            }
+        }
+        get {
+            return (self.sell != nil)
+        }
+    }
+    
+//    var mode:Int {
+//        set {
+//            switch(newValue) {
+//                case 0:
+//                    self.buy = Trade()
+//                    self.sell = Trade()
+//                    break
+//                case 1:
+//                case 2:
+//                    self.buy = Trade()
+//                    self.sell = nil
+//                    break
+//                case 2:
+//                    self.buy = nil
+//                    self.sell = Trade()
+//                    break
+//                
+//            }
+//        }
+//        get {
+//
+//        }
+//    }
     func reset() {
         self.code = ""
         self.buy?.price = 0.00

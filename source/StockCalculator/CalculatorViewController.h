@@ -10,5 +10,6 @@
 #import "SimulateActionSheetDelegate.h"
 @interface CalculatorViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, UIPickerViewDataSource, SimulateActionSheetDelegate>
 @property(nonatomic, weak) IBOutlet UITableView* layout;
+@property(nonatomic, weak) IBOutlet UISegmentedControl* segment;
 - (IBAction)selectCalculateType:(id)sender;
 @end
