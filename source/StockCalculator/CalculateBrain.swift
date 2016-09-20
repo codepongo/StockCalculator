@@ -33,43 +33,6 @@ class CalculateBrain:NSObject {
         }
     }
 
-//    var calculateForGainOrLoss:Bool {
-//        set {
-//            if newValue {
-//                self.sell = Trade()
-//            }
-//            else {
-//                self.sell = nil;
-//            }
-//        }
-//        get {
-//            return (self.sell != nil)
-//        }
-//    }
-    
-//    var mode:Int {
-//        set {
-//            switch(newValue) {
-//                case 0:
-//                    self.buy = Trade()
-//                    self.sell = Trade()
-//                    break
-//                case 1:
-//                case 2:
-//                    self.buy = Trade()
-//                    self.sell = nil
-//                    break
-//                case 2:
-//                    self.buy = nil
-//                    self.sell = Trade()
-//                    break
-//                
-//            }
-//        }
-//        get {
-//
-//        }
-//    }
     func reset() {
         self.code = ""
         self.buy?.price = 0.00
@@ -127,35 +90,7 @@ class CalculateBrain:NSObject {
         return NSDecimalNumber.init(double: account).decimalNumberByMultiplyingBy(NSDecimalNumber.init(double: self.rate.transfer).decimalNumberByDividingBy(NSDecimalNumber.init(integer: 1000)), withBehavior: banker).doubleValue
     }
     
-//    func calculate() {
-//        let r : (Double, Double, Double?, Double, Double)
-//        if self.sell == nil {
-//            r = self.calculateForBreakevenPrice()
-//            
-//        }
-//        else {
-//            r = self.calculateForGainOrLoss()
-//        }
-//        self.commission = r.0
-//        self.stamp = r.1
-//        if self.transfer != nil {self.transfer = r.2}
-//        self.fee = r.3
-//        self.result = r.4
-//    }
-    
-//    func calculateForBreakevenPrice() -> (Double, Double, Double?, Double, Double) {
-//        self.sell = Trade()
-//        let sell:Trade = Trade()
-//        self.sell?.quantity = self.buy?.quantity
-//        self.sell?.price = self.buy?.price
-//        repeat {
-//            let result = calculateForGainOrLoss(sell)
-//            if result.4 >= 0 {
-//                return (result.0, result.1, result.2, result.3, sell.price)
-//            }
-//            sell.price += 0.01
-//        }while true
-//    }
+
     func calculate() -> (Double, Double, Double, Double, Double, Double, Double) {
         let commission_of_purchase:Double
         let transfer_of_purchase:Double
@@ -193,19 +128,33 @@ class CalculateBrain:NSObject {
         return (cost, commission_of_purchase, transfer_of_purchase, income, commission_of_sale, stamp,transfer_of_sale)
     }
     
-//    func calculateForGainOrLoss() -> (Double, Double, Double?, Double, Double) {
-//        let (cost, commission_of_purchase, transfer_of_purchase, income, commission_of_sale, stamp,transfer_of_sale) = calculate()
-//        
-//        let commission =  commission_of_purchase + commission_of_sale
-//
-//        let transfer = transfer_of_purchase + transfer_of_sale
-//
-//        let fee = commission + stamp + transfer
-//        
-//        let result = income - cost
-//
-//        return (commission, stamp, transfer, fee, result)
-//    }
+    func calculateForGainOrLoss() {
+        let (cost, commission_of_purchase, transfer_of_purchase, income, commission_of_sale, stamp,transfer_of_sale) = calculate()
+        
+        self.commission =  commission_of_purchase + commission_of_sale
+        
+        self.transfer = transfer_of_purchase + transfer_of_sale
+        
+        self.fee = commission + stamp
+        if transfer != nil {
+             self.fee += transfer!
+        }
+        
+        self.result = income - cost
+    }
+    
+    func calculateForBreakevenPrice() {
+        self.sell = self.buy
+        repeat {
+            calculateForGainOrLoss()
+            if self.result >= 0 {
+                return
+            }
+            self.sell?.price += 0.01
+        }while true
+    }
+    
+
     func transferAsFloat() -> Double {
         if self.transfer == nil {
             return 0.00
