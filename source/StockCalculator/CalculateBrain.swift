@@ -33,19 +33,19 @@ class CalculateBrain:NSObject {
         }
     }
 
-    var calculateForGainOrLoss:Bool {
-        set {
-            if newValue {
-                self.sell = Trade()
-            }
-            else {
-                self.sell = nil;
-            }
-        }
-        get {
-            return (self.sell != nil)
-        }
-    }
+//    var calculateForGainOrLoss:Bool {
+//        set {
+//            if newValue {
+//                self.sell = Trade()
+//            }
+//            else {
+//                self.sell = nil;
+//            }
+//        }
+//        get {
+//            return (self.sell != nil)
+//        }
+//    }
     
 //    var mode:Int {
 //        set {
@@ -193,19 +193,19 @@ class CalculateBrain:NSObject {
         return (cost, commission_of_purchase, transfer_of_purchase, income, commission_of_sale, stamp,transfer_of_sale)
     }
     
-    func calculateForGainOrLoss() -> (Double, Double, Double?, Double, Double) {
-        let (cost, commission_of_purchase, transfer_of_purchase, income, commission_of_sale, stamp,transfer_of_sale) = calculate()
-        
-        let commission =  commission_of_purchase + commission_of_sale
-
-        let transfer = transfer_of_purchase + transfer_of_sale
-
-        let fee = commission + stamp + transfer
-        
-        let result = income - cost
-
-        return (commission, stamp, transfer, fee, result)
-    }
+//    func calculateForGainOrLoss() -> (Double, Double, Double?, Double, Double) {
+//        let (cost, commission_of_purchase, transfer_of_purchase, income, commission_of_sale, stamp,transfer_of_sale) = calculate()
+//        
+//        let commission =  commission_of_purchase + commission_of_sale
+//
+//        let transfer = transfer_of_purchase + transfer_of_sale
+//
+//        let fee = commission + stamp + transfer
+//        
+//        let result = income - cost
+//
+//        return (commission, stamp, transfer, fee, result)
+//    }
     func transferAsFloat() -> Double {
         if self.transfer == nil {
             return 0.00

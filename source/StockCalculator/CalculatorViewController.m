@@ -639,7 +639,7 @@
             //it never can be executed!
             break;
     }
-    [self.brain setCalculateForGainOrLoss: ![self.brain calculateForGainOrLoss]];
+    //[self.brain setCalculateForGainOrLoss: ![self.brain calculateForGainOrLoss]];
     
     //if ([self.cur count] == 2) {
     //    [self.cur removeObjectAtIndex:1];
