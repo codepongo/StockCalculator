@@ -1,0 +1,276 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		FAFBD7B61D90F843009FB7E0 /* CalculateBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFBD7B51D90F843009FB7E0 /* CalculateBrain.swift */; };
+		FAFBD7B81D90F8F7009FB7E0 /* Rate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFBD7B71D90F8F7009FB7E0 /* Rate.swift */; };
+		FAFBD7BA1D90F90B009FB7E0 /* Trade.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFBD7B91D90F90B009FB7E0 /* Trade.swift */; };
+		FAFBD7BF1D9103F3009FB7E0 /* CalculateBrainTester.m in Sources */ = {isa = PBXBuildFile; fileRef = FAFBD7BE1D9103F3009FB7E0 /* CalculateBrainTester.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		FAFBD7901D90EED3009FB7E0 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		FAFBD7921D90EED3009FB7E0 /* CalculatorTester */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = CalculatorTester; sourceTree = BUILT_PRODUCTS_DIR; };
+		FAFBD7B51D90F843009FB7E0 /* CalculateBrain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalculateBrain.swift; path = StockCalculator/CalculateBrain.swift; sourceTree = "<group>"; };
+		FAFBD7B71D90F8F7009FB7E0 /* Rate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Rate.swift; path = StockCalculator/Rate.swift; sourceTree = "<group>"; };
+		FAFBD7B91D90F90B009FB7E0 /* Trade.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Trade.swift; path = StockCalculator/Trade.swift; sourceTree = "<group>"; };
+		FAFBD7BB1D910263009FB7E0 /* CalculatorTester-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CalculatorTester-Bridging-Header.h"; path = "CalculatorTester/CalculatorTester-Bridging-Header.h"; sourceTree = "<group>"; };
+		FAFBD7BE1D9103F3009FB7E0 /* CalculateBrainTester.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CalculateBrainTester.m; path = CalculatorTester/CalculateBrainTester.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FAFBD78F1D90EED3009FB7E0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		FAFBD7891D90EED3009FB7E0 = {
+			isa = PBXGroup;
+			children = (
+				FAFBD7BD1D9103C4009FB7E0 /* StockCalculator */,
+				FAFBD7BC1D91030E009FB7E0 /* CalculatorTester */,
+				FAFBD7931D90EED3009FB7E0 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		FAFBD7931D90EED3009FB7E0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FAFBD7921D90EED3009FB7E0 /* CalculatorTester */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FAFBD7BC1D91030E009FB7E0 /* CalculatorTester */ = {
+			isa = PBXGroup;
+			children = (
+				FAFBD7BE1D9103F3009FB7E0 /* CalculateBrainTester.m */,
+				FAFBD7BB1D910263009FB7E0 /* CalculatorTester-Bridging-Header.h */,
+			);
+			name = CalculatorTester;
+			sourceTree = "<group>";
+		};
+		FAFBD7BD1D9103C4009FB7E0 /* StockCalculator */ = {
+			isa = PBXGroup;
+			children = (
+				FAFBD7B51D90F843009FB7E0 /* CalculateBrain.swift */,
+				FAFBD7B91D90F90B009FB7E0 /* Trade.swift */,
+				FAFBD7B71D90F8F7009FB7E0 /* Rate.swift */,
+			);
+			name = StockCalculator;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		FAFBD7911D90EED3009FB7E0 /* CalculatorTester */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FAFBD7991D90EED3009FB7E0 /* Build configuration list for PBXNativeTarget "CalculatorTester" */;
+			buildPhases = (
+				FAFBD78E1D90EED3009FB7E0 /* Sources */,
+				FAFBD78F1D90EED3009FB7E0 /* Frameworks */,
+				FAFBD7901D90EED3009FB7E0 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CalculatorTester;
+			productName = CalculatorTester;
+			productReference = FAFBD7921D90EED3009FB7E0 /* CalculatorTester */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FAFBD78A1D90EED3009FB7E0 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = zuohaitao;
+				TargetAttributes = {
+					FAFBD7911D90EED3009FB7E0 = {
+						CreatedOnToolsVersion = 7.2;
+					};
+				};
+			};
+			buildConfigurationList = FAFBD78D1D90EED3009FB7E0 /* Build configuration list for PBXProject "CalculatorTester" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = FAFBD7891D90EED3009FB7E0;
+			productRefGroup = FAFBD7931D90EED3009FB7E0 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FAFBD7911D90EED3009FB7E0 /* CalculatorTester */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FAFBD78E1D90EED3009FB7E0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FAFBD7B81D90F8F7009FB7E0 /* Rate.swift in Sources */,
+				FAFBD7BA1D90F90B009FB7E0 /* Trade.swift in Sources */,
+				FAFBD7BF1D9103F3009FB7E0 /* CalculateBrainTester.m in Sources */,
+				FAFBD7B61D90F843009FB7E0 /* CalculateBrain.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		FAFBD7971D90EED3009FB7E0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		FAFBD7981D90EED3009FB7E0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = NO;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		FAFBD79A1D90EED3009FB7E0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "CalculatorTester/CalculatorTester-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		FAFBD79B1D90EED3009FB7E0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "CalculatorTester/CalculatorTester-Bridging-Header.h";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		FAFBD78D1D90EED3009FB7E0 /* Build configuration list for PBXProject "CalculatorTester" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FAFBD7971D90EED3009FB7E0 /* Debug */,
+				FAFBD7981D90EED3009FB7E0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FAFBD7991D90EED3009FB7E0 /* Build configuration list for PBXNativeTarget "CalculatorTester" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FAFBD79A1D90EED3009FB7E0 /* Debug */,
+				FAFBD79B1D90EED3009FB7E0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = FAFBD78A1D90EED3009FB7E0 /* Project object */;
+}

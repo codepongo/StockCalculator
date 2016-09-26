@@ -32,13 +32,25 @@ class CalculateBrain:NSObject {
             }
         }
     }
+    func both() {
+        self.buy = Trade()
+        self.sell = Trade()
+    }
+    
+    func purchase() {
+        self.buy = Trade()
+        self.sell = nil
+    }
+    
+    func sale() {
+        self.buy = Trade()
+        self.sell = nil
+    }
 
     func reset() {
         self.code = ""
-        self.buy?.price = 0.00
-        self.buy?.quantity = 0
-        self.sell?.price = 0.00
-        self.sell?.quantity = 0
+        self.buy = nil
+        self.sell = nil
 
         self.commission = 0.00
         self.stamp = 0.00
@@ -131,12 +143,15 @@ class CalculateBrain:NSObject {
     func calculateForGainOrLoss() {
         let (cost, commission_of_purchase, transfer_of_purchase, income, commission_of_sale, stamp,transfer_of_sale) = calculate()
         
-        self.commission =  commission_of_purchase + commission_of_sale
+        self.commission = commission_of_purchase + commission_of_sale
         
         self.transfer = transfer_of_purchase + transfer_of_sale
         
-        self.fee = commission + stamp
-        if transfer != nil {
+        self.stamp = stamp
+        
+        self.fee = self.commission + self.stamp
+        
+        if self.transfer != nil {
              self.fee += transfer!
         }
         
@@ -153,8 +168,45 @@ class CalculateBrain:NSObject {
             self.sell?.price += 0.01
         }while true
     }
-    
 
+    func calculateForPurchase()  {
+        let (cost, commission_of_purchase, transfer_of_purchase, _, _, _,_) = calculate()
+        
+        self.commission =  commission_of_purchase
+        
+        self.transfer = transfer_of_purchase
+        
+        self.stamp = 0
+        
+        self.fee = self.commission
+        
+        if self.transfer != nil {
+            self.fee += transfer!
+        }
+        
+        self.result = cost
+        
+    }
+    
+    func calculateForSale() {
+        let (_, _, _, income, commission_of_sale, stamp,transfer_of_sale) = calculate()
+        
+        self.commission = commission_of_sale
+        
+        self.transfer =  transfer_of_sale
+        
+        self.stamp = stamp
+        
+        self.fee = commission + stamp
+        if self.transfer != nil {
+            self.fee += transfer!
+        }
+        
+        self.result = income
+        
+    }
+    
+    
     func transferAsFloat() -> Double {
         if self.transfer == nil {
             return 0.00
@@ -163,6 +215,5 @@ class CalculateBrain:NSObject {
             return self.transfer!
         }
     }
-
     
 }

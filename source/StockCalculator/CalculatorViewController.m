@@ -445,27 +445,28 @@
         return;
         
     }
-    if (self.brain.buy.price == 0) {
-        UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"买入价格不能为0元／股" message:@"" preferredStyle:UIAlertControllerStyleAlert];
+    if (self.brain.buy != nil) {
+        if (self.brain.buy.price == 0) {
+            UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"买入价格不能为0元／股" message:@"" preferredStyle:UIAlertControllerStyleAlert];
+            
+            UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {}];
+            
+            [alert addAction:defaultAction];
+            [self presentViewController:alert animated:YES completion:nil];
+            return;
+        }
         
-        UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {}];
-        
-        [alert addAction:defaultAction];
-        [self presentViewController:alert animated:YES completion:nil];
-        return;
+        if (self.brain.buy.quantity == 0) {
+            UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"买入数量不能为0股" message:@"" preferredStyle:UIAlertControllerStyleAlert];
+            
+            UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {}];
+            
+            [alert addAction:defaultAction];
+            [self presentViewController:alert animated:YES completion:nil];
+            return;
+        }
     }
-    
-    if (self.brain.buy.quantity == 0) {
-        UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"买入数量不能为0股" message:@"" preferredStyle:UIAlertControllerStyleAlert];
-        
-        UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {}];
-        
-        [alert addAction:defaultAction];
-        [self presentViewController:alert animated:YES completion:nil];
-        return;
-    }
-    //if (self.brain.calculateForGainOrLoss) {
-    {
+    if (self.brain.sell != nil) {
         if (self.brain.sell.price == 0) {
             
             UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"卖出价格不能为0元／股" message:@"" preferredStyle:UIAlertControllerStyleAlert];
@@ -624,16 +625,20 @@
     [self.cur[0] addObjectsFromArray:self.all[0]];
 
     switch ([sender selectedSegmentIndex]) {
-        case 0:
+        case 0://GainOrLoss
+            [self.brain both];
             break;
-        case 1:
+        case 1://BreakEvenPrice
             [self.cur[0] removeObjectsAtIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(4,2)]];
+            [self.brain purchase];
             break;
-        case 2:
+        case 2://Purchase
             [self.cur[0] removeObjectsAtIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(4,2)]];
+            [self.brain purchase];
             break;
-        case 3:
+        case 3://Sale
             [self.cur[0] removeObjectsAtIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(2,2)]];
+            [self.brain sale];
             break;
         default:
             //it never can be executed!
