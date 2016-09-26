@@ -13,7 +13,6 @@ int main(int argc, const char * argv[]) {
     @autoreleasepool {
         // insert code here...
         CalculateBrain* brain = [[CalculateBrain alloc]init];
-        brain  calculateForBreakevenPrice
     }
     return 0;
 }
