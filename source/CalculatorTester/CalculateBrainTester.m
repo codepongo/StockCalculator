@@ -11,6 +11,11 @@
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
+        CalculateBrain* brain = [[CalculateBrain alloc]init];
+        [brain.rate setValue:[NSNumber numberWithDouble:0.31] forKey:@"commission"];
+        [brain.rate setValue:[NSNumber numberWithDouble:1] forKey:@"stamp"];
+        [brain.rate setValue:[NSNumber numberWithDouble:0.02] forKey:@"transfer"];
+
         NSError* err;
         NSString* folder = [@"~/Documents/trade" stringByExpandingTildeInPath];
         if (argv[1] != NULL) {
@@ -39,23 +44,38 @@ int main(int argc, const char * argv[]) {
             NSData* data = [NSData dataWithContentsOfFile:[folder stringByAppendingPathComponent:file]];
             NSString* s = [[NSString alloc] initWithData:[data subdataWithRange:NSMakeRange(0, [data length])] encoding:encode];
             NSArray* a = [s componentsSeparatedByString:@"\n"];
-            NSLog(@"%@", file);
             for (NSString* l in [a subarrayWithRange:NSMakeRange(1, [a count] - 1)]) {
                 if ([l length] == 0) {
                     continue;
                 }
-                //NSLog(l);
                 NSArray* field = [l componentsSeparatedByString:@" "];
                 NSMutableDictionary *r = [NSMutableDictionary dictionaryWithDictionary:template];
                 for (NSString* k in template) {
                     r[k] = [field objectAtIndex:[r[k] integerValue]];
+                }
+                if (NSNotFound == [r[@"业务名称"] rangeOfString:@"买入"].location) {
+                    brain.buy.price = [r[@"交易价格"] doubleValue];
+                    brain.buy.quantity = [r[@"成交数量"] doubleValue];
+                    [brain calculateForPurchase];
+                    
+                }
+                else {
+                    brain.sell.price = [r[@"交易价格"] doubleValue];
+                    brain.sell.quantity = [r[@"成交数量"] doubleValue];
+                    [brain calculateForSale];
+                }
+                if (0.01 > fabs(brain.result - [r[@"发生金额"] doubleValue])) {
+                    NSLog(@"[success]%@ %f", l, brain.result);
+                    
+                }
+                else {
+                    NSLog(@"[\e[31mfail\e[0m]%@", l);
                 }
                 [record addObject:r];
                 
             }
             
         }
-        //CalculateBrain* brain = [[CalculateBrain alloc]init];
     }
     return 0;
 }
