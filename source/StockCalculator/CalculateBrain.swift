@@ -32,19 +32,12 @@ class CalculateBrain:NSObject {
             }
         }
     }
-    func both() {
-        self.buy = Trade()
-        self.sell = Trade()
-    }
     
-    func purchase() {
-        self.buy = Trade()
-        self.sell = nil
+    var purchase:Trade {
+        return (self.buy == nil ? {self.buy = Trade();return self.buy!}() : self.buy!)
     }
-    
-    func sale() {
-        self.buy = Trade()
-        self.sell = nil
+    var sale:Trade {
+        return (self.sell == nil ? {self.sell = Trade();return self.sell!}() : self.sell!)
     }
 
     func reset() {

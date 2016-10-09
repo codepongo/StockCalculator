@@ -29,43 +29,64 @@ int main(int argc, const char * argv[]) {
                 continue;
             }
             NSDictionary* template = @{
-                @"证券名称":@0,
-                @"成交日期":@1,
-                @"成交价格":@2,
-                @"成交数量":@5,
-                @"发生金额":@8,
-                @"业务名称":@19,
-                @"手续费":@20,
-                @"印花税":@23,
-                @"过户费":@26,
-                @"结算费":@29,
+                @"证券名称":@1,
+                @"成交日期":@2,
+                @"成交价格":@3,
+                @"成交数量":@4,
+                @"发生金额":@5,
+                @"业务名称":@9,
+                @"手续费":@10,
+                @"印花税":@11,
+                @"过户费":@12,
+                @"结算费":@13,
+                @"证券代码":@14,
                 };
             NSStringEncoding encode = CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingDOSChineseSimplif);
             NSData* data = [NSData dataWithContentsOfFile:[folder stringByAppendingPathComponent:file]];
-            NSString* s = [[NSString alloc] initWithData:[data subdataWithRange:NSMakeRange(0, [data length])] encoding:encode];
+            NSString* s = [[NSString alloc] initWithData:data encoding:encode];
             NSArray* a = [s componentsSeparatedByString:@"\n"];
-            for (NSString* l in [a subarrayWithRange:NSMakeRange(1, [a count] - 1)]) {
+            for (NSString* l in [a subarrayWithRange:NSMakeRange(3, [a count] - 3)]) {
                 if ([l length] == 0) {
                     continue;
                 }
-                NSArray* field = [l componentsSeparatedByString:@" "];
+                NSString* line = l;
+                while (NSNotFound != [line rangeOfString:@"  "].location) {
+                    line = [line stringByReplacingOccurrencesOfString:@"  " withString:@" "];
+                }
+                NSArray* field = [line componentsSeparatedByString:@" "];
                 NSMutableDictionary *r = [NSMutableDictionary dictionaryWithDictionary:template];
                 for (NSString* k in template) {
                     r[k] = [field objectAtIndex:[r[k] integerValue]];
                 }
-                if (NSNotFound == [r[@"业务名称"] rangeOfString:@"买入"].location) {
-                    brain.buy.price = [r[@"交易价格"] doubleValue];
-                    brain.buy.quantity = [r[@"成交数量"] doubleValue];
+                if ([r[@"证券代码"] isEqualToString:@"---"]
+                    || [r[@"证券代码"] isEqualToString:@"131810"]
+                    || [r[@"证券代码"] isEqualToString:@"510900"]
+                    || [r[@"证券代码"] isEqualToString:@"159915"]
+                    || [r[@"证券代码"] isEqualToString:@"510300"]
+                    || [r[@"证券代码"] isEqualToString:@"980517895605"]
+                    || [r[@"证券代码"] isEqualToString:@"880013"]
+                    ) {
+                    continue;
+                }
+                if ([[r[@"证券代码"] substringToIndex:1] isEqualToString:@"6"]) {
+                    brain.inSZ = NO;
+                }
+                else {
+                    brain.inSZ = YES;
+                }
+                if (NSNotFound != [r[@"业务名称"] rangeOfString:@"买入"].location) {
+                    brain.purchase.price = [r[@"成交价格"] doubleValue];
+                    brain.purchase.quantity = [r[@"成交数量"] doubleValue];
                     [brain calculateForPurchase];
                     
                 }
                 else {
-                    brain.sell.price = [r[@"交易价格"] doubleValue];
-                    brain.sell.quantity = [r[@"成交数量"] doubleValue];
+                    brain.sale.price = [r[@"成交价格"] doubleValue];
+                    brain.sale.quantity = fabs([r[@"成交数量"] doubleValue]);
                     [brain calculateForSale];
                 }
-                if (0.01 > fabs(brain.result - [r[@"发生金额"] doubleValue])) {
-                    NSLog(@"[success]%@ %f", l, brain.result);
+                if (fabs(0.01 - fabs(brain.result - fabs([r[@"发生金额"] doubleValue]))) <= 0.01) {
+                    NSLog(@"[success]");
                     
                 }
                 else {
