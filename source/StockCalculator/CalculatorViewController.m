@@ -749,7 +749,12 @@
     self.selectedIndexInSheet = [sheet selectedRowInComponent:0];
     [self.marketOfStock setTitle:self.pickerData[self.selectedIndexInSheet] forState:UIControlStateNormal];
     
-    self.brain.inSZ = self.selectedIndexInSheet == 0 ? NO:YES;
+    if (self.brain.inSZ == self.selectedIndexInSheet == 0 ? NO:YES) {
+        return;
+    }
+    else {
+        self.brain.inSZ = !self.brain.inSZ;
+    }
     
     if (self.brain.inSZ) {
         [self.cur[0] removeLastObject];
