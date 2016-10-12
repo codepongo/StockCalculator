@@ -152,7 +152,8 @@ class CalculateBrain:NSObject {
     }
     
     func calculateForBreakevenPrice() {
-        self.sell = self.buy
+        self.sale.price = self.buy!.price
+        self.sale.quantity = self.buy!.quantity
         repeat {
             calculateForGainOrLoss()
             if self.result >= 0 {

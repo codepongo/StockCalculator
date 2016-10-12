@@ -153,8 +153,8 @@
                                                                       @"cellReuseIdentifier":@"OutputCell"
                                                                       ,@"titleForGainOrLoss": @"投资损益"
                                                                       ,@"titleForBreakevenPrice": @"保本价格"
-                                                                      ,@"titleForPurchase": @"支出"
-                                                                      ,@"titleForSale": @"收入"
+                                                                      ,@"titleForPurchase": @"买入支出"
+                                                                      ,@"titleForSale": @"卖出收入"
                                                                       ,@"value": @"0.00"
                                                                       ,@"unitForPrice": @"元/股"
                                                                       ,@"unitForTotal": @"元"
@@ -448,7 +448,7 @@
         return;
         
     }
-    if (self.brain.buy != nil) {
+    if (self->_segment.selectedSegmentIndex != 3) {
         if (self.brain.buy.price == 0) {
             UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"买入价格不能为0元／股" message:@"" preferredStyle:UIAlertControllerStyleAlert];
             
@@ -469,7 +469,7 @@
             return;
         }
     }
-    if (self.brain.sell != nil) {
+    if (self->_segment.selectedSegmentIndex == 0 || self->_segment.selectedSegmentIndex == 3) {
         if (self.brain.sell.price == 0) {
             
             UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"卖出价格不能为0元／股" message:@"" preferredStyle:UIAlertControllerStyleAlert];
@@ -545,7 +545,13 @@
     float stamp = self.brain.stamp;//[self.brain stampOfTrade];
     float commission = self.brain.commission;//[self.brain commissionOfTrade];
     float taxesAndDuties = self.brain.fee;//[self.brain taxesAndDutiesOfTrade];
-    float result = self.brain.result;//[self.brain resultOfTrade];
+    float result;
+    if (self->_segment.selectedSegmentIndex == 1) {
+        result = self.brain.sell.price;
+    }
+    else {
+        result = self.brain.result;//[self.brain resultOfTrade];
+    }
     if (self.cur.count == 1) {
         [self.cur addObject:[self.all objectAtIndex:1]];
     }
@@ -658,6 +664,9 @@
 
 - (IBAction)selectCalculateType:(id)sender {
     [self hideKeyBoard];
+    if (self.cur.count == 2) {
+        [self.cur removeObjectAtIndex:1];
+    }
     [self.cur[0] removeAllObjects];
     [self.cur[0] addObjectsFromArray:self.all[0]];
 
