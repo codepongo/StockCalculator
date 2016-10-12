@@ -14,6 +14,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title = self.data[@"code"];
+    self.type.text = self.data[@"type"];
+    if ([self.data[@"type"] isEqualToString:@"保本价格"]) {
+        self.result.text = @"%.2f 元／股";
+    }
+    else {
+        self.result.text = @"%.2f 元";
+        
+    }
+    self.buyQuantityLayout.hidden = NO;
+    self.buyPriceLayout.hidden = NO;
     self.sellQuantityLayout.hidden = NO;
     self.sellPriceLayout.hidden = NO;
     self.transferContainer.hidden = NO;
@@ -25,10 +35,14 @@
             d.text = [NSString stringWithFormat:d.text, ((NSNumber*)self.data[k]).floatValue];
         }
         else {
+            if ([k isEqual:@"buy.price"]) {
+                
+                self.buyPriceLayout.hidden = YES;
+                self.buyQuantityLayout.hidden = YES;
+            }
+            
             if ([k isEqual:@"sell.price"]) {
-                self.type.text = @"保本价格";
-                self.result.text = @"%.2f 元／股";
-                self.sellPriceLayout.hidden = YES;
+               self.sellPriceLayout.hidden = YES;
                 self.sellQuantityLayout.hidden = YES;
             }
             if ([k isEqual:@"transfer"]) {

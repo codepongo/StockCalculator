@@ -216,6 +216,8 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="buyPriceLayout" destination="l51-vn-wiq" id="Yk3-Oj-w3Y"/>
+                        <outlet property="buyQuantityLayout" destination="AdZ-a1-LlU" id="eS4-PY-s57"/>
                         <outlet property="buyprice" destination="S4g-PO-ODt" id="AVl-L6-HeK"/>
                         <outlet property="buyquantity" destination="OG1-z3-em1" id="nfn-ch-tJj"/>
                         <outlet property="commission" destination="qUv-Or-bn3" id="lFe-FP-JSB"/>

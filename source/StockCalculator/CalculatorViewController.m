@@ -608,6 +608,8 @@
         case 1:
             r[@"buy.price"] = [NSNumber numberWithFloat:self.brain.buy.price];
             r[@"buy.quantity"] = [NSNumber numberWithInteger:self.brain.buy.quantity];
+            //r[@"result"] = [NSNumber numberWithFloat:self.brain.sell.price];
+
             r[@"type"] = @"保本价格";
             break;
         case 2:

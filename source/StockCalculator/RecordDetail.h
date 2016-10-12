@@ -19,6 +19,8 @@
 @property IBOutlet UILabel* type;
 @property IBOutlet UILabel* result;
 @property IBOutlet UIStackView* layout;
+@property IBOutlet UIStackView* buyPriceLayout;
+@property IBOutlet UIStackView* buyQuantityLayout;
 @property IBOutlet UIStackView* sellPriceLayout;
 @property IBOutlet UIStackView* sellQuantityLayout;
 @property(strong) NSDictionary* data;
