@@ -167,8 +167,11 @@
         c.image.image = [UIImage imageNamed:@"breakeven"];
         
     }
+    c.trade.text = [NSString stringWithFormat: @"[%@] -", r[@"code"]];
     
-    c.trade.text = [NSString stringWithFormat: @"[%@] - 单价为%.2f元时，买入%@股。", r[@"code"],((NSNumber*)r[@"buy.price"]).floatValue, r[@"buy.quantity"]];
+    if (r[@"buy.price"] != [NSNull null]) {
+        c.trade.text = [NSString stringWithFormat: @"%@ 单价为%.2f元时，买入%@股。", c.trade.text,((NSNumber*)r[@"buy.price"]).floatValue, r[@"buy.quantity"]];
+    }
     if (r[@"sell.price"] != [NSNull null]) {
         c.trade.text = [NSString stringWithFormat:@"%@ 单价为%.2f元时，卖出%@股。", c.trade.text, ((NSNumber*)r[@"sell.price"]).floatValue, r[@"sell.quantity"]];
     }

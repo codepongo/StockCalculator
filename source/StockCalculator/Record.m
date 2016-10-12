@@ -26,6 +26,22 @@
 -(instancetype)init {
     if (self = [super init]) {
         self.db = [[SQLiteManager alloc]initWithDatabaseNamed:@"stockcalc.db"];
+        
+        
+        {
+            NSString* sqlSentence = @"CREATE TABLE record ([code] TEXT, [buy.price] FLOAT, [buy.quantity] FLOAT, [sell.price] FLOAT, [sell.quantity] FLOAT, [rate.commission] FLOAT, [rate.stamp] Float, [rate.transfer] Float,[commission] FLOAT, [stamp] Float, [transfer] Float, [fee] FLOAT, [result] FLOAT, [time] TimeStamp NOT NULL DEFAULT (datetime('now','localtime')));";
+
+            NSString* sql_for_creation = @"select sql from sqlite_master where tbl_name='record'";
+            
+            NSArray* r = [self.db getRowsForQuery:sql_for_creation];
+        
+            if (r.count >= 1) {
+                if (![sqlSentence isEqualToString:r[0][@"sql"]]) {
+                    
+                }
+
+            }
+        }
 
         /*
         {
@@ -40,8 +56,8 @@
         }
          */
         
-
         NSString* sqlSentence = @"CREATE TABLE IF NOT EXISTS record ([code] TEXT, [buy.price] FLOAT, [buy.quantity] FLOAT, [sell.price] FLOAT, [sell.quantity] FLOAT, [rate.commission] FLOAT, [rate.stamp] Float, [rate.transfer] Float,[commission] FLOAT, [stamp] Float, [transfer] Float, [fee] FLOAT, [result] FLOAT, [time] TimeStamp NOT NULL DEFAULT (datetime('now','localtime')));";
+
         
         NSError *error = [self.db doQuery:sqlSentence];
         
