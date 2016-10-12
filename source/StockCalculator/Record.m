@@ -37,6 +37,18 @@
         
             if (r.count >= 1) {
                 if (![sqlSentence isEqualToString:r[0][@"sql"]]) {
+                    [self.db doQuery:@"ALTER TABLE record ADD type TEXT"];
+                    NSArray* record = [self.db getRowsForQuery:@"select * from record"];
+                    
+                    for (id r in record) {
+                        if (r[@"sell.price"] == [NSNull null]) {
+                            r[@"type"] = @"保本价格";
+                        }
+                        else {
+                            r[@"type"] = @"交易损益";
+                        }
+                        [self add:r];
+                    }
                     
                 }
 

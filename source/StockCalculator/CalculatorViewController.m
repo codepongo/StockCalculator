@@ -603,18 +603,22 @@
             r[@"buy.quantity"] = [NSNumber numberWithInteger:self.brain.buy.quantity];
             r[@"sell.price"] = [NSNumber numberWithFloat:self.brain.sell.price];
             r[@"sell.quantity"] = [NSNumber numberWithInteger:self.brain.sell.quantity];
+            r[@"type"] = @"交易损益";
             break;
         case 1:
             r[@"buy.price"] = [NSNumber numberWithFloat:self.brain.buy.price];
             r[@"buy.quantity"] = [NSNumber numberWithInteger:self.brain.buy.quantity];
+            r[@"type"] = @"保本价格";
             break;
         case 2:
             r[@"buy.price"] = [NSNumber numberWithFloat:self.brain.buy.price];
             r[@"buy.quantity"] = [NSNumber numberWithInteger:self.brain.buy.quantity];
+            r[@"type"] = @"买入支出";
             break;
         case 3:
             r[@"sell.price"] = [NSNumber numberWithFloat:self.brain.sell.price];
             r[@"sell.quantity"] = [NSNumber numberWithInteger:self.brain.sell.quantity];
+            r[@"type"] = @"卖出收入";
             break;
         default:
             break;
@@ -626,7 +630,6 @@
         r[@"transfer"] = [NSNumber numberWithFloat:[self.brain transferAsFloat]];
         r[@"rate.transfer"] = [NSNumber numberWithFloat:self.brain.rate.transfer];
     }
-
     [[Record sharedRecord] add:r];
     
     // Get the views to animate.
