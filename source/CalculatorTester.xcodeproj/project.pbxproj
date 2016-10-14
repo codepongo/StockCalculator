@@ -7,10 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FAF105921DAF1D8B007315E8 /* Record.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF105911DAF1D8B007315E8 /* Record.m */; };
+		FAF105951DAF236D007315E8 /* SQLiteManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF105941DAF236D007315E8 /* SQLiteManager.m */; };
+		FAF105971DAF23DC007315E8 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = FAF105961DAF23DC007315E8 /* libsqlite3.tbd */; };
 		FAFBD7B61D90F843009FB7E0 /* CalculateBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFBD7B51D90F843009FB7E0 /* CalculateBrain.swift */; };
 		FAFBD7B81D90F8F7009FB7E0 /* Rate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFBD7B71D90F8F7009FB7E0 /* Rate.swift */; };
 		FAFBD7BA1D90F90B009FB7E0 /* Trade.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFBD7B91D90F90B009FB7E0 /* Trade.swift */; };
-		FAFBD7BF1D9103F3009FB7E0 /* CalculateBrainTester.m in Sources */ = {isa = PBXBuildFile; fileRef = FAFBD7BE1D9103F3009FB7E0 /* CalculateBrainTester.m */; };
+		FAFBD7BF1D9103F3009FB7E0 /* CalculateTester.m in Sources */ = {isa = PBXBuildFile; fileRef = FAFBD7BE1D9103F3009FB7E0 /* CalculateTester.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -26,12 +29,17 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		FAF105901DAF1D8B007315E8 /* Record.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Record.h; path = StockCalculator/Record.h; sourceTree = "<group>"; };
+		FAF105911DAF1D8B007315E8 /* Record.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Record.m; path = StockCalculator/Record.m; sourceTree = "<group>"; };
+		FAF105931DAF236D007315E8 /* SQLiteManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SQLiteManager.h; path = StockCalculator/SQLiteManager.h; sourceTree = "<group>"; };
+		FAF105941DAF236D007315E8 /* SQLiteManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SQLiteManager.m; path = StockCalculator/SQLiteManager.m; sourceTree = "<group>"; };
+		FAF105961DAF23DC007315E8 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		FAFBD7921D90EED3009FB7E0 /* CalculatorTester */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = CalculatorTester; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAFBD7B51D90F843009FB7E0 /* CalculateBrain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalculateBrain.swift; path = StockCalculator/CalculateBrain.swift; sourceTree = "<group>"; };
 		FAFBD7B71D90F8F7009FB7E0 /* Rate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Rate.swift; path = StockCalculator/Rate.swift; sourceTree = "<group>"; };
 		FAFBD7B91D90F90B009FB7E0 /* Trade.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Trade.swift; path = StockCalculator/Trade.swift; sourceTree = "<group>"; };
 		FAFBD7BB1D910263009FB7E0 /* CalculatorTester-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CalculatorTester-Bridging-Header.h"; path = "CalculatorTester/CalculatorTester-Bridging-Header.h"; sourceTree = "<group>"; };
-		FAFBD7BE1D9103F3009FB7E0 /* CalculateBrainTester.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CalculateBrainTester.m; path = CalculatorTester/CalculateBrainTester.m; sourceTree = "<group>"; };
+		FAFBD7BE1D9103F3009FB7E0 /* CalculateTester.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CalculateTester.m; path = CalculatorTester/CalculateTester.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,6 +47,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FAF105971DAF23DC007315E8 /* libsqlite3.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -48,6 +57,7 @@
 		FAFBD7891D90EED3009FB7E0 = {
 			isa = PBXGroup;
 			children = (
+				FAF105961DAF23DC007315E8 /* libsqlite3.tbd */,
 				FAFBD7BD1D9103C4009FB7E0 /* StockCalculator */,
 				FAFBD7BC1D91030E009FB7E0 /* CalculatorTester */,
 				FAFBD7931D90EED3009FB7E0 /* Products */,
@@ -65,7 +75,7 @@
 		FAFBD7BC1D91030E009FB7E0 /* CalculatorTester */ = {
 			isa = PBXGroup;
 			children = (
-				FAFBD7BE1D9103F3009FB7E0 /* CalculateBrainTester.m */,
+				FAFBD7BE1D9103F3009FB7E0 /* CalculateTester.m */,
 				FAFBD7BB1D910263009FB7E0 /* CalculatorTester-Bridging-Header.h */,
 			);
 			name = CalculatorTester;
@@ -74,6 +84,10 @@
 		FAFBD7BD1D9103C4009FB7E0 /* StockCalculator */ = {
 			isa = PBXGroup;
 			children = (
+				FAF105931DAF236D007315E8 /* SQLiteManager.h */,
+				FAF105941DAF236D007315E8 /* SQLiteManager.m */,
+				FAF105901DAF1D8B007315E8 /* Record.h */,
+				FAF105911DAF1D8B007315E8 /* Record.m */,
 				FAFBD7B51D90F843009FB7E0 /* CalculateBrain.swift */,
 				FAFBD7B91D90F90B009FB7E0 /* Trade.swift */,
 				FAFBD7B71D90F8F7009FB7E0 /* Rate.swift */,
@@ -137,10 +151,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FAF105921DAF1D8B007315E8 /* Record.m in Sources */,
 				FAFBD7B81D90F8F7009FB7E0 /* Rate.swift in Sources */,
 				FAFBD7BA1D90F90B009FB7E0 /* Trade.swift in Sources */,
-				FAFBD7BF1D9103F3009FB7E0 /* CalculateBrainTester.m in Sources */,
+				FAFBD7BF1D9103F3009FB7E0 /* CalculateTester.m in Sources */,
 				FAFBD7B61D90F843009FB7E0 /* CalculateBrain.swift in Sources */,
+				FAF105951DAF236D007315E8 /* SQLiteManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -235,6 +251,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "CalculatorTester/CalculatorTester-Bridging-Header.h";
+				SWIFT_OBJC_INTERFACE_HEADER_NAME = "StockCalculator-Swift.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -246,6 +263,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "CalculatorTester/CalculatorTester-Bridging-Header.h";
+				SWIFT_OBJC_INTERFACE_HEADER_NAME = "StockCalculator-Swift.h";
 			};
 			name = Release;
 		};

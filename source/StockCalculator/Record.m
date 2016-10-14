@@ -25,35 +25,54 @@
 
 -(instancetype)init {
     if (self = [super init]) {
+    
+        //for test
+        //[[NSFileManager defaultManager] removeItemAtPath: @"stockcalc2.db" error: nil];
         self.db = [[SQLiteManager alloc]initWithDatabaseNamed:@"stockcalc.db"];
         
         
-        {
-            NSString* sqlSentence = @"CREATE TABLE record ([code] TEXT, [buy.price] FLOAT, [buy.quantity] FLOAT, [sell.price] FLOAT, [sell.quantity] FLOAT, [rate.commission] FLOAT, [rate.stamp] Float, [rate.transfer] Float,[commission] FLOAT, [stamp] Float, [transfer] Float, [fee] FLOAT, [result] FLOAT, [time] TimeStamp NOT NULL DEFAULT (datetime('now','localtime')));";
-
-            NSString* sql_for_creation = @"select sql from sqlite_master where tbl_name='record'";
-            
-            NSArray* r = [self.db getRowsForQuery:sql_for_creation];
         
-            if (r.count >= 1) {
-                if (![sqlSentence isEqualToString:r[0][@"sql"]]) {
-                    [self.db doQuery:@"ALTER TABLE record ADD type TEXT"];
-                    NSArray* record = [self.db getRowsForQuery:@"select * from record"];
-                    
-                    for (id r in record) {
-                        if (r[@"sell.price"] == [NSNull null]) {
-                            r[@"type"] = @"保本价格";
-                        }
-                        else {
-                            r[@"type"] = @"交易损益";
-                        }
-                        [self add:r];
-                    }
-                    
-                }
-
+        if (0 ==((NSNumber*)[self.db getRowsForQuery:@"SELECT count(*) FROM record"][0][@"count(*)"]).integerValue) {
+            NSString* sqlSentence = @"create table if not exists record ([code] text, [buy.price] float, [buy.quantity] float, [sell.price] float, [sell.quantity] float, [rate.commission] float, [rate.stamp] float, [rate.transfer] float,[commission] float, [stamp] float, [transfer] float, [fee] float, [result] float, [time] timestamp not null default (datetime('now','localtime')), [type] text);";
+            
+            
+            NSError *error = [self.db doQuery:sqlSentence];
+            
+            if (error != nil) {
+                //NSLog(@"Error: %@",[error localizedDescription]);
+                return nil;
             }
+            return self;
         }
+        
+        
+        
+//        {
+//            NSString* sqlSentence = @"CREATE TABLE record ([code] TEXT, [buy.price] FLOAT, [buy.quantity] FLOAT, [sell.price] FLOAT, [sell.quantity] FLOAT, [rate.commission] FLOAT, [rate.stamp] Float, [rate.transfer] Float,[commission] FLOAT, [stamp] Float, [transfer] Float, [fee] FLOAT, [result] FLOAT, [time] TimeStamp NOT NULL DEFAULT (datetime('now','localtime')));";
+//
+//            NSString* sql_for_creation = @"select sql from sqlite_master where tbl_name='record'";
+//            
+//            NSArray* r = [self.db getRowsForQuery:sql_for_creation];
+//        
+//            if (r.count >= 1) {
+//                if (![sqlSentence isEqualToString:r[0][@"sql"]]) {
+//                    [self.db doQuery:@"ALTER TABLE record ADD type TEXT"];
+//                    NSArray* record = [self.db getRowsForQuery:@"select * from record"];
+//                    
+//                    for (id r in record) {
+//                        if (r[@"sell.price"] == [NSNull null]) {
+//                            r[@"type"] = @"保本价格";
+//                        }
+//                        else {
+//                            r[@"type"] = @"交易损益";
+//                        }
+//                        [self add:r];
+//                    }
+//                    
+//                }
+//
+//            }
+//        }
 
         /*
         {
@@ -77,6 +96,27 @@
             //NSLog(@"Error: %@",[error localizedDescription]);
             return nil;
         }
+        
+        error = [self.db doQuery:@"ALTER TABLE record ADD type TEXT"];
+        if (error == nil) {
+            return self;
+        }
+        
+        NSArray* record = [self.db getRowsForQuery:@"select * from record"];
+        
+        for (id r in record) {
+            if (r[@"sell.price"] == [NSNull null]) {
+                r[@"type"] = @"保本价格";
+            }
+            else {
+                r[@"type"] = @"交易损益";
+            }
+            [self add:r];
+        }
+
+        
+        
+
         
         return self;
     }
