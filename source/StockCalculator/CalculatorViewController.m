@@ -628,6 +628,7 @@
     
     r[@"rate.commission"] = [NSNumber numberWithFloat:self.brain.rate.commission];
     r[@"rate.stamp"] = [NSNumber numberWithFloat:self.brain.rate.stamp];
+    r[@"fee"] = [NSNumber numberWithFloat:self.brain.fee];
     if (!self.brain.inSZ) {
         r[@"transfer"] = [NSNumber numberWithFloat:[self.brain transferAsFloat]];
         r[@"rate.transfer"] = [NSNumber numberWithFloat:self.brain.rate.transfer];

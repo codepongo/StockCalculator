@@ -100,9 +100,25 @@ void testBrain(NSString* folder) {
 
 void testRecord() {
     //initialize
-    //[[NSFileManager defaultManager] removeItemAtPath: @"initialize.db" error: nil];
-    //self.db = [[SQLiteManager alloc]initWithDatabaseNamed:@"initialize.db"];
+    [[NSFileManager defaultManager] removeItemAtPath: @"stockcalc.db" error: nil];
     Record* r = [Record sharedRecord];
+    NSDictionary* t = @{
+                        @"buy.price" : @"5.33",
+                        @"buy.quantity" : @2400,
+                        @"code" :@601939,
+                        @"commission" : @10,
+                        @"fee" : @"23.23",
+                        @"rate.commission" : @"0.31",
+                        @"rate.stamp" : @1,
+                        @"rate.transfer" : @"0.02",
+                        @"result" : @"-95.22",
+                        @"sell.price" : @"5.3",
+                        @"sell.quantity" : @2400,
+                        @"stamp" : @"12.72",
+                        @"transfer" : @"0.51",
+                        @"type" : @"\4e\a4\66\13\63\5f\76\0xca"
+                        };
+    [r add:t];
     
     //update
     //[[NSFileManager defaultManager] removeItemAtPath: @"update.db" error: nil];
