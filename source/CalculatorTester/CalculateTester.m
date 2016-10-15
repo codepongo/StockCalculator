@@ -17,7 +17,7 @@ void testBrain(NSString* folder) {
     [brain.rate setValue:[NSNumber numberWithDouble:0.02] forKey:@"transfer"];
     
     NSError* err;
-
+    
     NSArray* files = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:folder error:&err];
     NSMutableArray* record = [NSMutableArray arrayWithCapacity:[files count] * 10];
     
@@ -100,31 +100,101 @@ void testBrain(NSString* folder) {
 
 void testRecord() {
     //initialize
-    [[NSFileManager defaultManager] removeItemAtPath: @"stockcalc.db" error: nil];
-    Record* r = [Record sharedRecord];
-    NSDictionary* t = @{
-                        @"buy.price" : @"5.33",
-                        @"buy.quantity" : @2400,
-                        @"code" :@601939,
-                        @"commission" : @10,
-                        @"fee" : @"23.23",
-                        @"rate.commission" : @"0.31",
-                        @"rate.stamp" : @1,
-                        @"rate.transfer" : @"0.02",
-                        @"result" : @"-95.22",
-                        @"sell.price" : @"5.3",
-                        @"sell.quantity" : @2400,
-                        @"stamp" : @"12.72",
-                        @"transfer" : @"0.51",
-                        @"type" : @"\4e\a4\66\13\63\5f\76\0xca"
-                        };
-    [r add:t];
+    {
+        [[NSFileManager defaultManager] removeItemAtPath: @"stockcalc.db" error: nil];
+        Record* r = [Record sharedRecord];
+        {
+            
+            NSDictionary* t = @{
+                                @"buy.price" : @"5.33",
+                                @"buy.quantity" : @2400,
+                                @"code" :@601939,
+                                @"commission" : @10,
+                                @"fee" : @"23.23",
+                                @"rate.commission" : @"0.31",
+                                @"rate.stamp" : @1,
+                                @"rate.transfer" : @"0.02",
+                                @"result" : @"-95.22",
+                                @"sell.price" : @"5.3",
+                                @"sell.quantity" : @2400,
+                                @"stamp" : @"12.72",
+                                @"transfer" : @"0.51",
+                                @"type" : @"损益计算"
+                                };
+            [r add:t];
+        }
+        {
+            NSDictionary* t = @{
+                                @"buy.price" : @31,
+                                @"buy.quantity" :@500,
+                                @"code" : @000623,
+                                @"commission" : @10,
+                                @"fee" : @"26.15",
+                                @"rate.commission" : @"0.31",
+                                @"rate.stamp" : @1,
+                                @"rate.transfer" : @"0.02",
+                                @"result" : @"3.850000000000364",
+                                @"stamp" : @"15.53",
+                                @"transfer" : @"0.62",
+                                @"type" : @"保本价格"
+                                };
+            [r add:t];
+
+        }
+        NSLog(@"%@", [r.db getDatabaseDump]);
+    }
     
     //update
-    //[[NSFileManager defaultManager] removeItemAtPath: @"update.db" error: nil];
-    //self.db = [[SQLiteManager alloc]initWithDatabaseNamed:@"update.db"];
-
+    {
+        [[NSFileManager defaultManager] removeItemAtPath: @"stockcalc.db" error: nil];
+        SQLiteManager* db = [[SQLiteManager alloc]initWithDatabaseNamed:@"stockcalc.db"];
+        [db doQuery:@"CREATE TABLE record ([code] TEXT, [buy.price] FLOAT, [buy.quantity] FLOAT, [sell.price] FLOAT, [sell.quantity] FLOAT, [rate.commission] FLOAT, [rate.stamp] Float, [rate.transfer] Float,[commission] FLOAT, [stamp] Float, [transfer] Float, [fee] FLOAT, [result] FLOAT, [time] TimeStamp NOT NULL DEFAULT (datetime('now','localtime')));"];
+        
+        [db doQuery:@"insert into record (rate.commission,rate.transfer,buy.price,buy.quantity,fee,time,sell.price,transfer,code,sell.quantity,rate.stamp,stamp,commission,result) values (0.31,0.02,5.33,2400,23.23,'2016-10-15 14:34:53',5.3,0.51,'601939',2400,1,12.72, 10, -95.22);"];
+        [db doQuery:@"insert into record (rate.commission,rate.transfer,buy.price,buy.quantity,fee,time,sell.price,transfer,code,sell.quantity,rate.stamp,stamp,commission,result) values (0.31,0.02,31,500,26.15,'2016-10-15 14:57:22',null,0.62,'403',null,1,15.53,10,3.85);"];
+        Record* r = [Record sharedRecord];
+        NSLog(@"%@", [r.db getDatabaseDump]);
+    }
     //normal
+    {
+        Record* r = [Record sharedRecord];
+        {
+            NSDictionary* t = @{
+                                @"buy.price" : @17,
+                                @"buy.quantity" : @500,
+                                @"code" : @000001,
+                                @"commission" : @5,
+                                @"fee" : @"5.17",
+                                @"rate.commission" : @"0.31",
+                                @"rate.stamp" : @1,
+                                @"rate.transfer" : @"0.02",
+                                @"result" : @"8505.17",
+                                @"stamp" : @0,
+                                @"transfer" : @"0.17",
+                                @"type" : @"买入支出"
+                                };
+            [r add:t];
+        }
+        {
+            NSDictionary* t = @{
+                                @"code" : @000003,
+                                @"commission" : @5,
+                                @"fee" : @"10.1",
+                                @"rate.commission" : @"0.31",
+                                @"rate.stamp" : @1,
+                                @"rate.transfer" : @"0.02",
+                                @"result" : @"4989.9",
+                                @"sell.price" : @10,
+                                @"sell.quantity" : @500,
+                                @"stamp" : @5,
+                                @"transfer" : @"0.1",
+                                @"type" : @"卖出收入"
+                                };
+            [r add:t];
+        }
+        NSLog(@"%@", [r.db getDatabaseDump]);
+        
+    }
 }
 
 int main(int argc, const char * argv[]) {
@@ -135,7 +205,7 @@ int main(int argc, const char * argv[]) {
             
             folder = [[NSString alloc] initWithUTF8String:argv[1]];
         }
-        testBrain(folder);
+        //testBrain(folder);
         
     }
     return 0;
