@@ -61,7 +61,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ZcU-xv-HD8">
-                                <rect key="frame" x="20" y="28" width="560" height="223"/>
+                                <rect key="frame" x="20" y="140" width="560" height="223"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="95s-SU-mq5">
                                         <rect key="frame" x="0.0" y="0.0" width="560" height="64"/>
@@ -207,12 +207,21 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M7w-Wv-xPl" customClass="CandlestickView">
+                                <rect key="frame" x="0.0" y="25" width="600" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="ezL-1X-PtV"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="ZcU-xv-HD8" secondAttribute="trailing" id="3fQ-aL-K8F"/>
-                            <constraint firstItem="ZcU-xv-HD8" firstAttribute="top" secondItem="ae3-Rc-D5X" secondAttribute="bottom" constant="8" symbolic="YES" id="XiC-Dz-beE"/>
+                            <constraint firstItem="M7w-Wv-xPl" firstAttribute="top" secondItem="ae3-Rc-D5X" secondAttribute="bottom" constant="5" id="5nV-Qv-adm"/>
+                            <constraint firstItem="M7w-Wv-xPl" firstAttribute="leading" secondItem="aJK-Sr-uvx" secondAttribute="leading" id="Rdu-nb-IsR"/>
                             <constraint firstItem="ZcU-xv-HD8" firstAttribute="leading" secondItem="aJK-Sr-uvx" secondAttribute="leadingMargin" id="gbj-ck-hLS"/>
+                            <constraint firstAttribute="trailing" secondItem="M7w-Wv-xPl" secondAttribute="trailing" id="moc-rD-aBh"/>
+                            <constraint firstItem="ZcU-xv-HD8" firstAttribute="top" secondItem="M7w-Wv-xPl" secondAttribute="bottom" constant="15" id="t0t-QC-lc6"/>
                         </constraints>
                     </view>
                     <connections>
