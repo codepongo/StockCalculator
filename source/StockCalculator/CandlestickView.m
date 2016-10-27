@@ -57,13 +57,31 @@
             low = close;
             close = tmp;
         }
+        double ma5, ma10, ma20; {
+            if (self.points.count < 5) {
+                ma5 = close;
+                ma10 = close;
+                ma20 = close;
+            }
+            else {
+                ma5 = 0;
+                for (NSUInteger j = i; j < i - 5; j--) {
+                ma5 += [[self.points objectAtIndex:j] floatValue];
+                }
+                ma5 /= 5;
+            }
+        }
         //NSLog(@"%f %f %f %f", open, close, high, low);
-        [self.points addObject:@[
-                           [NSString stringWithFormat:@"{%lu, %f}", i*10, high],//last_close * 100.00 + (arc4random_uniform(20) - 10) / 100],
-                           [NSString stringWithFormat:@"{%lu, %f}", i*10, low],//last_close * 100.00 + (arc4random_uniform(20) - 10) / 100],
-                           [NSString stringWithFormat:@"{%lu, %f}", i*10, open],//last_close * 100.00 + (arc4random_uniform(20) - 10) / 100],
-                           [NSString stringWithFormat:@"{%lu, %f}", i*10, close]//last_close * 100.00 + (arc4random_uniform(20) - 10) / 100],
-                           ]];
+        [self.points addObject:@{
+                           @"date": @(i * 10),
+                           @"high": [NSNumber numberWithDouble: high],
+                           @"low": [NSNumber numberWithDouble: low],
+                           @"open": [NSNumber numberWithDouble: open],
+                           @"close": [NSNumber numberWithDouble: close],
+                           @"ma5":[NSNumber numberWithDouble: ma5],
+                           @"ma10":[NSNumber numberWithDouble: ma10],
+                           @"ma25":[NSNumber numberWithDouble: ma20]
+                           }];
         last_close = close;
         
     }
@@ -102,13 +120,22 @@
     }
     if (self.isK) {
         // 画k线
-        for (NSArray *item in self.points) {
+        for (NSDictionary *item in self.points) {
             // 转换坐标
             CGPoint heightPoint,lowPoint,openPoint,closePoint;
-            heightPoint = CGPointFromString([item objectAtIndex:0]);
-            lowPoint = CGPointFromString([item objectAtIndex:1]);
-            openPoint = CGPointFromString([item objectAtIndex:2]);
-            closePoint = CGPointFromString([item objectAtIndex:3]);
+            heightPoint.x = [[item objectForKey:@"date"] floatValue];
+            heightPoint.y = [[item objectForKey:@"low"] floatValue];
+            lowPoint.x = [[item objectForKey:@"date"] floatValue];
+            lowPoint.y = [[item objectForKey:@"low"] floatValue];
+            openPoint.x = [[item objectForKey:@"date"] floatValue];
+            openPoint.y = [[item objectForKey:@"low"] floatValue];
+            closePoint.x = [[item objectForKey:@"date"] floatValue];
+            closePoint.y = [[item objectForKey:@"low"] floatValue];
+            
+            //heightPoint = CGPointFromString([item objectAtIndex:0]);
+            //lowPoint = CGPointFromString([item objectAtIndex:1]);
+            //openPoint = CGPointFromString([item objectAtIndex:2]);
+            //closePoint = CGPointFromString([item objectAtIndex:3]);
             [self drawKWithContext:context height:heightPoint Low:lowPoint open:openPoint close:closePoint width:self.lineWidth];
         }
         
