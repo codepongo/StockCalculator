@@ -18,6 +18,8 @@ StockCalculator is an iOS App that calculates the breakeven price of the purchas
  + [ ] 记录文字颜色
 * [ ] 优化记录展示页面
  + [ ] 均线M5, M10, M20
+ + [ ] 背景线
+ + [ ] 字
  + [ ] 优化显示效果
  + [ ] 优化代码
 * [ ] 朋友圈分享

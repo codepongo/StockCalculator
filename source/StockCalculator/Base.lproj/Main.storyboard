@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--Record-->
@@ -61,7 +62,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ZcU-xv-HD8">
-                                <rect key="frame" x="20" y="140" width="560" height="223"/>
+                                <rect key="frame" x="20" y="220" width="560" height="223"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="95s-SU-mq5">
                                         <rect key="frame" x="0.0" y="0.0" width="560" height="64"/>
@@ -208,19 +209,17 @@
                                 </subviews>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M7w-Wv-xPl" customClass="CandlestickView">
-                                <rect key="frame" x="0.0" y="25" width="600" height="100"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="ezL-1X-PtV"/>
-                                </constraints>
+                                <rect key="frame" x="20" y="25" width="560" height="180"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="ZcU-xv-HD8" secondAttribute="trailing" id="3fQ-aL-K8F"/>
                             <constraint firstItem="M7w-Wv-xPl" firstAttribute="top" secondItem="ae3-Rc-D5X" secondAttribute="bottom" constant="5" id="5nV-Qv-adm"/>
-                            <constraint firstItem="M7w-Wv-xPl" firstAttribute="leading" secondItem="aJK-Sr-uvx" secondAttribute="leading" id="Rdu-nb-IsR"/>
+                            <constraint firstItem="M7w-Wv-xPl" firstAttribute="leading" secondItem="aJK-Sr-uvx" secondAttribute="leadingMargin" id="Rdu-nb-IsR"/>
+                            <constraint firstItem="M7w-Wv-xPl" firstAttribute="height" secondItem="aJK-Sr-uvx" secondAttribute="height" multiplier="0.3" id="dOg-Wx-wDf"/>
                             <constraint firstItem="ZcU-xv-HD8" firstAttribute="leading" secondItem="aJK-Sr-uvx" secondAttribute="leadingMargin" id="gbj-ck-hLS"/>
-                            <constraint firstAttribute="trailing" secondItem="M7w-Wv-xPl" secondAttribute="trailing" id="moc-rD-aBh"/>
+                            <constraint firstAttribute="rightMargin" secondItem="M7w-Wv-xPl" secondAttribute="right" id="moc-rD-aBh"/>
                             <constraint firstItem="ZcU-xv-HD8" firstAttribute="top" secondItem="M7w-Wv-xPl" secondAttribute="bottom" constant="15" id="t0t-QC-lc6"/>
                         </constraints>
                     </view>
