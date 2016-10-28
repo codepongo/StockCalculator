@@ -65,11 +65,33 @@
             }
             else {
                 ma5 = 0;
-                for (NSUInteger j = i; j < i - 5; j--) {
-                ma5 += [[self.points objectAtIndex:j] floatValue];
+                for (NSUInteger j = self.points.count - 5; j < self.points.count; j++) {
+                    ma5 += [[self.points objectAtIndex:j][@"close"] floatValue];
                 }
                 ma5 /= 5;
             }
+            if (self.points.count < 10) {
+                ma10 = close;
+                ma20 = close;
+            }
+            else {
+                ma10 = 0;
+                for (NSUInteger j = self.points.count - 10; j < self.points.count; j++) {
+                    ma10 += [[self.points objectAtIndex:j][@"close"] floatValue];
+                }
+                ma10 /= 10;
+            }
+            if (self.points.count < 20) {
+                ma20 = close;
+            }
+            else {
+                ma20 = 0;
+                for (NSUInteger j = self.points.count - 20; j < self.points.count; j++) {
+                    ma20 += [[self.points objectAtIndex:j][@"close"] floatValue];
+                }
+                ma20 /= 20;
+            }
+            
         }
         //NSLog(@"%f %f %f %f", open, close, high, low);
         [self.points addObject:@{
@@ -80,7 +102,7 @@
                            @"close": [NSNumber numberWithDouble: close],
                            @"ma5":[NSNumber numberWithDouble: ma5],
                            @"ma10":[NSNumber numberWithDouble: ma10],
-                           @"ma25":[NSNumber numberWithDouble: ma20]
+                           @"ma20":[NSNumber numberWithDouble: ma20]
                            }];
         last_close = close;
         
@@ -115,63 +137,51 @@
             CGPointMake(0, self.frame.size.height),
             CGPointMake(self.frame.size.width, self.frame.size.height)
         };
-        CGContextSetRGBStrokeColor(context, 0.9, 0.9, 0.9f, 1);
+        CGContextSetRGBStrokeColor(context, 0.0, 0.0, 0.0f, 1);
         CGContextStrokeLineSegments(context, points, 2);  // 绘制线段（默认不绘制端点）
     }
-    if (self.isK) {
-        // 画k线
-        for (NSDictionary *item in self.points) {
-            // 转换坐标
-            CGPoint heightPoint,lowPoint,openPoint,closePoint;
-            heightPoint.x = [[item objectForKey:@"date"] floatValue];
-            heightPoint.y = [[item objectForKey:@"high"] floatValue];
-            lowPoint.x = [[item objectForKey:@"date"] floatValue];
-            lowPoint.y = [[item objectForKey:@"low"] floatValue];
-            openPoint.x = [[item objectForKey:@"date"] floatValue];
-            openPoint.y = [[item objectForKey:@"open"] floatValue];
-            closePoint.x = [[item objectForKey:@"date"] floatValue];
-            closePoint.y = [[item objectForKey:@"close"] floatValue];
-            
-            //heightPoint = CGPointFromString([item objectAtIndex:0]);
-            //lowPoint = CGPointFromString([item objectAtIndex:1]);
-            //openPoint = CGPointFromString([item objectAtIndex:2]);
-            //closePoint = CGPointFromString([item objectAtIndex:3]);
-            [self drawKWithContext:context height:heightPoint Low:lowPoint open:openPoint close:closePoint width:self.lineWidth];
-        }
-        
-    }else{
-        // 画连接线
-        [self drawLineWithContext:context];
+    
+    for (NSDictionary *item in self.points) {
+        // 转换坐标
+        CGPoint heightPoint,lowPoint,openPoint,closePoint;
+        heightPoint.x = [[item objectForKey:@"date"] floatValue];
+        heightPoint.y = [[item objectForKey:@"high"] floatValue];
+        lowPoint.x = [[item objectForKey:@"date"] floatValue];
+        lowPoint.y = [[item objectForKey:@"low"] floatValue];
+        openPoint.x = [[item objectForKey:@"date"] floatValue];
+        openPoint.y = [[item objectForKey:@"open"] floatValue];
+        closePoint.x = [[item objectForKey:@"date"] floatValue];
+        closePoint.y = [[item objectForKey:@"close"] floatValue];
+        [self drawKWithContext:context height:heightPoint Low:lowPoint open:openPoint close:closePoint width:self.lineWidth];
     }
+    
+    // 画连接线
+    [self draw:@"ma5" In:[UIColor magentaColor] WithContext:context];
+    [self draw:@"ma10" In:[UIColor blueColor] WithContext:context];
+    [self draw:@"ma20" In:[UIColor purpleColor] WithContext:context];
 }
 #pragma mark 画连接线
--(void)drawLineWithContext:(CGContextRef)context{
-    CGContextSetLineWidth(context, self.lineWidth);
+-(void)draw:(NSString*)line In:(UIColor*) color WithContext:(CGContextRef)context{
+    CGContextSetLineWidth(context, 1);
     CGContextSetShouldAntialias(context, YES);
-    colorModel *colormodel = [UIColor RGBWithHexString:self.color withAlpha:self.alpha]; // 设置颜色
-    CGContextSetRGBStrokeColor(context, (CGFloat)colormodel.R/255.0f, (CGFloat)colormodel.G/255.0f, (CGFloat)colormodel.B/255.0f, self.alpha);
-    if (self.startPoint.x==self.endPoint.x && self.endPoint.y==self.startPoint.y) {
-        // 定义多个个点 画多点连线
-        for (id item in self.points) {
-            CGPoint currentPoint = CGPointFromString(item);
-            if ((int)currentPoint.y<(int)self.frame.size.height && currentPoint.y>0) {
-                if ([self.points indexOfObject:item]==0) {
-                    CGContextMoveToPoint(context, currentPoint.x, currentPoint.y);
-                    continue;
-                }
-                CGContextAddLineToPoint(context, currentPoint.x, currentPoint.y);
-                CGContextStrokePath(context); //开始画线
-                if ([self.points indexOfObject:item]<self.points.count) {
-                    CGContextMoveToPoint(context, currentPoint.x, currentPoint.y);
-                }
-                
-            }
+    CGContextSetStrokeColor(context, CGColorGetComponents(color.CGColor));
+   
+    // 定义多个个点 画多点连线
+    for (id item in self.points) {
+        CGPoint p;
+        p.x = [[item objectForKey:@"date"] floatValue];
+        p.y = [[item objectForKey:line] floatValue];
+        if ([self.points indexOfObject:item]==0) {
+            CGContextMoveToPoint(context, p.x, p.y);
+            continue;
         }
-    }else{
-        // 定义两个点 画两点连线
-        const CGPoint points[] = {self.startPoint,self.endPoint};
-        CGContextStrokeLineSegments(context, points, 2);  // 绘制线段（默认不绘制端点）
+        CGContextAddLineToPoint(context, p.x, p.y);
+        CGContextStrokePath(context); //开始画线
+        if ([self.points indexOfObject:item]<self.points.count) {
+            CGContextMoveToPoint(context, p.x, p.y);
+        }
     }
+
 }
 
 #pragma mark 画一根K线
