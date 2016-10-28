@@ -124,13 +124,13 @@
             // 转换坐标
             CGPoint heightPoint,lowPoint,openPoint,closePoint;
             heightPoint.x = [[item objectForKey:@"date"] floatValue];
-            heightPoint.y = [[item objectForKey:@"low"] floatValue];
+            heightPoint.y = [[item objectForKey:@"high"] floatValue];
             lowPoint.x = [[item objectForKey:@"date"] floatValue];
             lowPoint.y = [[item objectForKey:@"low"] floatValue];
             openPoint.x = [[item objectForKey:@"date"] floatValue];
-            openPoint.y = [[item objectForKey:@"low"] floatValue];
+            openPoint.y = [[item objectForKey:@"open"] floatValue];
             closePoint.x = [[item objectForKey:@"date"] floatValue];
-            closePoint.y = [[item objectForKey:@"low"] floatValue];
+            closePoint.y = [[item objectForKey:@"close"] floatValue];
             
             //heightPoint = CGPointFromString([item objectAtIndex:0]);
             //lowPoint = CGPointFromString([item objectAtIndex:1]);
