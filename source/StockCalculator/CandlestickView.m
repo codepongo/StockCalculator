@@ -14,16 +14,10 @@
 
 - (void)awakeFromNib {
     self.backgroundColor = [UIColor clearColor];
-    self.startPoint = self.frame.origin;
-    self.endPoint = self.frame.origin;
-    self.color = @"#000000";
-    self.lineWidth = 1.0f;
-    self.isK = YES;
-    self.isVol = NO;
-    self.lineWidth = 5;
+    self.height_of_price = self.frame.size.height;// * 2 / 3;
     
     self.points = [[NSMutableArray alloc]initWithCapacity: self.frame.size.width / 5];
-    double last_close = self.frame.size.height/2;
+    double last_close = self.height_of_price / 2;
     for (NSUInteger i = 0; i < self.frame.size.width / 5; i++) {
         if (i == 0 || i == self.frame.size.width / 5 - 1) {
             continue;
@@ -56,6 +50,18 @@
             double tmp = low;
             low = close;
             close = tmp;
+        };
+        if (i == 1) {
+            self.min = low;
+            self.max = high;
+        }
+        else {
+            if (low < self.min) {
+                self.min = low;
+            }
+            if (high > self.max) {
+                self.max = high;
+            }
         }
         double ma5, ma10, ma20; {
             if (self.points.count < 5) {
@@ -107,6 +113,7 @@
         last_close = close;
         
     }
+    self.scale = self.height_of_price / (self.max - self.min);
 
 }
 
@@ -114,23 +121,21 @@
 {
     CGContextRef context = UIGraphicsGetCurrentContext();// 获取绘图上下文
     {
-        
-        const CGPoint points[] = {
-            CGPointMake(0, 0),
-            CGPointMake(self.frame.size.width, 0)
-        };
-        CGContextSetRGBStrokeColor(context, 0.9, 0.9, 0.9f, 1);
-        CGContextStrokeLineSegments(context, points, 2);  // 绘制线段（默认不绘制端点）
+        CGContextSetRGBStrokeColor(context, 236/255.00, 236/255.00, 236/255.00, 1);
+        CGRect rc = {0, 0, self.frame.size.width, self.frame.size.height};
+         CGContextStrokeRect(context, rc);
     }
+    
     {
         
         const CGPoint points[] = {
-            CGPointMake(0, self.frame.size.height/2),
-            CGPointMake(self.frame.size.width, self.frame.size.height/2)
+            CGPointMake(0, self.height_of_price),
+            CGPointMake(self.frame.size.width, self.height_of_price)
         };
         CGContextSetRGBStrokeColor(context, 0.9, 0.9, 0.9f, 1);
         CGContextStrokeLineSegments(context, points, 2);  // 绘制线段（默认不绘制端点）
     }
+     /*
     {
         
         const CGPoint points[] = {
@@ -140,25 +145,26 @@
         CGContextSetRGBStrokeColor(context, 0.0, 0.0, 0.0f, 1);
         CGContextStrokeLineSegments(context, points, 2);  // 绘制线段（默认不绘制端点）
     }
+     */
     
     for (NSDictionary *item in self.points) {
         // 转换坐标
         CGPoint heightPoint,lowPoint,openPoint,closePoint;
         heightPoint.x = [[item objectForKey:@"date"] floatValue];
-        heightPoint.y = [[item objectForKey:@"high"] floatValue];
+        heightPoint.y = self.height_of_price * (1 - ([[item objectForKey:@"high"] floatValue] - self.min) / (self.max - self.min));
         lowPoint.x = [[item objectForKey:@"date"] floatValue];
-        lowPoint.y = [[item objectForKey:@"low"] floatValue];
+        lowPoint.y = self.height_of_price * (1 - ([[item objectForKey:@"low"] floatValue] - self.min) / (self.max - self.min));
         openPoint.x = [[item objectForKey:@"date"] floatValue];
-        openPoint.y = [[item objectForKey:@"open"] floatValue];
+        openPoint.y = self.height_of_price * (1 - ([[item objectForKey:@"open"] floatValue] - self.min) / (self.max - self.min));
         closePoint.x = [[item objectForKey:@"date"] floatValue];
-        closePoint.y = [[item objectForKey:@"close"] floatValue];
-        [self drawKWithContext:context height:heightPoint Low:lowPoint open:openPoint close:closePoint width:self.lineWidth];
+        closePoint.y = self.height_of_price * (1 - ([[item objectForKey:@"close"] floatValue] - self.min) / (self.max - self.min));
+        [self drawKWithContext:context height:heightPoint Low:lowPoint open:openPoint close:closePoint width:5];
     }
     
     // 画连接线
-    [self draw:@"ma5" In:[UIColor magentaColor] WithContext:context];
-    [self draw:@"ma10" In:[UIColor blueColor] WithContext:context];
-    [self draw:@"ma20" In:[UIColor purpleColor] WithContext:context];
+    [self draw:@"ma5" In:[UIColor colorWithRed:252.00/255 green:201.00/255 blue:22.00/255 alpha:1.0] WithContext:context];
+    [self draw:@"ma10" In:[UIColor colorWithRed:44.00/255 green:123.00/255 blue:246.00/255 alpha:1.0] WithContext:context];
+    [self draw:@"ma20" In:[UIColor colorWithRed:202.00/255 green:17.00/255 blue:240.00/255 alpha:1.0] WithContext:context];
 }
 #pragma mark 画连接线
 -(void)draw:(NSString*)line In:(UIColor*) color WithContext:(CGContextRef)context{
@@ -170,7 +176,7 @@
     for (id item in self.points) {
         CGPoint p;
         p.x = [[item objectForKey:@"date"] floatValue];
-        p.y = [[item objectForKey:line] floatValue];
+        p.y = self.height_of_price * (1 - ([[item objectForKey:line] floatValue] - self.min) / (self.max - self.min));
         if ([self.points indexOfObject:item]==0) {
             CGContextMoveToPoint(context, p.x, p.y);
             continue;
@@ -187,40 +193,20 @@
 #pragma mark 画一根K线
 -(void)drawKWithContext:(CGContextRef)context height:(CGPoint)heightPoint Low:(CGPoint)lowPoint open:(CGPoint)openPoint close:(CGPoint)closePoint width:(CGFloat)width{
     CGContextSetShouldAntialias(context, NO);
-    // 首先判断是绿的还是红的，根据开盘价和收盘价的坐标来计算
-    BOOL isKong = NO;
-    colorModel *colormodel = [UIColor RGBWithHexString:@"#e60000" withAlpha:self.alpha]; // 设置默认红色
-    // 如果开盘价坐标在收盘价坐标上方 则为绿色 即空
+    UIColor *colormodel = [UIColor colorWithRed:198/255.00 green:49/255.00 blue:40/255.00 alpha:1];
     if (openPoint.y<closePoint.y) {
-        isKong = YES;
-        colormodel = [UIColor RGBWithHexString:@"#008800" withAlpha:self.alpha]; // 设置为绿色
+        colormodel = [UIColor colorWithRed:37/255.00 green:149/255.00 blue:76/255.00 alpha:1];
     }
-    // 设置颜色
-    CGContextSetRGBStrokeColor(context, (CGFloat)colormodel.R/255.0f, (CGFloat)colormodel.G/255.0f, (CGFloat)colormodel.B/255.0f, self.alpha);
-    // 首先画一个垂直的线包含上影线和下影线
-    // 定义两个点 画两点连线
-    if (!self.isVol) {
-        CGContextSetLineWidth(context, 1); // 上下阴影线的宽度
-        if (self.lineWidth<=2) {
-            CGContextSetLineWidth(context, 0.5); // 上下阴影线的宽度
-        }
-        const CGPoint points[] = {heightPoint,lowPoint};
-        CGContextStrokeLineSegments(context, points, 2);  // 绘制线段（默认不绘制端点）
-    }
-    // 再画中间的实体
-    CGContextSetLineWidth(context, width); // 改变线的宽度
-    CGFloat halfWidth = 0;//width/2;
-    // 纠正实体的中心点为当前坐标
-    openPoint = CGPointMake(openPoint.x-halfWidth, openPoint.y);
-    closePoint = CGPointMake(closePoint.x-halfWidth, closePoint.y);
-    if (self.isVol) {
-        openPoint = CGPointMake(heightPoint.x-halfWidth, heightPoint.y);
-        closePoint = CGPointMake(lowPoint.x-halfWidth, lowPoint.y);
-    }
-    // 开始画实体
+
+    CGContextSetStrokeColor(context, CGColorGetComponents(colormodel.CGColor));
+
+    CGContextSetLineWidth(context, 1);
+    const CGPoint points[] = {heightPoint,lowPoint};
+    CGContextStrokeLineSegments(context, points, 2);
+    
+    CGContextSetLineWidth(context, width);
     const CGPoint point[] = {openPoint,closePoint};
-    CGContextStrokeLineSegments(context, point, 2);  // 绘制线段（默认不绘制端点）
-    //CGContextSetLineCap(context, kCGLineCapSquare) ;// 设置线段的端点形状，方形
+    CGContextStrokeLineSegments(context, point, 2);
 }
 
 
