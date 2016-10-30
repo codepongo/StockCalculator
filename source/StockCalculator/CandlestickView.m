@@ -14,18 +14,19 @@
 
 - (void)awakeFromNib {
     self.backgroundColor = [UIColor clearColor];
-    self.height_of_price = self.frame.size.height;// * 2 / 3;
+    self.price = CGRectMake(0, self.frame.size.height / 10, self.frame.size.width, self.frame.size.height / 2);
     
     self.points = [[NSMutableArray alloc]initWithCapacity: self.frame.size.width / 5];
-    double last_close = self.height_of_price / 2;
-    for (NSUInteger i = 0; i < self.frame.size.width / 5; i++) {
-        if (i == 0 || i == self.frame.size.width / 5 - 1) {
+    double last_close = self.price.size.height / 2;
+    for (NSUInteger i = 0; i < self.frame.size.width / 10; i++) {
+        if (i == 0 || i == self.frame.size.width / 10 - 1) {
             continue;
         }
         double close = last_close * (100.00 + arc4random_uniform(40) - 20) / 100;
         double open = last_close * (100.00 + arc4random_uniform(40) - 20) / 100;
         double high = last_close * (100.00 + arc4random_uniform(40) - 20) / 100;
         double low = last_close * (100.00 + arc4random_uniform(40) - 20) / 100;
+        double vol = arc4random();
         if (high < low) {
             double tmp = high;
             high = low;
@@ -99,13 +100,13 @@
             }
             
         }
-        //NSLog(@"%f %f %f %f", open, close, high, low);
         [self.points addObject:@{
                            @"date": @(i * 10),
                            @"high": [NSNumber numberWithDouble: high],
                            @"low": [NSNumber numberWithDouble: low],
                            @"open": [NSNumber numberWithDouble: open],
                            @"close": [NSNumber numberWithDouble: close],
+                           @"vol": [NSNumber numberWithDouble:vol],
                            @"ma5":[NSNumber numberWithDouble: ma5],
                            @"ma10":[NSNumber numberWithDouble: ma10],
                            @"ma20":[NSNumber numberWithDouble: ma20]
@@ -113,28 +114,46 @@
         last_close = close;
         
     }
-    self.scale = self.height_of_price / (self.max - self.min);
-
 }
 
 -(void)drawRect:(CGRect)rect
 {
     CGContextRef context = UIGraphicsGetCurrentContext();// 获取绘图上下文
     {
-        CGContextSetRGBStrokeColor(context, 236/255.00, 236/255.00, 236/255.00, 1);
+        CGContextSetRGBStrokeColor(context, 209/255.00, 209/255.00, 209/255.00, 1);
         CGRect rc = {0, 0, self.frame.size.width, self.frame.size.height};
          CGContextStrokeRect(context, rc);
     }
+
     
     {
-        
         const CGPoint points[] = {
-            CGPointMake(0, self.height_of_price),
-            CGPointMake(self.frame.size.width, self.height_of_price)
+            CGPointMake(0, self.frame.size.height / 10),
+            CGPointMake(self.frame.size.width, self.frame.size.height / 10)
         };
-        CGContextSetRGBStrokeColor(context, 0.9, 0.9, 0.9f, 1);
+        CGContextSetRGBStrokeColor(context, 232/255.00, 232/255.00, 232/255.00, 1);
         CGContextStrokeLineSegments(context, points, 2);  // 绘制线段（默认不绘制端点）
     }
+    
+    {
+        const CGPoint points[] = {
+            CGPointMake(0, self.frame.size.height * 6 / 10),
+            CGPointMake(self.frame.size.width, self.frame.size.height * 6 / 10)
+        };
+        CGContextSetRGBStrokeColor(context, 232/255.00, 232/255.00, 232/255.00, 1);
+        CGContextStrokeLineSegments(context, points, 2);  // 绘制线段（默认不绘制端点）
+    }
+    
+
+    {
+        const CGPoint points[] = {
+            CGPointMake(0, self.frame.size.height * 7 / 10),
+            CGPointMake(self.frame.size.width, self.frame.size.height * 7 / 10)
+        };
+        CGContextSetRGBStrokeColor(context, 232/255.00, 232/255.00, 232/255.00, 1);
+        CGContextStrokeLineSegments(context, points, 2);  // 绘制线段（默认不绘制端点）
+    }
+
      /*
     {
         
@@ -151,20 +170,23 @@
         // 转换坐标
         CGPoint heightPoint,lowPoint,openPoint,closePoint;
         heightPoint.x = [[item objectForKey:@"date"] floatValue];
-        heightPoint.y = self.height_of_price * (1 - ([[item objectForKey:@"high"] floatValue] - self.min) / (self.max - self.min));
+        heightPoint.y = (1 - ([[item objectForKey:@"high"] floatValue] - self.min) / (self.max - self.min)) * self.price.size.height + self.price.origin.y;
         lowPoint.x = [[item objectForKey:@"date"] floatValue];
-        lowPoint.y = self.height_of_price * (1 - ([[item objectForKey:@"low"] floatValue] - self.min) / (self.max - self.min));
+        lowPoint.y = (1 - ([[item objectForKey:@"low"] floatValue] - self.min) / (self.max - self.min)) * self.price.size.height + self.price.origin.y;
         openPoint.x = [[item objectForKey:@"date"] floatValue];
-        openPoint.y = self.height_of_price * (1 - ([[item objectForKey:@"open"] floatValue] - self.min) / (self.max - self.min));
+        openPoint.y = (1 - ([[item objectForKey:@"open"] floatValue] - self.min) / (self.max - self.min)) * self.price.size.height + self.price.origin.y;
         closePoint.x = [[item objectForKey:@"date"] floatValue];
-        closePoint.y = self.height_of_price * (1 - ([[item objectForKey:@"close"] floatValue] - self.min) / (self.max - self.min));
+        closePoint.y = (1 - ([[item objectForKey:@"close"] floatValue] - self.min) / (self.max - self.min)) * self.price.size.height + self.price.origin.y;
         [self drawKWithContext:context height:heightPoint Low:lowPoint open:openPoint close:closePoint width:5];
     }
+    
     
     // 画连接线
     [self draw:@"ma5" In:[UIColor colorWithRed:252.00/255 green:201.00/255 blue:22.00/255 alpha:1.0] WithContext:context];
     [self draw:@"ma10" In:[UIColor colorWithRed:44.00/255 green:123.00/255 blue:246.00/255 alpha:1.0] WithContext:context];
     [self draw:@"ma20" In:[UIColor colorWithRed:202.00/255 green:17.00/255 blue:240.00/255 alpha:1.0] WithContext:context];
+    
+
 }
 #pragma mark 画连接线
 -(void)draw:(NSString*)line In:(UIColor*) color WithContext:(CGContextRef)context{
@@ -176,7 +198,7 @@
     for (id item in self.points) {
         CGPoint p;
         p.x = [[item objectForKey:@"date"] floatValue];
-        p.y = self.height_of_price * (1 - ([[item objectForKey:line] floatValue] - self.min) / (self.max - self.min));
+        p.y = (1 - ([[item objectForKey:line] floatValue] - self.min) / (self.max - self.min)) * self.price.size.height + self.price.origin.y;
         if ([self.points indexOfObject:item]==0) {
             CGContextMoveToPoint(context, p.x, p.y);
             continue;

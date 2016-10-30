@@ -10,8 +10,7 @@
 
 @interface CandlestickView : UIView
 @property (nonatomic,retain) NSMutableArray *points; // 多点连线数组
-@property (nonatomic, assign)double scale;
 @property (nonatomic, assign) double min;
 @property (nonatomic, assign) double max;
-@property (nonatomic, assign) double height_of_price;
+@property (nonatomic, assign) CGRect price;
 @end
