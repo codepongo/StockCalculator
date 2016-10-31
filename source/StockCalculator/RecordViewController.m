@@ -222,7 +222,7 @@
                                              style:UIBarButtonItemStylePlain
                                              target:nil
                                              action:nil];
-    [self.navigationController pushViewController:d animated:YES];
+   [self.navigationController pushViewController:d animated:YES];
 
     
 }

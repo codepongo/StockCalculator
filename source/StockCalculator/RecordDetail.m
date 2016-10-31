@@ -14,6 +14,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title = self.data[@"code"];
+//    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem
+//                                               alloc]
+//                                              initWithTitle:@"分享"
+//                                              style:UIBarButtonItemStylePlain
+//                                              target:nil
+//                                              action:nil];
     self.type.text = self.data[@"type"];
     if ([self.data[@"type"] isEqualToString:@"保本价格"]) {
         self.result.text = @"%.2f 元／股";

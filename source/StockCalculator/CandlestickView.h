@@ -13,4 +13,6 @@
 @property (nonatomic, assign) double min;
 @property (nonatomic, assign) double max;
 @property (nonatomic, assign) CGRect price;
+@property (nonatomic, assign) CGRect vol;
+
 @end

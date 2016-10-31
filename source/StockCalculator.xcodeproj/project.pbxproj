@@ -10,8 +10,6 @@
 		040173051C10617E0082F6D7 /* RecordCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 040173041C10617E0082F6D7 /* RecordCell.xib */; };
 		04E442A01BF3546E00943EA5 /* Record.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E4429F1BF3546E00943EA5 /* Record.m */; };
 		FA0152291DB26B3100A43AB8 /* CandlestickView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0152281DB26B3100A43AB8 /* CandlestickView.m */; };
-		FA01522C1DB26EB600A43AB8 /* UIColor+helper.m in Sources */ = {isa = PBXBuildFile; fileRef = FA01522B1DB26EB600A43AB8 /* UIColor+helper.m */; };
-		FA01522F1DB26EE400A43AB8 /* colorModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FA01522E1DB26EE400A43AB8 /* colorModel.m */; };
 		FA0152311DB26F8B00A43AB8 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA0152301DB26F8B00A43AB8 /* CoreGraphics.framework */; };
 		FA0896911C19B4A100C90C60 /* RateDescription.plist in Resources */ = {isa = PBXBuildFile; fileRef = FA0896901C19B4A100C90C60 /* RateDescription.plist */; };
 		FA107FA11C124ECC00482E37 /* SettingController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA107FA01C124ECC00482E37 /* SettingController.m */; };
@@ -57,12 +55,8 @@
 		040173041C10617E0082F6D7 /* RecordCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecordCell.xib; sourceTree = "<group>"; };
 		04E4429E1BF3546E00943EA5 /* Record.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Record.h; sourceTree = "<group>"; };
 		04E4429F1BF3546E00943EA5 /* Record.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Record.m; sourceTree = "<group>"; };
-		FA0152271DB26B3100A43AB8 /* CandlestickView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CandlestickView.h; path = StockCalculator/CandlestickView.h; sourceTree = "<group>"; };
-		FA0152281DB26B3100A43AB8 /* CandlestickView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CandlestickView.m; path = StockCalculator/CandlestickView.m; sourceTree = "<group>"; };
-		FA01522A1DB26EB600A43AB8 /* UIColor+helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIColor+helper.h"; path = "StockCalculator/UIColor+helper.h"; sourceTree = "<group>"; };
-		FA01522B1DB26EB600A43AB8 /* UIColor+helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIColor+helper.m"; path = "StockCalculator/UIColor+helper.m"; sourceTree = "<group>"; };
-		FA01522D1DB26EE400A43AB8 /* colorModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = colorModel.h; path = StockCalculator/colorModel.h; sourceTree = "<group>"; };
-		FA01522E1DB26EE400A43AB8 /* colorModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = colorModel.m; path = StockCalculator/colorModel.m; sourceTree = "<group>"; };
+		FA0152271DB26B3100A43AB8 /* CandlestickView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CandlestickView.h; sourceTree = "<group>"; };
+		FA0152281DB26B3100A43AB8 /* CandlestickView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CandlestickView.m; sourceTree = "<group>"; };
 		FA0152301DB26F8B00A43AB8 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		FA0896901C19B4A100C90C60 /* RateDescription.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = RateDescription.plist; sourceTree = "<group>"; };
 		FA107F9F1C124ECC00482E37 /* SettingController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingController.h; sourceTree = "<group>"; };
@@ -154,6 +148,8 @@
 		FA107F9D1C124CF300482E37 /* record */ = {
 			isa = PBXGroup;
 			children = (
+				FA0152271DB26B3100A43AB8 /* CandlestickView.h */,
+				FA0152281DB26B3100A43AB8 /* CandlestickView.m */,
 				04E4429E1BF3546E00943EA5 /* Record.h */,
 				04E4429F1BF3546E00943EA5 /* Record.m */,
 				FACE72031BCEA7D20086F0EB /* RecordViewController.h */,
@@ -304,12 +300,6 @@
 			isa = PBXGroup;
 			children = (
 				FA0152301DB26F8B00A43AB8 /* CoreGraphics.framework */,
-				FA01522D1DB26EE400A43AB8 /* colorModel.h */,
-				FA01522E1DB26EE400A43AB8 /* colorModel.m */,
-				FA01522A1DB26EB600A43AB8 /* UIColor+helper.h */,
-				FA01522B1DB26EB600A43AB8 /* UIColor+helper.m */,
-				FA0152271DB26B3100A43AB8 /* CandlestickView.h */,
-				FA0152281DB26B3100A43AB8 /* CandlestickView.m */,
 				FACE71DD1BCEA75C0086F0EB /* StockCalculator */,
 				FACE71DC1BCEA75C0086F0EB /* Products */,
 			);
@@ -440,7 +430,6 @@
 				FA8C9E771BFE71520072FE7C /* Rate.swift in Sources */,
 				FA617A361BEFFBAE00E4AFA6 /* SQLiteManager.m in Sources */,
 				FA2A9A8C1BD91B4700FCC8A5 /* OutputCell.m in Sources */,
-				FA01522C1DB26EB600A43AB8 /* UIColor+helper.m in Sources */,
 				FA407CE91C0A6A3300FA64B6 /* RecordDetail.m in Sources */,
 				FA2A9A831BD3D79F00FCC8A5 /* TabBarController.m in Sources */,
 				FACE72081BCEA7D20086F0EB /* CalculatorViewController.m in Sources */,
@@ -461,7 +450,6 @@
 				FA6179F21BE0EABC00E4AFA6 /* InputAccessory.m in Sources */,
 				FA8C9E791C01F8020072FE7C /* CalculateBrain.swift in Sources */,
 				FACE720D1BCEA7D20086F0EB /* RecordViewController.m in Sources */,
-				FA01522F1DB26EE400A43AB8 /* colorModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,26 +7,23 @@
 //
 
 #import "CandlestickView.h"
-#import "colorModel.h"
-#import "UIColor+helper.h"
+
 
 @implementation CandlestickView
 
 - (void)awakeFromNib {
     self.backgroundColor = [UIColor clearColor];
     self.price = CGRectMake(0, self.frame.size.height / 10, self.frame.size.width, self.frame.size.height / 2);
+    self.vol = CGRectMake(0, self.frame.size.height * 7 / 10, self.frame.size.width, self.frame.size.height * 3 / 10);
     
-    self.points = [[NSMutableArray alloc]initWithCapacity: self.frame.size.width / 5];
+    self.points = [[NSMutableArray alloc]initWithCapacity: self.frame.size.width / 7];
     double last_close = self.price.size.height / 2;
-    for (NSUInteger i = 0; i < self.frame.size.width / 10; i++) {
-        if (i == 0 || i == self.frame.size.width / 10 - 1) {
-            continue;
-        }
+    for (NSUInteger i = 0; i < self.frame.size.width / 7 - 2; i++) {
+        
         double close = last_close * (100.00 + arc4random_uniform(40) - 20) / 100;
         double open = last_close * (100.00 + arc4random_uniform(40) - 20) / 100;
         double high = last_close * (100.00 + arc4random_uniform(40) - 20) / 100;
         double low = last_close * (100.00 + arc4random_uniform(40) - 20) / 100;
-        double vol = arc4random();
         if (high < low) {
             double tmp = high;
             high = low;
@@ -67,8 +64,8 @@
         double ma5, ma10, ma20; {
             if (self.points.count < 5) {
                 ma5 = close;
-                ma10 = close;
-                ma20 = close;
+                ma10 = open;
+                ma20 = low;
             }
             else {
                 ma5 = 0;
@@ -78,8 +75,8 @@
                 ma5 /= 5;
             }
             if (self.points.count < 10) {
-                ma10 = close;
-                ma20 = close;
+                ma10 = open;
+                ma20 = low;
             }
             else {
                 ma10 = 0;
@@ -101,12 +98,11 @@
             
         }
         [self.points addObject:@{
-                           @"date": @(i * 10),
+                           @"date": @(i * 7 + 3),
                            @"high": [NSNumber numberWithDouble: high],
                            @"low": [NSNumber numberWithDouble: low],
                            @"open": [NSNumber numberWithDouble: open],
                            @"close": [NSNumber numberWithDouble: close],
-                           @"vol": [NSNumber numberWithDouble:vol],
                            @"ma5":[NSNumber numberWithDouble: ma5],
                            @"ma10":[NSNumber numberWithDouble: ma10],
                            @"ma20":[NSNumber numberWithDouble: ma20]
@@ -153,7 +149,24 @@
         CGContextSetRGBStrokeColor(context, 232/255.00, 232/255.00, 232/255.00, 1);
         CGContextStrokeLineSegments(context, points, 2);  // 绘制线段（默认不绘制端点）
     }
+    
+    {
+        const CGPoint points[] = {
+            CGPointMake(self.frame.size.width / 3, 0),
+            CGPointMake(self.frame.size.width / 3, self.frame.size.height)
+        };
+        CGContextSetRGBStrokeColor(context, 244/255.00, 244/255.00, 244/255.00, 1);
+        CGContextStrokeLineSegments(context, points, 2);  // 绘制线段（默认不绘制端点）
+    }
 
+    {
+        const CGPoint points[] = {
+            CGPointMake(self.frame.size.width * 2 / 3, 0),
+            CGPointMake(self.frame.size.width * 2 / 3, self.frame.size.height)
+        };
+        CGContextSetRGBStrokeColor(context, 244/255.00, 244/255.00, 244/255.00, 1);
+        CGContextStrokeLineSegments(context, points, 2);  // 绘制线段（默认不绘制端点）
+    }
      /*
     {
         
@@ -177,7 +190,15 @@
         openPoint.y = (1 - ([[item objectForKey:@"open"] floatValue] - self.min) / (self.max - self.min)) * self.price.size.height + self.price.origin.y;
         closePoint.x = [[item objectForKey:@"date"] floatValue];
         closePoint.y = (1 - ([[item objectForKey:@"close"] floatValue] - self.min) / (self.max - self.min)) * self.price.size.height + self.price.origin.y;
-        [self drawKWithContext:context height:heightPoint Low:lowPoint open:openPoint close:closePoint width:5];
+        
+        UIColor *clr = [UIColor colorWithRed:198/255.00 green:49/255.00 blue:40/255.00 alpha:1];
+        if (openPoint.y<closePoint.y) {
+            clr = [UIColor colorWithRed:37/255.00 green:149/255.00 blue:76/255.00 alpha:1];
+        }
+
+        [self drawKWithContext:context height:heightPoint Low:lowPoint open:openPoint close:closePoint width:5 color:clr];
+        CGFloat y = ([[item objectForKey:@"open"] floatValue] - self.min) / (self.max - self.min) * self.vol.size.height + self.vol.origin.y;
+        [self drawVolWithContext:context end:CGPointMake([[item objectForKey:@"date"] floatValue], y) width:5 color:clr];
     }
     
     
@@ -185,6 +206,20 @@
     [self draw:@"ma5" In:[UIColor colorWithRed:252.00/255 green:201.00/255 blue:22.00/255 alpha:1.0] WithContext:context];
     [self draw:@"ma10" In:[UIColor colorWithRed:44.00/255 green:123.00/255 blue:246.00/255 alpha:1.0] WithContext:context];
     [self draw:@"ma20" In:[UIColor colorWithRed:202.00/255 green:17.00/255 blue:240.00/255 alpha:1.0] WithContext:context];
+    {
+        NSString* max = [NSString stringWithFormat:@"%.2f", self.max];
+        NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:[UIColor colorWithRed:106/255.00 green:106/255.00 blue:106/255.00 alpha:1.0], NSForegroundColorAttributeName, nil];
+        CGSize size = [max sizeWithAttributes:attributes];
+        [max drawAtPoint:CGPointMake(self.frame.size.width - size.width -1, self.frame.size.height / 20) withAttributes:attributes];
+    }
+    
+    {
+        NSString* min = [NSString stringWithFormat:@"%.2f", self.min];
+        NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:[UIColor colorWithRed:106/255.00 green:106/255.00 blue:106/255.00 alpha:1.0], NSForegroundColorAttributeName, nil];
+        CGSize size = [min sizeWithAttributes:attributes];
+        [min drawAtPoint:CGPointMake(self.frame.size.width - size.width - 1, self.frame.size.height * 11 / 20) withAttributes:attributes];
+    }
+
     
 
 }
@@ -213,14 +248,10 @@
 }
 
 #pragma mark 画一根K线
--(void)drawKWithContext:(CGContextRef)context height:(CGPoint)heightPoint Low:(CGPoint)lowPoint open:(CGPoint)openPoint close:(CGPoint)closePoint width:(CGFloat)width{
+-(void)drawKWithContext:(CGContextRef)context height:(CGPoint)heightPoint Low:(CGPoint)lowPoint open:(CGPoint)openPoint close:(CGPoint)closePoint width:(CGFloat)width color:(UIColor*) color {
     CGContextSetShouldAntialias(context, NO);
-    UIColor *colormodel = [UIColor colorWithRed:198/255.00 green:49/255.00 blue:40/255.00 alpha:1];
-    if (openPoint.y<closePoint.y) {
-        colormodel = [UIColor colorWithRed:37/255.00 green:149/255.00 blue:76/255.00 alpha:1];
-    }
 
-    CGContextSetStrokeColor(context, CGColorGetComponents(colormodel.CGColor));
+    CGContextSetStrokeColor(context, CGColorGetComponents(color.CGColor));
 
     CGContextSetLineWidth(context, 1);
     const CGPoint points[] = {heightPoint,lowPoint};
@@ -231,6 +262,17 @@
     CGContextStrokeLineSegments(context, point, 2);
 }
 
+#pragma mark 画成交量
+-(void)drawVolWithContext:(CGContextRef)context end:(CGPoint)end width:(CGFloat)width color:(UIColor*)color{
+    CGContextSetShouldAntialias(context, NO);
+    
+    CGContextSetStrokeColor(context, CGColorGetComponents(color.CGColor));
+    
+    CGContextSetLineWidth(context, 1);
+    const CGPoint points[] = {end, CGPointMake(end.x, self.frame.size.height)};
+    CGContextSetLineWidth(context, width);
+    CGContextStrokeLineSegments(context, points, 2);
+}
 
 
 @end
