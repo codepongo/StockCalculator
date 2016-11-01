@@ -28,7 +28,7 @@
     
         self.db = [[SQLiteManager alloc]initWithDatabaseNamed:@"stockcalc.db"];
         
-        NSArray* r = [self.db getRowsForQuery:@"SELECT count(*) FROM sqlite_master WHERE type = table and name = record"];
+        NSArray* r = [self.db getRowsForQuery:@"SELECT count(*) FROM sqlite_master WHERE type = 'table' and name = 'record'"];
         if (r.count == 0
             ||(r.count == 1 && 0 ==((NSNumber*)r[0][@"count(*)"]).integerValue)) {
             NSString* sqlSentence = @"create table if not exists record ([code] text, [buy.price] float, [buy.quantity] float, [sell.price] float, [sell.quantity] float, [rate.commission] float, [rate.stamp] float, [rate.transfer] float,[commission] float, [stamp] float, [transfer] float, [fee] float, [result] float, [time] timestamp not null default (datetime('now','localtime')), [type] text);";
