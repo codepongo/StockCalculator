@@ -7,6 +7,8 @@
 //
 
 #import "AppDelegate.h"
+#import "../wx/WXApi.h"
+#import <UIKit/UIKit.h>
 
 @interface AppDelegate ()
 
@@ -16,10 +18,27 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    [WXApi registerApp:@"" withDescription:@"StockCalculator"];
+    
+    UInt64 typeFlag = MMAPP_SUPPORT_TEXT | MMAPP_SUPPORT_PICTURE | MMAPP_SUPPORT_LOCATION | MMAPP_SUPPORT_VIDEO |MMAPP_SUPPORT_AUDIO | MMAPP_SUPPORT_WEBPAGE | MMAPP_SUPPORT_DOC | MMAPP_SUPPORT_DOCX | MMAPP_SUPPORT_PPT | MMAPP_SUPPORT_PPTX | MMAPP_SUPPORT_XLS | MMAPP_SUPPORT_XLSX | MMAPP_SUPPORT_PDF;
+    
+    [WXApi registerAppSupportContentFlag:typeFlag];
     return YES;
 }
 
+-(void)sendImageToWeChat:(UIImage*) capture {
+       WXMediaMessage *message = [WXMediaMessage message];
+        [message setThumbImage:capture];
+        WXImageObject *ext = [WXImageObject object];
+        
+        ext.imageData = UIImageJPEGRepresentation(capture, 1.0);
+        message.mediaObject = ext;
+        SendMessageToWXReq* req = [[SendMessageToWXReq alloc] init];
+        req.bText = NO;
+        req.message = message;
+        //req.scene = WXSceneTimeline;  //选择发送到朋友圈，默认值为WXSceneSession，发送到会话
+        [WXApi sendReq:req];
+}
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.

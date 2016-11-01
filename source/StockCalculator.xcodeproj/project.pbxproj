@@ -11,6 +11,12 @@
 		04E442A01BF3546E00943EA5 /* Record.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E4429F1BF3546E00943EA5 /* Record.m */; };
 		FA0152291DB26B3100A43AB8 /* CandlestickView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0152281DB26B3100A43AB8 /* CandlestickView.m */; };
 		FA0152311DB26F8B00A43AB8 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA0152301DB26F8B00A43AB8 /* CoreGraphics.framework */; };
+		FA0719471DC8CDEC00009B4F /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FA0719431DC8CDEC00009B4F /* libWeChatSDK.a */; };
+		FA07194A1DC8D5C900009B4F /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA0719491DC8D5C900009B4F /* CFNetwork.framework */; };
+		FA07194C1DC8D71700009B4F /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA07194B1DC8D71700009B4F /* SystemConfiguration.framework */; };
+		FA07194E1DC8D73200009B4F /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = FA07194D1DC8D73200009B4F /* libz.tbd */; };
+		FA0719501DC8D75B00009B4F /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = FA07194F1DC8D75B00009B4F /* libc++.tbd */; };
+		FA0719521DC8D7AA00009B4F /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA0719511DC8D7AA00009B4F /* CoreTelephony.framework */; };
 		FA0896911C19B4A100C90C60 /* RateDescription.plist in Resources */ = {isa = PBXBuildFile; fileRef = FA0896901C19B4A100C90C60 /* RateDescription.plist */; };
 		FA107FA11C124ECC00482E37 /* SettingController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA107FA01C124ECC00482E37 /* SettingController.m */; };
 		FA107FA41C12C99000482E37 /* SettingDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA107FA31C12C99000482E37 /* SettingDetailController.m */; };
@@ -58,6 +64,15 @@
 		FA0152271DB26B3100A43AB8 /* CandlestickView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CandlestickView.h; sourceTree = "<group>"; };
 		FA0152281DB26B3100A43AB8 /* CandlestickView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CandlestickView.m; sourceTree = "<group>"; };
 		FA0152301DB26F8B00A43AB8 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		FA0719431DC8CDEC00009B4F /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libWeChatSDK.a; path = ../wx/libWeChatSDK.a; sourceTree = "<group>"; };
+		FA0719441DC8CDEC00009B4F /* WechatAuthSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WechatAuthSDK.h; path = ../wx/WechatAuthSDK.h; sourceTree = "<group>"; };
+		FA0719451DC8CDEC00009B4F /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WXApi.h; path = ../wx/WXApi.h; sourceTree = "<group>"; };
+		FA0719461DC8CDEC00009B4F /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WXApiObject.h; path = ../wx/WXApiObject.h; sourceTree = "<group>"; };
+		FA0719491DC8D5C900009B4F /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		FA07194B1DC8D71700009B4F /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		FA07194D1DC8D73200009B4F /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		FA07194F1DC8D75B00009B4F /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		FA0719511DC8D7AA00009B4F /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		FA0896901C19B4A100C90C60 /* RateDescription.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = RateDescription.plist; sourceTree = "<group>"; };
 		FA107F9F1C124ECC00482E37 /* SettingController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingController.h; sourceTree = "<group>"; };
 		FA107FA01C124ECC00482E37 /* SettingController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingController.m; sourceTree = "<group>"; };
@@ -127,8 +142,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA0719521DC8D7AA00009B4F /* CoreTelephony.framework in Frameworks */,
+				FA0719501DC8D75B00009B4F /* libc++.tbd in Frameworks */,
+				FA07194E1DC8D73200009B4F /* libz.tbd in Frameworks */,
+				FA07194C1DC8D71700009B4F /* SystemConfiguration.framework in Frameworks */,
+				FA07194A1DC8D5C900009B4F /* CFNetwork.framework in Frameworks */,
 				FA0152311DB26F8B00A43AB8 /* CoreGraphics.framework in Frameworks */,
 				FA617A381BEFFC0300E4AFA6 /* libsqlite3.tbd in Frameworks */,
+				FA0719471DC8CDEC00009B4F /* libWeChatSDK.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -145,11 +166,28 @@
 			name = RecordCell;
 			sourceTree = "<group>";
 		};
+		FA0719481DC8CE2100009B4F /* wechat */ = {
+			isa = PBXGroup;
+			children = (
+				FA07194B1DC8D71700009B4F /* SystemConfiguration.framework */,
+				FA0719511DC8D7AA00009B4F /* CoreTelephony.framework */,
+				FA07194D1DC8D73200009B4F /* libz.tbd */,
+				FA07194F1DC8D75B00009B4F /* libc++.tbd */,
+				FA0719491DC8D5C900009B4F /* CFNetwork.framework */,
+				FA0719431DC8CDEC00009B4F /* libWeChatSDK.a */,
+				FA0719441DC8CDEC00009B4F /* WechatAuthSDK.h */,
+				FA0719451DC8CDEC00009B4F /* WXApi.h */,
+				FA0719461DC8CDEC00009B4F /* WXApiObject.h */,
+			);
+			name = wechat;
+			sourceTree = "<group>";
+		};
 		FA107F9D1C124CF300482E37 /* record */ = {
 			isa = PBXGroup;
 			children = (
 				FA0152271DB26B3100A43AB8 /* CandlestickView.h */,
 				FA0152281DB26B3100A43AB8 /* CandlestickView.m */,
+				FA0152301DB26F8B00A43AB8 /* CoreGraphics.framework */,
 				04E4429E1BF3546E00943EA5 /* Record.h */,
 				04E4429F1BF3546E00943EA5 /* Record.m */,
 				FACE72031BCEA7D20086F0EB /* RecordViewController.h */,
@@ -299,7 +337,6 @@
 		FACE71D21BCEA75B0086F0EB = {
 			isa = PBXGroup;
 			children = (
-				FA0152301DB26F8B00A43AB8 /* CoreGraphics.framework */,
 				FACE71DD1BCEA75C0086F0EB /* StockCalculator */,
 				FACE71DC1BCEA75C0086F0EB /* Products */,
 			);
@@ -316,6 +353,7 @@
 		FACE71DD1BCEA75C0086F0EB /* StockCalculator */ = {
 			isa = PBXGroup;
 			children = (
+				FA0719481DC8CE2100009B4F /* wechat */,
 				FACE72101BCEA7F40086F0EB /* Main.storyboard */,
 				FA107FBD1C13468900482E37 /* about */,
 				FA107F9E1C124D3000482E37 /* calculator */,
@@ -516,6 +554,10 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = (
+					"-Objc",
+					"-all_load",
+				);
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -552,6 +594,10 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = (
+					"-Objc",
+					"-all_load",
+				);
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -568,6 +614,10 @@
 				INFOPLIST_FILE = StockCalculator/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/wx",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.codepongo.iOS.StockCalculator;
 				PRODUCT_MODULE_NAME = "$(PROJECT_NAME)";
 				PRODUCT_NAME = "$(PROJECT_NAME)";
@@ -589,6 +639,10 @@
 				INFOPLIST_FILE = StockCalculator/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/wx",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.codepongo.iOS.StockCalculator;
 				PRODUCT_MODULE_NAME = "$(PROJECT_NAME)";
 				PRODUCT_NAME = "$(PROJECT_NAME)";
