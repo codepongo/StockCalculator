@@ -12,9 +12,5 @@
 
 @property (strong, nonatomic) UIWindow *window;
 
-
--(void) sendImageToWeChat:(UIImage*) capture;
-
-
 @end
 

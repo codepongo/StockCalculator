@@ -8,29 +8,69 @@
 
 #import "RecordDetail.h"
 #import "public.h"
-#import "AppDelegate.h"
+#import "../wx/WXApi.h"
 
 @implementation RecordDetail
+
+-(void)sendImageToWeChatToSceneSession:(UIImage*) capture {
+    WXMediaMessage *message = [WXMediaMessage message];
+    [message setThumbImage:capture];
+    WXImageObject *ext = [WXImageObject object];
+    
+    ext.imageData = UIImageJPEGRepresentation(capture, 1.0);
+    message.mediaObject = ext;
+    SendMessageToWXReq* req = [[SendMessageToWXReq alloc] init];
+    req.bText = NO;
+    req.message = message;
+    //req.scene = WXSceneTimeline;  //选择发送到朋友圈，默认值为WXSceneSession，发送到会话
+    [WXApi sendReq:req];
+}
+
+-(void)sendImageToWeChatTimeLine:(UIImage*) capture {
+    WXMediaMessage *message = [WXMediaMessage message];
+    [message setThumbImage:capture];
+    WXImageObject *ext = [WXImageObject object];
+    
+    ext.imageData = UIImageJPEGRepresentation(capture, 1.0);
+    message.mediaObject = ext;
+    SendMessageToWXReq* req = [[SendMessageToWXReq alloc] init];
+    req.bText = NO;
+    req.message = message;
+    req.scene = WXSceneTimeline;  //选择发送到朋友圈，默认值为WXSceneSession，发送到会话
+    [WXApi sendReq:req];
+}
 
 - (void)share:(id)sender {
     UIGraphicsBeginImageContext(self.view.bounds.size);
     [self.view.layer renderInContext:UIGraphicsGetCurrentContext()];
     UIImage* capture = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
-    [(AppDelegate*)[[UIApplication sharedApplication] delegate] sendImageToWeChat:capture];
+    
+    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"分享至微信"
+                                                                   message:nil
+                                                            preferredStyle:UIAlertControllerStyleAlert];
+    
+    [alert addAction:[UIAlertAction actionWithTitle:@"👬 分享朋友圈" style:UIAlertActionStyleDefault
+                                                          handler:^(UIAlertAction * action) {
+                                                            [self sendImageToWeChatTimeLine:capture];
+                                                          }]];
 
+    [alert addAction:[UIAlertAction actionWithTitle:@"✉️ 分享至会话" style:UIAlertActionStyleDefault
+                                                          handler:^(UIAlertAction * action) {
+                                                              [self sendImageToWeChatToSceneSession:capture];
+                                                          }]];
+    [alert addAction: [UIAlertAction actionWithTitle:@"😄 暂时不分享" style:UIAlertActionStyleCancel
+                                                    handler:^(UIAlertAction * action) {}]];
+
+    
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title = self.data[@"code"];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem
-                                               alloc]
-                                              initWithTitle:@"分享"
-                                              style:UIBarButtonItemStylePlain
-                                              target:self
-                                              action:@selector(share:)];
-    self.type.text = self.data[@"type"];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(share:)];
+   self.type.text = self.data[@"type"];
     if ([self.data[@"type"] isEqualToString:@"保本价格"]) {
         self.result.text = @"%.2f 元／股";
     }
