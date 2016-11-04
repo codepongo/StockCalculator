@@ -54,8 +54,7 @@
         
             if (r.count >0 && ![old_sqlSentence isEqualToString:r[0][@"sql"]]) {
                     [self.db doQuery:@"ALTER TABLE record ADD type TEXT"];
-                    NSArray* record = [self.db getRowsForQuery:@"select * from record"];
-                    
+                    NSArray* record = [self.db getRowsForQuery:@"select rowid, * from record"];
                     for (id r in record) {
                         if (r[@"sell.price"] == [NSNull null]) {
                             r[@"type"] = @"保本价格";
@@ -63,7 +62,9 @@
                         else {
                             r[@"type"] = @"交易损益";
                         }
-                        [self add:r];
+                        int rowid = ((NSNumber*)r[@"rowid"]).intValue;
+                        [r removeObjectForKey:@"rowid"];
+                        [self update:r rowid:rowid];
                     }
                     
             }
@@ -83,7 +84,7 @@
     NSMutableArray* values = [NSMutableArray arrayWithCapacity:[[record allValues]count]];
 
     for (id v in [record allValues]) {
-        NSString* value = v;
+        NSString* value = @"''";
         if ([v isKindOfClass:[NSString class]]) {
             value = [NSString stringWithFormat:@"'%@'", v];
         }
@@ -92,6 +93,27 @@
     
     NSString *sqlSentence = [NSString stringWithFormat:@"INSERT INTO record (%@) values (%@);",[keys componentsJoinedByString:@","], [values componentsJoinedByString:@","]];
 
+    NSError *error = [self.db doQuery:sqlSentence];
+    if (error != nil) {
+        //NSLog(@"Error: %@",[error localizedDescription]);
+        return NO;
+    }
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"recordChanged" object:nil];
+    return YES;
+    
+}
+
+-(BOOL)update:(NSDictionary*)record rowid:(int)rowid{
+    NSMutableArray* set = [[NSMutableArray alloc] init];
+    [record enumerateKeysAndObjectsUsingBlock:^(NSString* key, id value, BOOL *stop) {
+        [set addObject:[NSString stringWithFormat:@"'%@' = '%@'", key, value != [NSNull null] ? [NSString stringWithFormat:@"%@", value] : @"" ]];
+        
+    }];
+    ;
+  
+    NSString *sqlSentence = [NSString stringWithFormat:@"UPDATE record SET %@ where rowid = %d;",[set componentsJoinedByString:@","], rowid];
+    
     NSError *error = [self.db doQuery:sqlSentence];
     if (error != nil) {
         //NSLog(@"Error: %@",[error localizedDescription]);
