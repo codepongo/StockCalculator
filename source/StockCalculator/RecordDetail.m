@@ -41,6 +41,15 @@
 }
 
 - (void)share:(id)sender {
+    if (![WXApi isWXAppInstalled]) {
+        UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"分享至微信"
+                                                                       message:@"未安装微信，无法进行分享"
+                                                                preferredStyle:UIAlertControllerStyleAlert];
+        [alert addAction: [UIAlertAction actionWithTitle:@"😢 确定" style:UIAlertActionStyleCancel
+                                                 handler:^(UIAlertAction * action) {}]];
+        [self presentViewController:alert animated:YES completion:nil];
+        return;
+    }
     UIGraphicsBeginImageContext(self.view.bounds.size);
     [self.view.layer renderInContext:UIGraphicsGetCurrentContext()];
     UIImage* capture = UIGraphicsGetImageFromCurrentImageContext();

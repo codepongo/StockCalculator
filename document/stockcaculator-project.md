@@ -22,11 +22,11 @@ StockCalculator is an iOS App that calculates the breakeven price of the purchas
  + [x] 字
  + [x] 优化显示效果
  + [x] 优化代码
-* [ ] 朋友圈分享
-  + [ ] 未安装微信情况处理
+* [x] 朋友圈分享
+  + [x] 未安装微信情况处理
   + [x] 消息分享
   + [x] 朋友圈分享
-  + [ ] 分享结果
+  + [x] 分享结果 － 无法实现
 * [x] 测试数据库升级问题
 * [ ] wx app id 不提交至github且方便使用
 

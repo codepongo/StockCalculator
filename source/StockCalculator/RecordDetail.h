@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-@interface RecordDetail : UIViewController
+#import "../wx/WXApi.h"
 
+@interface RecordDetail : UIViewController
 @property IBOutlet UILabel* buyprice;
 @property IBOutlet UILabel* buyquantity;
 @property IBOutlet UILabel* sellprice;
