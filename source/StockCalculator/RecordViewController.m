@@ -160,12 +160,24 @@
     else {
         r = [[Record sharedRecord] recordForIndexPath:indexPath.row];
     }
-    if (r[@"sell.price"] != [NSNull null]) {
+
+    if (r[@"type"] != [NSNull null] && [r[@"type"] isEqualToString:@"交易损益"]) {
         c.image.image = [UIImage imageNamed:@"gainorloss"];
+        
     }
-    else {
+    else if (r[@"type"] != [NSNull null] && [r[@"type"] isEqualToString:@"保本价格"]) {
         c.image.image = [UIImage imageNamed:@"breakeven"];
         
+    }
+    else if (r[@"type"] != [NSNull null] && [r[@"type"] isEqualToString:@"买入支出"]) {
+        c.image.image = [UIImage imageNamed:@"sale"];
+        
+    }
+    else if (r[@"type"] != [NSNull null] && [r[@"type"] isEqualToString:@"卖出收入"]) {
+        c.image.image = [UIImage imageNamed:@"purchase"];
+    }
+    else {
+        //it never be excuted.
     }
     c.trade.text = [NSString stringWithFormat: @"[%@] -", r[@"code"]];
     

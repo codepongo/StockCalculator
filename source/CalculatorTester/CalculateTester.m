@@ -98,10 +98,23 @@ void testBrain(NSString* folder) {
 
 #import "../StockCalculator/Record.h"
 
+BOOL deleteDBFile() {
+    NSError* error = nil;
+    SQLiteManager* db = [[SQLiteManager alloc] init];
+    NSString* path = [[db getDatabasePath] stringByAppendingPathComponent:@"stockcalc.db"];
+    [[NSFileManager defaultManager] removeItemAtPath: path error: &error];
+    if (error != nil) {
+        NSLog(@"%s: %@", __FUNCTION__, [error localizedDescription]);
+        return NO;
+    }
+    return YES;
+}
+
 void testRecord() {
     //initialize
+    
     {
-        [[NSFileManager defaultManager] removeItemAtPath: @"stockcalc.db" error: nil];
+        deleteDBFile();
         Record* r = [Record sharedRecord];
         {
             
@@ -121,7 +134,11 @@ void testRecord() {
                                 @"transfer" : @"0.51",
                                 @"type" : @"损益计算"
                                 };
-            [r add:t];
+            BOOL ret = [r add:t];
+            if (!ret) {
+                NSLog(@"[\e[31mfail\e[0m][%s(%d)-%s]0%@", __FILE__, __LINE__, __FUNCTION__, @"Record::add");
+                exit(-1);
+            };
         }
         {
             NSDictionary* t = @{
@@ -138,25 +155,51 @@ void testRecord() {
                                 @"transfer" : @"0.62",
                                 @"type" : @"保本价格"
                                 };
-            [r add:t];
+            BOOL ret = [r add:t];
+            if (!ret) {
+                NSLog(@"[\e[31mfail\e[0m][%s(%d)-%s]0%@", __FILE__, __LINE__, __FUNCTION__, @"Record::add");
+                exit(-1);
+            };
+            
 
         }
-        NSLog(@"%@", [r.db getDatabaseDump]);
+        //NSLog(@"%@", [r.db getDatabaseDump]);
+        [r.db closeDatabase];
+        [Record release];
+        NSLog(@"==Initialize case is successful==");
     }
     
     //update
     {
-        [[NSFileManager defaultManager] removeItemAtPath: @"stockcalc.db" error: nil];
+        deleteDBFile();
         SQLiteManager* db = [[SQLiteManager alloc]initWithDatabaseNamed:@"stockcalc.db"];
         [db doQuery:@"CREATE TABLE record ([code] TEXT, [buy.price] FLOAT, [buy.quantity] FLOAT, [sell.price] FLOAT, [sell.quantity] FLOAT, [rate.commission] FLOAT, [rate.stamp] Float, [rate.transfer] Float,[commission] FLOAT, [stamp] Float, [transfer] Float, [fee] FLOAT, [result] FLOAT, [time] TimeStamp NOT NULL DEFAULT (datetime('now','localtime')));"];
-        
-        [db doQuery:@"insert into record (rate.commission,rate.transfer,buy.price,buy.quantity,fee,time,sell.price,transfer,code,sell.quantity,rate.stamp,stamp,commission,result) values (0.31,0.02,5.33,2400,23.23,'2016-10-15 14:34:53',5.3,0.51,'601939',2400,1,12.72, 10, -95.22);"];
-        [db doQuery:@"insert into record (rate.commission,rate.transfer,buy.price,buy.quantity,fee,time,sell.price,transfer,code,sell.quantity,rate.stamp,stamp,commission,result) values (0.31,0.02,31,500,26.15,'2016-10-15 14:57:22',null,0.62,'403',null,1,15.53,10,3.85);"];
+        NSError* error = nil;
+        error = [db doQuery:@"insert into record ('rate.commission','rate.transfer','buy.price','buy.quantity',fee,time,'sell.price',transfer,code,'sell.quantity','rate.stamp',stamp,commission,result) values (0.31,0.02,5.33,2400,23.23,'2016-10-15 14:34:53',5.3,0.51,'601939',2400,1,12.72, 10, -95.22);"];
+        if (error != nil) {
+            NSLog(@"[\e[31mfail\e[0m][%s(%d)-%s]0%@", __FILE__, __LINE__, __FUNCTION__, [error localizedDescription]);
+            exit(-1);
+        }
+        error = [db doQuery:@"insert into record ('rate.commission','rate.transfer','buy.price','buy.quantity',fee,time,'sell.price',transfer,code,'sell.quantity','rate.stamp',stamp,commission,result) values (0.31,0.02,31,500,26.15,'2016-10-15 14:57:22',null,0.62,'403',null,1,15.53,10,3.85);"];
+        if (error != nil) {
+            NSLog(@"[\e[31mfail\e[0m][%s(%d)-%s]0%@", __FILE__, __LINE__, __FUNCTION__, [error localizedDescription]);
+            exit(-1);
+        }
+        [db closeDatabase];
         Record* r = [Record sharedRecord];
+        if (error != nil){
+            NSLog(@"[\e[31mfail\e[0m][%s(%d)-%s]0%@", __FILE__, __LINE__, __FUNCTION__, [error localizedDescription]);
+            exit(-1);
+            
+        }
+
         NSLog(@"%@", [r.db getDatabaseDump]);
+        [Record release];
+        NSLog(@"==update case is successful==");
     }
     //normal
     {
+        deleteDBFile();
         Record* r = [Record sharedRecord];
         {
             NSDictionary* t = @{
@@ -173,7 +216,11 @@ void testRecord() {
                                 @"transfer" : @"0.17",
                                 @"type" : @"买入支出"
                                 };
-            [r add:t];
+            BOOL ret = [r add:t];
+            if (!ret) {
+                NSLog(@"[\e[31mfail\e[0m][%s(%d)-%s]0%@", __FILE__, __LINE__, __FUNCTION__, @"Record::add");
+                exit(-1);
+            };
         }
         {
             NSDictionary* t = @{
@@ -190,10 +237,15 @@ void testRecord() {
                                 @"transfer" : @"0.1",
                                 @"type" : @"卖出收入"
                                 };
-            [r add:t];
+            BOOL ret = [r add:t];
+            if (!ret) {
+                NSLog(@"[\e[31mfail\e[0m][%s(%d)-%s]0%@", __FILE__, __LINE__, __FUNCTION__, @"Record::add");
+                exit(-1);
+            };
         }
+        [Record release];
+        NSLog(@"==normal case is successful==");
         NSLog(@"%@", [r.db getDatabaseDump]);
-        
     }
 }
 

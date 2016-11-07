@@ -23,6 +23,9 @@
     }
 }
 
++(void) release {
+    instance = nil;
+}
 -(instancetype)init {
     if (self = [super init]) {
     
@@ -46,13 +49,13 @@
         
         
         {
-            NSString* old_sqlSentence = @"CREATE TABLE record ([code] TEXT, [buy.price] FLOAT, [buy.quantity] FLOAT, [sell.price] FLOAT, [sell.quantity] FLOAT, [rate.commission] FLOAT, [rate.stamp] Float, [rate.transfer] Float,[commission] FLOAT, [stamp] Float, [transfer] Float, [fee] FLOAT, [result] FLOAT, [time] TimeStamp NOT NULL DEFAULT (datetime('now','localtime')));";
+            NSString* old_sqlSentence = @"CREATE TABLE record ([code] TEXT, [buy.price] FLOAT, [buy.quantity] FLOAT, [sell.price] FLOAT, [sell.quantity] FLOAT, [rate.commission] FLOAT, [rate.stamp] Float, [rate.transfer] Float,[commission] FLOAT, [stamp] Float, [transfer] Float, [fee] FLOAT, [result] FLOAT, [time] TimeStamp NOT NULL DEFAULT (datetime('now','localtime')))";
 
             NSString* sql_for_creation = @"select sql from sqlite_master where tbl_name='record'";
             
             NSArray* r = [self.db getRowsForQuery:sql_for_creation];
         
-            if (r.count >0 && ![old_sqlSentence isEqualToString:r[0][@"sql"]]) {
+            if (r.count >0 && [old_sqlSentence isEqualToString:r[0][@"sql"]]) {
                     [self.db doQuery:@"ALTER TABLE record ADD type TEXT"];
                     NSArray* record = [self.db getRowsForQuery:@"select rowid, * from record"];
                     for (id r in record) {
@@ -73,7 +76,9 @@
     }
     return nil;
 }
-
+-(void)free {
+    instance = nil;
+}
 -(BOOL)add:(NSDictionary*)record{
 
     NSMutableArray* keys = [NSMutableArray arrayWithCapacity:14];
