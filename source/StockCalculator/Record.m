@@ -84,7 +84,13 @@
     NSMutableArray* values = [NSMutableArray arrayWithCapacity:[[record allValues]count]];
 
     for (id v in [record allValues]) {
-        NSString* value = @"''";
+        NSString* value;
+        if (v == [NSNull null]) {
+            value = @"";
+        }
+        else {
+            value = v;
+        }
         if ([v isKindOfClass:[NSString class]]) {
             value = [NSString stringWithFormat:@"'%@'", v];
         }
