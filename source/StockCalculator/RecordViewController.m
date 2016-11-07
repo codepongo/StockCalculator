@@ -176,13 +176,16 @@
         c.trade.text = [NSString stringWithFormat:@"%@ 单价为%.2f元时，卖出%@股。", c.trade.text, ((NSNumber*)r[@"sell.price"]).floatValue, r[@"sell.quantity"]];
     }
     
-    if (r[@"result"] != [NSNull null]) {
+    if (r[@"result"] != [NSNull null] && r[@"type"] != [NSNull null] && [r[@"type"] isEqualToString:@"交易损益"]) {
         if (((NSNumber*)r[@"result"]).floatValue < 0) {
             c.result.textColor = DOWN_COLOR;
         }
+        else {
+            c.result.textColor = UP_COLOR;
+        }
     }
     else {
-        c.result.textColor = UP_COLOR;
+        c.result.textColor = [UIColor blackColor];
     }
     if (r[@"result"] != [NSNull null] && r[@"type"] != [NSNull null]) {
         c.result.text = [NSString stringWithFormat:@"%@： %.2f %@", r[@"type"],((NSNumber*)r[@"result"]).floatValue,[r[@"type"] isEqualToString:@"保本价格"] ? @"元／股" : @"元"];
