@@ -381,9 +381,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FACE71F51BCEA75C0086F0EB /* Build configuration list for PBXNativeTarget "StockCalculator" */;
 			buildPhases = (
+				FA0719581DD2083700009B4F /* ShellScript */,
 				FACE71D71BCEA75C0086F0EB /* Sources */,
 				FACE71D81BCEA75C0086F0EB /* Frameworks */,
 				FACE71D91BCEA75C0086F0EB /* Resources */,
+				FA0719591DD20B9B00009B4F /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -459,6 +461,35 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		FA0719581DD2083700009B4F /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "python build.py before";
+		};
+		FA0719591DD20B9B00009B4F /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "python build.py after";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		FACE71D71BCEA75C0086F0EB /* Sources */ = {
