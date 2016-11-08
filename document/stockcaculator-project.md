@@ -4,9 +4,9 @@ StockCalculator is an iOS App that calculates the breakeven price of the purchas
 针对中国A股市场的股票交易，进行交易成本和税费计算。 提供计算买卖损益和成本价格两种计算方式。 可自由定制税费比率。支持计算结果的保存，方便以后进行查看。
 
 
-## Goal 目标:1.1.0.1 ##
+## Goal 目标:1.1.0 ##
 ### Progress 进度 ###
-  0%[                      ]
+100%[========================]
 ### Task 任务 ###
 * [x] 修正保存时股票代码不正确的问题
 * [x] 增加买入计算和卖出计算
