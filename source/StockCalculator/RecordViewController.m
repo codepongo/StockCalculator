@@ -170,11 +170,11 @@
         
     }
     else if (r[@"type"] != [NSNull null] && [r[@"type"] isEqualToString:@"买入支出"]) {
-        c.image.image = [UIImage imageNamed:@"sale"];
+        c.image.image = [UIImage imageNamed:@"purchase"];
         
     }
     else if (r[@"type"] != [NSNull null] && [r[@"type"] isEqualToString:@"卖出收入"]) {
-        c.image.image = [UIImage imageNamed:@"purchase"];
+        c.image.image = [UIImage imageNamed:@"sale"];
     }
     else {
         //it never be excuted.
