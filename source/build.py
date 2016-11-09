@@ -1,9 +1,11 @@
 import sys
+import os
 
 if '__main__' == __name__:
     id = ''
-    with open('../wechat.id') as f:
-        id = f.read()[:-1]
+    if os.path.isfile('../wechat.id'):
+        with open('../wechat.id', 'rb') as f:
+            id = f.read()[:-1]
     with open('StockCalculator/AppDelegate.m', 'rb') as f:
         source = f.read()
     if sys.argv[1] == 'before':
